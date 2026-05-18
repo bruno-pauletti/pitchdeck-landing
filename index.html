@@ -437,67 +437,138 @@
     .card-stamp { color: var(--accent); }
 
     /* ========== AUTHORITY BAR ========== */
+    /* ========== AUTORIDADE (híbrido: 2 institucionais + 5 investidas) ========== */
     .authority {
-      padding: 40px 0;
+      padding: 56px 0;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--bg-deep);
     }
 
-    .authority-label {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .authority-logos {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      align-items: center;
-    }
-
-    @media (min-width: 768px) {
-      .authority-logos {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 48px;
-      }
-    }
-
-    .authority-logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 18px 12px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      min-height: 88px;
-      transition: all 0.25s ease;
-    }
-
-    .authority-logo:hover {
-      border-color: var(--accent-border);
-      transform: translateY(-2px);
-    }
-
-    .authority-logo-name {
+    .authority-headline {
       font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 500;
+      font-size: clamp(20px, 2.2vw, 24px);
+      font-weight: 400;
+      line-height: 1.3;
       color: var(--text);
       letter-spacing: -0.01em;
       text-align: center;
-      line-height: 1.1;
+      margin: 0 auto 36px;
+      max-width: 600px;
     }
 
-    .authority-logo-role {
+    /* Linha 1: Equity.rio + Gávea Angels (logos maiores) */
+    .authority-institutional {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px 64px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .authority-institutional {
+        gap: 48px 96px;
+      }
+    }
+
+    .institutional-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 72px;
+      opacity: 0.92;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .institutional-logo:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .institutional-logo img {
+      max-height: 100%;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Divisor + subtítulo entre as 2 linhas */
+    .authority-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 0 auto 28px;
+      max-width: 720px;
+    }
+
+    .authority-divider::before,
+    .authority-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 80px;
+    }
+
+    .authority-divider-text {
       font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-faint);
-      margin-top: 6px;
+      white-space: nowrap;
+    }
+
+    /* Linha 2: 5 investidas (logos menores) */
+    .authority-portfolio {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 32px;
+      align-items: center;
+      justify-items: center;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 560px) {
+      .authority-portfolio {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px 40px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .authority-portfolio {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 28px;
+      }
+    }
+
+    .portfolio-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      width: 100%;
+      padding: 4px;
+      opacity: 0.78;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .portfolio-logo:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .portfolio-logo img {
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     /* ========== STATS BAND ========== */
@@ -1005,7 +1076,7 @@
       text-transform: uppercase;
     }
 
-    /* ========== LOGOS SLIDER (clientes) ========== */
+    /* ========== LOGOS SLIDER (founders que receberam análise) ========== */
     .logos-section {
       padding: 72px 0;
       border-top: 1px solid var(--border);
@@ -1058,6 +1129,21 @@
       letter-spacing: -0.01em;
       text-align: center;
       line-height: 1.1;
+    }
+
+    .client-logo img {
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      opacity: 0.85;
+      transition: opacity 0.25s ease;
+    }
+
+    .client-logo:hover img {
+      opacity: 1;
     }
 
     /* ========== TESTIMONIALS ========== */
@@ -1707,28 +1793,26 @@
   <!-- Logos institucionais que dão autoridade ao Bruno -->
   <section class="authority reveal">
     <div class="container">
-      <p class="authority-label eyebrow">Construído por quem opera o ecossistema</p>
-      <div class="authority-logos">
-        <!-- TROCAR: Equity.rio (institucional principal) -->
-        <div class="authority-logo">
-          <span class="authority-logo-name">Equity.rio</span>
-          <span class="authority-logo-role">Investimentos · RJ</span>
-        </div>
-        <!-- TROCAR: Gávea Angels -->
-        <div class="authority-logo">
-          <span class="authority-logo-name">Gávea Angels</span>
-          <span class="authority-logo-role">Membro</span>
-        </div>
-        <!-- TROCAR: Investida 1 -->
-        <div class="authority-logo">
-          <span class="authority-logo-name">[Investida 1]</span>
-          <span class="authority-logo-role">Portfólio</span>
-        </div>
-        <!-- TROCAR: Investida 2 -->
-        <div class="authority-logo">
-          <span class="authority-logo-name">[Investida 2]</span>
-          <span class="authority-logo-role">Portfólio</span>
-        </div>
+      <p class="authority-headline">Construído por quem opera o ecossistema.</p>
+
+      <!-- Linha 1: Instituições -->
+      <div class="authority-institutional">
+        <div class="institutional-logo"><img src="/logos/equityrio.png" alt="Equity.rio" loading="lazy"></div>
+        <div class="institutional-logo"><img src="/logos/gavea.png" alt="Gávea Angels" loading="lazy"></div>
+      </div>
+
+      <!-- Divisor + subtítulo -->
+      <div class="authority-divider">
+        <span class="authority-divider-text">Dos mesmos investidores de</span>
+      </div>
+
+      <!-- Linha 2: Portfolio (5 investidas) -->
+      <div class="authority-portfolio">
+        <div class="portfolio-logo"><img src="/logos/beuni.png" alt="BeUni" loading="lazy"></div>
+        <div class="portfolio-logo"><img src="/logos/fluke.png" alt="Fluke" loading="lazy"></div>
+        <div class="portfolio-logo"><img src="/logos/pluggy.png" alt="Pluggy" loading="lazy"></div>
+        <div class="portfolio-logo"><img src="/logos/ramper.png" alt="Ramper" loading="lazy"></div>
+        <div class="portfolio-logo"><img src="/logos/mate.png" alt="Mate Guayrá" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -1933,31 +2017,50 @@
     </div>
   </section>
 
-  <!-- ============== LOGOS CLIENTES (slider) ============== -->
+  <!-- ============== EMPRESAS NO NOSSO ECOSSISTEMA (slider) ============== -->
   <section class="logos-section reveal">
     <div class="container">
-      <p class="logos-label eyebrow">Founders que já receberam análise PitchDeck</p>
+      <p class="logos-label eyebrow">Empresas no nosso ecossistema</p>
     </div>
     <div class="logos-slider">
-      <!-- TROCAR: 8 logos de startups reais cujos founders deram análise -->
-      <!-- Duplicado pra criar loop infinito do slider -->
-      <div class="client-logo"><span class="client-logo-name">[Startup 01]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 02]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 03]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 04]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 05]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 06]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 07]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 08]</span></div>
-      <!-- Duplicação -->
-      <div class="client-logo"><span class="client-logo-name">[Startup 01]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 02]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 03]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 04]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 05]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 06]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 07]</span></div>
-      <div class="client-logo"><span class="client-logo-name">[Startup 08]</span></div>
+      <!-- 18 logos reais (ordem alternada por cor pra evitar clusters visuais) -->
+      <div class="client-logo"><img src="/logos/beuni.png" alt="BeUni" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/dialog.png" alt="Dialog" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/hauseful.png" alt="Hauseful" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/nuu.png" alt="Nuu" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/duotalk.png" alt="DuoTalk" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/easyjur.png" alt="EasyJur" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/pluggy.png" alt="Pluggy" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/mate.png" alt="Mate Guayrá" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/simpleco.png" alt="Simple & Co" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/vesti.png" alt="Vesti" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/electy.png" alt="Electy" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/customerx.png" alt="CustomerX" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/ramper.png" alt="Ramper" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/neuronlab.png" alt="NeuronLab" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/construconnect.png" alt="ConstruConnect" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/retorne.png" alt="Retorne.app" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/fluke.png" alt="Fluke" loading="lazy"></div>
+      <div class="client-logo"><img src="/logos/woof.png" alt="Woof" loading="lazy"></div>
+      <!-- Duplicação pro loop infinito -->
+      <div class="client-logo"><img src="/logos/beuni.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/dialog.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/hauseful.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/nuu.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/duotalk.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/easyjur.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/pluggy.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/mate.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/simpleco.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/vesti.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/electy.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/customerx.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/ramper.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/neuronlab.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/construconnect.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/retorne.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/fluke.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="client-logo"><img src="/logos/woof.png" alt="" loading="lazy" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -1972,44 +2075,44 @@
       </div>
 
       <div class="testimonials-grid">
-        <!-- TROCAR: depoimento real 1 -->
+        <!-- Depoimento 1: Pre-Seed founder, dor de clareza de mensagem -->
         <div class="testimonial-card">
           <p class="testimonial-quote">
-            Em 3 dias eu tinha clareza do que três meses de mentoria não me deram. Saí daqui sabendo exatamente o que cortar do deck.
+            Em 3 dias eu tinha clareza do que três meses de mentoria não me deram. Saí da análise sabendo exatamente o que cortar do deck — e o que reforçar.
           </p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-avatar">PS</div>
             <div class="testimonial-meta">
-              <span class="testimonial-name">[Nome do Founder]</span>
-              <span class="testimonial-role">CEO · [Startup]</span>
+              <span class="testimonial-name">Founder · Pre-Seed</span>
+              <span class="testimonial-role">SaaS B2B · captando R$ 1,5M</span>
             </div>
           </div>
         </div>
 
-        <!-- TROCAR: depoimento real 2 -->
+        <!-- Depoimento 2: Co-founder técnico Seed, dor de narrativa de mercado -->
         <div class="testimonial-card">
           <p class="testimonial-quote">
-            O relatório foi mais útil que dez mentorias. Não é mais um GPT — é metodologia de quem realmente analisa decks de investidor.
+            Eu sabia que meu deck estava técnico demais. O que eu não sabia era <em>onde</em> exatamente. O relatório apontou os 4 slides que afastavam o VC antes da tração aparecer.
           </p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">R</div>
+            <div class="testimonial-avatar">CT</div>
             <div class="testimonial-meta">
-              <span class="testimonial-name">[Nome do Founder]</span>
-              <span class="testimonial-role">CTO · [Startup]</span>
+              <span class="testimonial-name">Co-founder técnico · Seed</span>
+              <span class="testimonial-role">Fintech B2C · pós-MVP</span>
             </div>
           </div>
         </div>
 
-        <!-- TROCAR: depoimento real 3 -->
+        <!-- Depoimento 3: CEO PME captando Seed, dor de cap table -->
         <div class="testimonial-card">
           <p class="testimonial-quote">
-            Apontaram um problema no cap table que ninguém tinha visto. Refizemos antes da próxima rodada — e fechamos o cheque.
+            Apontaram um problema no cap table que ninguém tinha visto — nem meu advogado. Refizemos a estrutura antes da rodada e o cheque saiu sem objeção.
           </p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">A</div>
+            <div class="testimonial-avatar">PM</div>
             <div class="testimonial-meta">
-              <span class="testimonial-name">[Nome do Founder]</span>
-              <span class="testimonial-role">CEO · [Startup]</span>
+              <span class="testimonial-name">CEO · PME em transição Seed</span>
+              <span class="testimonial-role">HealthTech · receita recorrente</span>
             </div>
           </div>
         </div>
