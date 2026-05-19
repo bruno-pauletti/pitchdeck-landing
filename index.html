@@ -4,12 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PitchDeck — Análise honesta do seu pitch deck, com framework VC real</title>
-  <meta name="description" content="Análise gratuita do seu pitch deck em até 7 dias. Análise completa com framework VC por R$97. Reestruturação total por R$1.997. Por Bruno Pauletti e Equity.rio Investimentos." />
+  <meta name="description" content="Análise gratuita do seu pitch deck em até 7 dias. Análise completa com framework VC por R$97. Reestruturação total por R$1.997. Por Bruno Pauletti e Equity Rio Investimentos." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PitchDeck — Análise honesta do seu pitch deck" />
-  <meta property="og:description" content="Framework VC aplicado ao seu deck. Começa grátis. Por Equity.rio Investimentos." />
+  <meta property="og:description" content="Framework VC aplicado ao seu deck. Começa grátis. Por Equity Rio Investimentos." />
   <meta property="og:url" content="https://pitchdeck.com.br" />
+
+  <!-- Favicon (SVG inline + PNG fallback) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwRjRDM0EiLz4KICA8dGV4dCB4PSIzMiIgeT0iNDQiIAogICAgICAgIGZvbnQtZmFtaWx5PSJGcmF1bmNlcywgR2VvcmdpYSwgc2VyaWYiIAogICAgICAgIGZvbnQtc2l6ZT0iMzIiIAogICAgICAgIGZvbnQtd2VpZ2h0PSI3MDAiIAogICAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiIAogICAgICAgIGZpbGw9IiNGNUYxRUEiCiAgICAgICAgbGV0dGVyLXNwYWNpbmc9Ii0wLjAyZW0iPlBEPC90ZXh0Pgo8L3N2Zz4=" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <meta name="theme-color" content="#0F4C3A" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -103,6 +109,12 @@
     }
 
     .eyebrow-accent { color: var(--accent); }
+
+    /* Highlight verde para microcopy de hook ("Sem cartão...") */
+    .accent-text {
+      color: var(--accent);
+      font-weight: 500;
+    }
 
     /* ========== HEADER ========== */
     .header {
@@ -457,7 +469,7 @@
       max-width: 600px;
     }
 
-    /* Linha 1: Equity.rio + Gávea Angels (logos maiores) */
+    /* Linha 1: Equity Rio (logo principal centralizado) */
     .authority-institutional {
       display: flex;
       flex-wrap: wrap;
@@ -1330,6 +1342,301 @@
       line-height: 1.5;
     }
 
+    /* ========== ALGUNS DE NOSSOS PARCEIROS (com badges por categoria) ========== */
+    .partners {
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-deep);
+    }
+
+    .partners-head {
+      text-align: center;
+      margin: 0 auto 36px;
+      max-width: 680px;
+    }
+
+    .partners-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      border-radius: 100px;
+    }
+
+    .partners-headline {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .partners-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .partners-category {
+      margin-bottom: 36px;
+    }
+
+    .partners-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .partners-category-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .partners-category-label::before,
+    .partners-category-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 60px;
+    }
+
+    .partners-category-label span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px 28px;
+      align-items: center;
+      justify-items: center;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 560px) {
+      .partners-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px 36px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .partners-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+      }
+    }
+
+    .partner-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      width: 100%;
+      padding: 6px;
+      opacity: 0.78;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .partner-logo:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .partner-logo img {
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .partner-logo-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      width: 100%;
+      padding: 6px;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: -0.01em;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    /* ========== DEAL FLOW (análise vira oportunidade) ========== */
+    .dealflow {
+      padding: 96px 0;
+      background: var(--accent);
+      color: #F5F1EA;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dealflow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(245, 241, 234, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(245, 241, 234, 0.03) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .dealflow-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dealflow-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 56px;
+    }
+
+    .dealflow-eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 5px 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #F5F1EA;
+      background: rgba(245, 241, 234, 0.08);
+      border: 1px solid rgba(245, 241, 234, 0.18);
+      border-radius: 100px;
+    }
+
+    .dealflow-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.6vw, 52px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #F5F1EA;
+      margin-bottom: 20px;
+    }
+
+    .dealflow-headline em {
+      font-style: italic;
+      font-weight: 400;
+      color: #E8DCC1;
+    }
+
+    .dealflow-sub {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.6vw, 18px);
+      line-height: 1.55;
+      color: rgba(245, 241, 234, 0.78);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .dealflow-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .dealflow-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+    }
+
+    .dealflow-card {
+      padding: 32px 28px;
+      background: rgba(245, 241, 234, 0.04);
+      border: 1px solid rgba(245, 241, 234, 0.12);
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .dealflow-card:hover {
+      background: rgba(245, 241, 234, 0.06);
+      border-color: rgba(245, 241, 234, 0.22);
+      transform: translateY(-3px);
+    }
+
+    .dealflow-card-num {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: #E8DCC1;
+      background: rgba(245, 241, 234, 0.08);
+      border-radius: 4px;
+    }
+
+    .dealflow-card-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #F5F1EA;
+      margin-bottom: 14px;
+    }
+
+    .dealflow-card-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(245, 241, 234, 0.72);
+    }
+
+    .dealflow-card-body strong {
+      color: #F5F1EA;
+      font-weight: 500;
+    }
+
+    .dealflow-footer {
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid rgba(245, 241, 234, 0.12);
+    }
+
+    .dealflow-footer-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 241, 234, 0.55);
+    }
+
+    .dealflow-footer-text strong {
+      color: #E8DCC1;
+      font-weight: 500;
+    }
+
     /* ========== GUARANTEE ========== */
     .guarantee {
       background: linear-gradient(155deg, var(--accent) 0%, var(--accent-deep) 100%);
@@ -1707,7 +2014,7 @@
       <div class="header-inner">
         <a href="#" class="brand">
           <span class="brand-name">PitchDeck</span>
-          <span class="brand-by">by Equity.rio</span>
+          <span class="brand-by">by Equity Rio</span>
         </a>
         <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-header%5D" target="_blank" rel="noopener" class="header-cta">
           <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
@@ -1748,7 +2055,7 @@
           </div>
 
           <p class="hero-microcopy">
-            <strong>20 análises gratuitas / mês.</strong> Sem cartão. Sem cadastro complicado. Você manda o PDF, recebe a análise.
+            <strong class="accent-text">Sem cartão. Sem cadastro complicado. Você manda o PDF, recebe a análise.</strong>
           </p>
         </div>
 
@@ -1780,7 +2087,7 @@
               <span>Tabela competitiva ✓/✗ não convence; falta framework defensável.</span>
             </div>
             <div class="card-footer">
-              <span>Equity.rio · Framework VC</span>
+              <span>Equity Rio · Framework VC</span>
               <span class="card-stamp">CONFIDENCIAL</span>
             </div>
           </div>
@@ -1795,9 +2102,9 @@
     <div class="container">
       <p class="authority-headline">Construído por quem opera o ecossistema:</p>
 
-      <!-- Linha 1: Equity.rio (autoridade principal, centralizado) -->
+      <!-- Linha 1: Equity Rio Investimentos (autoridade principal, centralizado) -->
       <div class="authority-institutional">
-        <div class="institutional-logo"><img src="/logos/equityrio.png" alt="Equity.rio" loading="lazy"></div>
+        <div class="institutional-logo"><img src="/logos/equityrio.png" alt="Equity Rio Investimentos" loading="lazy"></div>
       </div>
 
       <!-- Divisor + subtítulo -->
@@ -1840,12 +2147,12 @@
   <section class="standard reveal" id="output">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow eyebrow-accent section-tag">O que chega no seu email</span>
+        <span class="eyebrow eyebrow-accent section-tag">O que chega no seu WhatsApp</span>
         <h2 class="section-title">
           Análise comentada <em>slide a slide</em>. Como se um VC estivesse anotando ao seu lado.
         </h2>
         <p class="section-sub">
-          Você recebe seu deck original com anotações sobrepostas em cada slide, mais um relatório executivo separado. Nada genérico. Tudo aplicável.
+          Você recebe seu deck original com anotações sobrepostas em cada slide, mais um relatório executivo separado — tudo direto no seu WhatsApp. Nada genérico. Tudo aplicável.
         </p>
       </div>
 
@@ -1943,13 +2250,13 @@
             <h3 class="tier-name">Análise Gratuita</h3>
             <span class="tier-price">Diagnóstico inicial</span>
             <span class="tier-price-main">Grátis</span>
-            <span class="tier-price-meta">Até 7 dias úteis · 20 vagas/mês</span>
+            <span class="tier-price-meta">Resposta inicial em 24h · Mesma metodologia da paga</span>
           </div>
           <ul class="tier-features">
             <li>Score geral do deck (1–10)</li>
             <li>Top 3 issues priorizados</li>
             <li>1 recomendação acionável por área</li>
-            <li>Verdict em 1 parágrafo</li>
+            <li>Veredito em 1 parágrafo</li>
           </ul>
           <div class="tier-cta-wrap">
             <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-free%5D" target="_blank" rel="noopener" class="tier-cta secondary">
@@ -2130,7 +2437,7 @@
               Não é mais um <em>GPT</em> que escreve pitch bonito. É a metodologia de uma boutique de investimentos, agora rodando com IA.
             </p>
             <p class="method-attr">
-              Construído por <strong>Bruno Pauletti</strong> e pela <strong>Equity.rio Investimentos</strong> — boutique brasileira focada em análise de oportunidades, M&A advisory e investimentos early-stage. O framework usado aqui é o mesmo aplicado em comitê de investimento.
+              Construído por <strong>Bruno Pauletti</strong>, sócio da <strong>Equity Rio Investimentos</strong>, um escritório de estruturação de rodadas de captação via equity e crédito privado para startups e PMEs. O framework usado aqui é o mesmo aplicado em comitê de investimento.
             </p>
           </div>
 
@@ -2157,19 +2464,98 @@
     </div>
   </section>
 
-  <!-- ============== GUARANTEE ============== -->
-  <section class="standard reveal">
-    <div class="container">
-      <div class="guarantee">
-        <div class="guarantee-seal">
-          7
-          <small>DIAS</small>
-        </div>
-        <div class="guarantee-text">
-          <h3>Não gostou? Devolvemos o dinheiro. Sem perguntas.</h3>
-          <p>
-            Acreditamos tanto na metodologia que se você ler o relatório e achar que não vale o investimento, basta responder o email de entrega em 7 dias pedindo reembolso. Estorno completo via Mercado Pago em até 48h. Você fica com o relatório.
+  <!-- ============== DEAL FLOW (sua análise vira oportunidade) ============== -->
+  <section class="dealflow reveal">
+    <div class="container dealflow-inner">
+      <div class="dealflow-head">
+        <span class="dealflow-eyebrow">A cereja do bolo</span>
+        <h2 class="dealflow-headline">
+          Sua análise <em>vira deal flow.</em>
+        </h2>
+        <p class="dealflow-sub">
+          Cada deck que entra no PitchDeck é avaliado também como oportunidade de investimento — pela Equity Rio Investimentos e por toda a nossa rede de parceiros. Se houver fit, a gente conecta.
+        </p>
+      </div>
+
+      <div class="dealflow-grid">
+        <article class="dealflow-card">
+          <span class="dealflow-card-num">01 · Análise</span>
+          <h3 class="dealflow-card-title">Avaliada por quem realmente investe</h3>
+          <p class="dealflow-card-body">
+            Toda análise — gratuita ou paga — é feita pela mesma equipe que <strong>opera deals reais</strong> de equity e crédito privado na Equity Rio. Não é exercício acadêmico. É leitura de quem decide cheque.
           </p>
+        </article>
+
+        <article class="dealflow-card">
+          <span class="dealflow-card-num">02 · Distribuição</span>
+          <h3 class="dealflow-card-title">Curadoria circulada na rede</h3>
+          <p class="dealflow-card-body">
+            Quando uma análise revela uma oportunidade com fit, levamos o deck para os <strong>grupos ativos de deal flow</strong> da nossa rede — VCs, CVCs, redes de Anjos e Plataformas de Equity e Crédito Privado.
+          </p>
+        </article>
+
+        <article class="dealflow-card">
+          <span class="dealflow-card-num">03 · Conexão</span>
+          <h3 class="dealflow-card-title">Warm intro direta, sem taxa</h3>
+          <p class="dealflow-card-body">
+            Se um investidor da rede demonstra interesse, fazemos a <strong>introdução direta</strong> — call, e-mail ou apresentação formal. <strong>Sem taxa de sucesso, sem comissão.</strong> O encaminhamento é consequência da análise.
+          </p>
+        </article>
+      </div>
+
+      <div class="dealflow-footer">
+        <p class="dealflow-footer-text">
+          O PitchDeck é, na prática, um <strong>canal de deal flow qualificado</strong> · Você ganha análise + chance real de captação
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ALGUNS DE NOSSOS PARCEIROS ============== -->
+  <section class="partners reveal">
+    <div class="container">
+      <div class="partners-head">
+        <span class="partners-eyebrow">A rede que recebe sua análise</span>
+        <h2 class="partners-headline">
+          Olha as empresas que <em>investem com</em> a Equity Rio
+        </h2>
+      </div>
+
+      <!-- VCs -->
+      <div class="partners-category">
+        <div class="partners-category-label"><span>Venture Capital</span></div>
+        <div class="partners-grid">
+          <div class="partner-logo"><img src="/logos/bossainvest.png" alt="Bossa Invest" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='Bossa Invest';"></div>
+          <div class="partner-logo"><img src="/logos/domoinvest.png" alt="Domo Invest" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='Domo Invest';"></div>
+          <div class="partner-logo"><img src="/logos/stamina.png" alt="Stamina" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='Stamina';"></div>
+        </div>
+      </div>
+
+      <!-- CVC -->
+      <div class="partners-category">
+        <div class="partners-category-label"><span>Corporate Venture Capital</span></div>
+        <div class="partners-grid">
+          <div class="partner-logo"><img src="/logos/msw.png" alt="MSW" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='MSW';"></div>
+        </div>
+      </div>
+
+      <!-- Redes de Anjos -->
+      <div class="partners-category">
+        <div class="partners-category-label"><span>Redes de Anjos</span></div>
+        <div class="partners-grid">
+          <div class="partner-logo"><img src="/logos/gavea.png" alt="Gávea Angels" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='Gávea Angels';"></div>
+          <div class="partner-logo"><img src="/logos/urcaangels.png" alt="Urca Angels" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='Urca Angels';"></div>
+          <div class="partner-logo"><img src="/logos/gvangels.png" alt="GV Angels" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='GV Angels';"></div>
+        </div>
+      </div>
+
+      <!-- Plataformas e Crédito -->
+      <div class="partners-category">
+        <div class="partners-category-label"><span>Plataformas e Crédito Privado</span></div>
+        <div class="partners-grid">
+          <div class="partner-logo"><img src="/logos/kria.png" alt="Kria" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='Kria';"></div>
+          <div class="partner-logo"><img src="/logos/eqseed.png" alt="EqSeed" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='EqSeed';"></div>
+          <div class="partner-logo"><img src="/logos/ksfidc.png" alt="KS FIDC" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('partner-logo-placeholder');this.parentElement.textContent='KS FIDC';"></div>
         </div>
       </div>
     </div>
@@ -2190,7 +2576,17 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Você manda o PDF do seu pitch deck por email (contato@pitchdeck.com.br). Em até 7 dias úteis, devolvemos um diagnóstico inicial: score geral, top 3 issues e 1 recomendação por área. Limitado a 20 análises gratuitas por mês — depois disso, entra fila do mês seguinte. Sem cartão, sem cadastro.
+            Você manda o PDF do seu pitch deck pelo WhatsApp. Em até 7 dias úteis, devolvemos um diagnóstico inicial pelo mesmo canal: score geral, top 3 issues e 1 recomendação por área. Sem cartão, sem cadastro complicado.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>O atendimento é todo por WhatsApp? E o email?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            Sim, todo o fluxo é por <strong>WhatsApp</strong> — envio do deck, briefing, entrega da análise e suporte pós-entrega. Mais ágil, mais prático, e funciona melhor para founders ocupados. O email <strong>contato@pitchdeck.com.br</strong> funciona como <strong>repositório oficial</strong>: confirmações de pagamento, cópia do relatório entregue e comprovantes ficam registrados lá para consulta futura ou compliance.
           </div>
         </div>
 
@@ -2200,7 +2596,7 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            A gratuita é um diagnóstico inicial enxuto — você sai sabendo onde estão os 3 maiores problemas. A de R$97 é a análise completa de comitê: score por slide, PDF inteiro anotado, relatório executivo de 15 páginas, valuation com 6 métodos, cap table benchmark e plano de ação priorizado. É a mesma profundidade que aplicamos em comitê de investimento da Equity.rio.
+            A gratuita é um diagnóstico inicial enxuto — você sai sabendo onde estão os 3 maiores problemas. A de R$97 é a análise completa de comitê: score por slide, PDF inteiro anotado, relatório executivo de 15 páginas, valuation com 6 métodos, cap table benchmark e plano de ação priorizado. É a mesma profundidade que aplicamos em comitê de investimento da Equity Rio Investimentos.
           </div>
         </div>
 
@@ -2220,7 +2616,7 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Se em 7 dias após receber a análise você não achar que vale o investimento, responde o email de entrega pedindo reembolso. Estornamos 100% via Mercado Pago em até 48h. Sem perguntas, sem formulário, sem fricção. Você fica com o relatório como cortesia. A garantia vale para Análise Honesta R$97 e Reestruturação Completa R$1.997.
+            Se em 7 dias após receber a análise você não achar que vale o investimento, pede reembolso pelo WhatsApp. Estornamos 100% via Mercado Pago em até 48h. Sem perguntas, sem formulário, sem fricção. Você fica com o relatório como cortesia. A garantia vale para Análise Honesta R$97 e Reestruturação Completa R$1.997.
           </div>
         </div>
 
@@ -2230,7 +2626,7 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Pagamento processado pelo Mercado Pago. Você pode pagar por Pix (aprovação instantânea), cartão de crédito (1x sem juros ou parcelado em até 12x com juros do Mercado Pago) ou boleto bancário (compensação em 1-3 dias úteis). Nota fiscal emitida pela Equity.rio Investimentos.
+            Pagamento processado pelo Mercado Pago. Você pode pagar por Pix (aprovação instantânea), cartão de crédito (1x sem juros ou parcelado em até 12x com juros do Mercado Pago) ou boleto bancário (compensação em 1-3 dias úteis). Nota fiscal emitida pela NVESTOR TECNOLOGIA E INFORMACAO LTDA (CNPJ 34.821.742/0001-08), conforme rodapé.
           </div>
         </div>
 
@@ -2240,7 +2636,13 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Bruno Pauletti, sócio da Equity.rio Investimentos — boutique de análise de oportunidades de investimento sediada no Rio de Janeiro. A Equity.rio atua em M&A advisory, distressed assets e wealth management. Bruno também é membro da Gávea Angels e analisa pitch decks como investidor anjo. O framework usado nesta ferramenta é o mesmo aplicado nos comitês de avaliação de oportunidades da casa.
+            Bruno Pauletti, sócio da <strong>Equity Rio Investimentos</strong> — escritório de investimentos sediado no Rio de Janeiro. Bruno também é membro da Gávea Angels e analisa pitch decks como investidor anjo.
+            <br><br>
+            <strong>Para startups e PMEs:</strong> estruturamos rodadas de captação via equity e crédito privado.
+            <br>
+            <strong>Para investidores:</strong> oferecemos um portfolio de investimentos alternativos e high yield.
+            <br><br>
+            O framework usado nesta ferramenta é o mesmo aplicado nos comitês de avaliação de oportunidades da casa.
           </div>
         </div>
 
@@ -2250,7 +2652,25 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Apenas a equipe Equity.rio. Seu deck não é compartilhado com terceiros, não é usado para treinar modelos de IA externos e é apagado dos nossos servidores 30 dias após a entrega. Se você quiser NDA assinado, manda junto com o deck.
+            A análise é feita exclusivamente pela equipe da <strong>Equity Rio Investimentos</strong>. Seu deck nunca é usado para treinar modelos de IA externos.
+            <br><br>
+            Se durante a análise identificarmos <strong>fit de tese</strong> com a Equity Rio ou com algum dos nossos parceiros de deal flow (VCs, CVCs, redes de Anjos, Plataformas de Equity e Crédito Privado), <strong>te avisamos antes</strong> e só circulamos o deck na rede com sua autorização explícita pelo WhatsApp.
+            <br><br>
+            Sem fit ou sem autorização? Seu deck fica restrito à equipe e é apagado dos nossos servidores 30 dias após a entrega. Se preferir NDA assinado, manda junto com o deck.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Vocês só analisam ou também investem?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            Nosso core é a <strong>análise</strong> — gratuita, paga (R$ 97) e a reestruturação completa (R$ 1.997). É por isso que cobramos preço acessível: o valor principal da entrega é o relatório.
+            <br><br>
+            Mas toda vez que entendemos que há <strong>fit de tese</strong> entre o pitch deck analisado e algum dos nossos parceiros de investimento — inclusive a própria <strong>Equity Rio Investimentos</strong> — passamos a tratar aquele deck como <strong>deal flow</strong> qualificado para oportunidade de investimento.
+            <br><br>
+            Ou seja: você pode entrar pagando R$ 97 pra ouvir crítica honesta, e sair com warm intro pra um VC. Não é promessa de cheque, é processo natural quando há fit real. <strong>Sem taxa de sucesso, sem comissão</strong> — o encaminhamento é consequência da análise.
           </div>
         </div>
 
@@ -2260,7 +2680,7 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Funciona melhor para Pre-Seed e Seed (startups buscando R$ 200k a R$ 5 milhões). Se você está captando Series A ou estágio mais avançado, a análise ainda é útil mas o framework foi desenhado para estágio inicial.
+            Funciona para <strong>startups e PMEs</strong> (de economia real, bens de consumo e tecnologia) que estejam buscando funding via equity e/ou dívida e crédito privado. Rodadas geralmente de <strong>R$ 500 mil a R$ 5 milhões</strong>. Se você está em Pre-Seed, Seed ou em transição para estágios mais maduros, o framework se aplica. Para Series A+ ou casos muito específicos (deep tech early-stage, biotech, etc.), entre em contato pelo WhatsApp para alinhamento antes.
           </div>
         </div>
 
@@ -2270,8 +2690,26 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Os dois. O framework metodológico foi desenvolvido pela Equity.rio. A IA aplica esse framework no seu deck. A revisão final passa por humano antes do envio. Não é "mais um GPT" — é metodologia + execução em IA + curadoria humana.
+            Os dois. O framework metodológico foi desenvolvido pela Equity Rio Investimentos. A IA aplica esse framework no seu deck. A revisão final passa por humano antes do envio. Não é "mais um GPT" — é metodologia + execução em IA + curadoria humana.
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== GUARANTEE ============== -->
+  <section class="standard reveal">
+    <div class="container">
+      <div class="guarantee">
+        <div class="guarantee-seal">
+          7
+          <small>DIAS</small>
+        </div>
+        <div class="guarantee-text">
+          <h3>Não gostou? Devolvemos o dinheiro. Sem perguntas.</h3>
+          <p>
+            Acreditamos tanto na metodologia que se você ler o relatório e achar que não vale o investimento, basta pedir reembolso pelo WhatsApp em até 7 dias. Estorno completo via Mercado Pago em até 48h. Você fica com o relatório.
+          </p>
         </div>
       </div>
     </div>
@@ -2302,7 +2740,7 @@
           </a>
         </div>
         <p class="hero-microcopy" style="margin-top: 16px;">
-          <strong>20 vagas grátis / mês.</strong> Pagamento via Mercado Pago — Pix, cartão ou boleto. Garantia de 7 dias nos planos pagos.
+          <strong class="accent-text">Sem cartão. Sem cadastro complicado.</strong> Pagamento via Mercado Pago — Pix, cartão ou boleto. Garantia de 7 dias nos planos pagos.
         </p>
       </div>
     </div>
@@ -2313,7 +2751,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          PitchDeck<span style="color: var(--text-faint); font-family: var(--font-mono); font-size: 11px; margin-left: 12px;">by Equity.rio</span>
+          PitchDeck<span style="color: var(--text-faint); font-family: var(--font-mono); font-size: 11px; margin-left: 12px;">by Equity Rio Investimentos</span>
         </div>
         <div class="footer-meta">
           <a href="mailto:contato@pitchdeck.com.br">contato@pitchdeck.com.br</a>
@@ -2361,7 +2799,7 @@
      target="_blank"
      rel="noopener"
      class="wa-float"
-     aria-label="Falar com a Equity.rio no WhatsApp">
+     aria-label="Falar com a Equity Rio Investimentos no WhatsApp">
     <span class="wa-float-tooltip">Fale conosco</span>
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
   </a>
