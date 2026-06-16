@@ -262,6 +262,15 @@ nav {
 .btn-deck:hover { opacity: 0.88; }
 
 
+/* ─── Field validation ──────────────────────────────── */
+.field-error {
+  display: block; font-size: 11px; color: #c0392b;
+  font-family: 'IBM Plex Mono', monospace; margin-top: 4px;
+  min-height: 14px;
+}
+.form-input.invalid { border-color: #c0392b !important; }
+.form-input.valid   { border-color: #0F4C3A !important; }
+
 /* ─── Footer ────────────────────────────────────────── */
 footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
 .footer-inner {
@@ -906,17 +915,20 @@ footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
       <div class="form-row">
         <div class="form-field">
           <label class="form-label font-mono">Nome</label>
-          <input type="text" class="form-input" id="fieldNome" placeholder="Seu nome" required>
+          <input type="text" class="form-input" id="fieldNome" placeholder="Seu nome" required oninput="validateNome(this)">
+          <span class="field-error" id="errNome"></span>
         </div>
         <div class="form-field">
           <label class="form-label font-mono">E-mail</label>
-          <input type="email" class="form-input" id="fieldEmail" placeholder="seu@email.com" required>
+          <input type="email" class="form-input" id="fieldEmail" placeholder="seu@email.com" required oninput="validateEmail(this)">
+          <span class="field-error" id="errEmail"></span>
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
           <label class="form-label font-mono">WhatsApp (opcional)</label>
-          <input type="tel" class="form-input" id="fieldWhats" placeholder="+55 11 99999-9999">
+          <input type="tel" class="form-input" id="fieldWhats" placeholder="+55 11 99999-9999" oninput="formatWhats(this)">
+          <span class="field-error" id="errWhats"></span>
         </div>
         <div class="form-field">
           <label class="form-label font-mono">Perfil</label>
@@ -1011,6 +1023,12 @@ function openModal(company) {
   document.getElementById('termsCheck').checked = false;
   document.getElementById('btnSubmit').disabled = true;
   document.body.style.overflow = 'hidden';
+  // Reset campos e validações
+  ['fieldNome','fieldEmail','fieldWhats','fieldPerfil'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = ''; el.classList.remove('valid','invalid');
+  });
+  ['errNome','errEmail','errWhats'].forEach(id => document.getElementById(id).textContent = '');
 }
 
 function closeModal() {
@@ -1026,8 +1044,57 @@ function toggleSubmit() {
   document.getElementById('btnSubmit').disabled = !document.getElementById('termsCheck').checked;
 }
 
+// ── Validações de campo ───────────────────────────────
+function setFieldState(input, errId, msg) {
+  const err = document.getElementById(errId);
+  if (msg) {
+    input.classList.add('invalid'); input.classList.remove('valid');
+    err.textContent = msg;
+    return false;
+  } else {
+    input.classList.remove('invalid'); input.classList.add('valid');
+    err.textContent = '';
+    return true;
+  }
+}
+
+function validateNome(input) {
+  const v = input.value.trim();
+  if (!v) return setFieldState(input, 'errNome', 'Campo obrigatório.');
+  if (/[0-9]/.test(v)) return setFieldState(input, 'errNome', 'Nome não pode conter números.');
+  return setFieldState(input, 'errNome', '');
+}
+
+function validateEmail(input) {
+  const v = input.value.trim();
+  if (!v) return setFieldState(input, 'errEmail', 'Campo obrigatório.');
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  return setFieldState(input, 'errEmail', ok ? '' : 'E-mail inválido.');
+}
+
+function formatWhats(input) {
+  // Formata enquanto digita: +55 (11) 99999-9999
+  let v = input.value.replace(/\D/g, '');
+  if (v.startsWith('55')) v = v.slice(2);
+  if (v.length > 11) v = v.slice(0, 11);
+  let fmt = '';
+  if (v.length > 0) fmt = '+55 (' + v.slice(0, 2);
+  if (v.length >= 2) fmt += ') ' + v.slice(2, 7);
+  if (v.length >= 7) fmt += '-' + v.slice(7, 11);
+  input.value = fmt;
+  validateWhats(input);
+}
+
+function validateWhats(input) {
+  const v = input.value.replace(/\D/g, '');
+  if (!input.value.trim()) return setFieldState(input, 'errWhats', ''); // opcional
+  const ok = v.length === 13 || (v.startsWith('55') && v.length === 13);
+  const digits = v.startsWith('55') ? v.slice(2) : v;
+  return setFieldState(input, 'errWhats', digits.length === 11 ? '' : 'Número inválido. Ex: +55 11 99999-9999');
+}
+
 // ─── Airtable config ────────────────────────────────────────────────
-const AIRTABLE_PAT      = 'pat25U2ghN873fGBo.6dd3c6760928dcc02cd3d54148a7f567ed95d61abb3f8b762efe60ecca14beb6'; // ← cole seu PAT aqui
+const AIRTABLE_PAT      = 'SEU_PERSONAL_ACCESS_TOKEN_AQUI'; // ← cole seu PAT aqui
 const AIRTABLE_BASE_ID  = 'app59di7WZDzVeO9m';
 const AIRTABLE_TABLE_ID = 'tblty4tQBKilPPxaX'; // Leads Ranking
 // ────────────────────────────────────────────────────────────────────
@@ -1039,7 +1106,10 @@ async function submitForm() {
   const perfil  = document.getElementById('fieldPerfil').value;
   const empresa = currentCompany || '';
 
-  if (!nome || !email) { alert('Por favor, preencha nome e e-mail.'); return; }
+  const nomeOk  = validateNome(document.getElementById('fieldNome'));
+  const emailOk = validateEmail(document.getElementById('fieldEmail'));
+  validateWhats(document.getElementById('fieldWhats'));
+  if (!nomeOk || !emailOk) return;
 
   const btn = document.getElementById('btnSubmit');
   btn.disabled = true;
