@@ -1034,7 +1034,10 @@ function setAudience(type, el) {
 }
 
 // ── Modal ─────────────────────────────────────────────
+let currentCompany = '';
+
 function openModal(company) {
+  currentCompany = company;
   document.getElementById('modalCompanyName').textContent = company;
   document.getElementById('modalOverlay').classList.add('open');
   document.getElementById('modalForm').classList.remove('hide');
@@ -1057,18 +1060,60 @@ function toggleSubmit() {
   document.getElementById('btnSubmit').disabled = !document.getElementById('termsCheck').checked;
 }
 
-function submitForm() {
-  const nome   = document.getElementById('fieldNome').value.trim();
-  const email  = document.getElementById('fieldEmail').value.trim();
-  const perfil = document.getElementById('fieldPerfil').value;
+// ─── Airtable config ────────────────────────────────────────────────
+const AIRTABLE_PAT      = 'SEU_PERSONAL_ACCESS_TOKEN_AQUI'; // ← cole seu PAT aqui
+const AIRTABLE_BASE_ID  = 'app59di7WZDzVeO9m';
+const AIRTABLE_TABLE_ID = 'tblty4tQBKilPPxaX'; // Leads Ranking
+// ────────────────────────────────────────────────────────────────────
+
+async function submitForm() {
+  const nome    = document.getElementById('fieldNome').value.trim();
+  const email   = document.getElementById('fieldEmail').value.trim();
+  const whats   = document.getElementById('fieldWhats').value.trim();
+  const perfil  = document.getElementById('fieldPerfil').value;
+  const empresa = currentCompany || '';
 
   if (!nome || !email) { alert('Por favor, preencha nome e e-mail.'); return; }
 
-  // TODO: POST para Airtable (tabela Investidores/Ranking)
-  // fetch('https://api.airtable.com/v0/BASE_ID/TABELA', { ... })
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.textContent = 'Salvando...';
+
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${AIRTABLE_PAT}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        fields: {
+          'Nome':            nome,
+          'Email':           email,
+          'WhatsApp':        whats || null,
+          'Perfil':          perfil || null,
+          'Deck Solicitado': empresa,
+          'Data Cadastro':   new Date().toISOString(),
+          'Status':          'Novo',
+          'Origem':          'ranking-page'
+        }
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      console.error('Airtable error:', err);
+      // Mesmo com erro de API, libera acesso (não bloqueia o usuário)
+    }
+  } catch (e) {
+    console.error('Fetch error:', e);
+    // Idem — não bloqueia
+  }
 
   document.getElementById('modalForm').classList.add('hide');
   document.getElementById('modalSuccess').classList.add('show');
+  btn.disabled = false;
+  btn.textContent = 'Acessar pitch deck gratuitamente';
 }
 
 // Fecha modal com Esc
