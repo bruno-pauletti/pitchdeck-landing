@@ -936,6 +936,8 @@ footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
             <option value="">Selecionar...</option>
             <option value="Investidor">Investidor / VC</option>
             <option value="Founder">Founder / Empreendedor</option>
+            <option value="Aceleradora">Aceleradora / Hub</option>
+            <option value="Outro">Outro</option>
           </select>
         </div>
       </div>
@@ -1094,7 +1096,7 @@ function validateWhats(input) {
 }
 
 // ─── Airtable config ────────────────────────────────────────────────
-const AIRTABLE_PAT      = 'pat25U2ghN873fGBo.6dd3c6760928dcc02cd3d54148a7f567ed95d61abb3f8b762efe60ecca14beb6'; // ← cole seu PAT aqui
+const AIRTABLE_PAT      = 'SEU_PERSONAL_ACCESS_TOKEN_AQUI'; // ← cole seu PAT aqui
 const AIRTABLE_BASE_ID  = 'app59di7WZDzVeO9m';
 const AIRTABLE_TABLE_ID = 'tblty4tQBKilPPxaX'; // Leads Ranking
 // ────────────────────────────────────────────────────────────────────
@@ -1127,6 +1129,7 @@ async function submitForm() {
           'Nome':            nome,
           'Email':           email,
           'WhatsApp':        whats || null,
+          'Perfil':          perfil || null,
           'Deck Solicitado': empresa,
           'Data Cadastro':   new Date().toISOString(),
           'Origem':          'ranking-page'
