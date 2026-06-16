@@ -1,1 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking de Pitch Decks — PitchDeck by Equity Rio</title>
+<meta name="description" content="Os melhores pitch decks analisados por VCs. Ranking mensal com score detalhado, pontos fortes e acesso ao deck completo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<style>
+/* ─── Reset & Base ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #EDEBE4;
+  color: #1C1C1A;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ─── Typography ────────────────────────────────────── */
+.font-serif  { font-family: 'Fraunces', serif; }
+.font-mono   { font-family: 'IBM Plex Mono', monospace; }
+
+/* ─── Layout ────────────────────────────────────────── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 1; }
+
+/* ─── Nav ───────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(237,235,228,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.nav-inner {
+  max-width: 860px; margin: 0 auto; padding: 0 1.25rem;
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.nav-wordmark {
+  font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400;
+  color: #1C1C1A; letter-spacing: -0.01em;
+}
+.nav-wordmark em { font-style: italic; color: #0F4C3A; }
+.nav-separator { color: #C0BDB8; font-size: 14px; }
+.nav-sub { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B6B5E; text-transform: uppercase; letter-spacing: 0.08em; }
+.nav-cta {
+  display: flex; align-items: center; gap: 7px;
+  background: #0F4C3A; color: #fff; border: none;
+  border-radius: 9999px; padding: 8px 16px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; text-decoration: none; transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.88; }
+.nav-cta svg { flex-shrink: 0; }
+
+/* ─── Hero ──────────────────────────────────────────── */
+.hero { padding: 3.5rem 0 2.5rem; text-align: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #D4E6DE; border: 1px solid #B8D4C8;
+  border-radius: 9999px; padding: 5px 14px; margin-bottom: 1.25rem;
+}
+.hero-badge span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #0F4C3A; }
+.hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #0F4C3A; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.hero h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.02em;
+  max-width: 640px; margin: 0 auto 1.25rem;
+}
+.hero h1 em { font-style: italic; color: #0F4C3A; }
+.hero-sub { font-size: 16px; color: #6B6B5E; font-weight: 300; line-height: 1.6; max-width: 520px; margin: 0 auto 2rem; }
+
+.stats-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.stat-card {
+  background: #fff; border: 1px solid #D0CEC8; border-radius: 14px;
+  padding: 1rem 1.5rem; text-align: center; min-width: 130px;
+}
+.stat-num { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 400; line-height: 1; }
+.stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; margin-top: 4px; }
+
+/* ─── Audience Cards ────────────────────────────────── */
+.audience { padding: 1.5rem 0 0; }
+.audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.aud-card {
+  background: #fff; border: 1px solid #D0CEC8; border-radius: 16px;
+  padding: 1.25rem; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.aud-card:hover, .aud-card.active { border-color: #0F4C3A; box-shadow: 0 0 0 3px rgba(15,76,58,0.08); }
+.aud-icon { font-size: 22px; margin-bottom: 8px; }
+.aud-title { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 400; margin-bottom: 4px; }
+.aud-desc { font-size: 12px; color: #6B6B5E; line-height: 1.5; font-weight: 300; }
+
+/* ─── Filters ───────────────────────────────────────── */
+.filters { padding: 1.75rem 0 0.25rem; display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; align-self: center; margin-right: 4px; }
+.pill {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.06em; border: 1px solid #C0BDB8; border-radius: 9999px;
+  padding: 5px 14px; background: transparent; color: #6B6B5E; cursor: pointer;
+  transition: all 0.15s;
+}
+.pill:hover { border-color: #0F4C3A; color: #0F4C3A; }
+.pill.active { background: #0F4C3A; color: #fff; border-color: #0F4C3A; }
+
+/* ─── Section header ────────────────────────────────── */
+.section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 1.5rem 0 1rem; border-bottom: 1px solid #D0CEC8; margin-bottom: 0;
+}
+.section-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 400; }
+.section-meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #9E9E8E; }
+
+/* ─── Rank Cards ────────────────────────────────────── */
+.rank-list { padding-bottom: 3rem; }
+
+.rank-card {
+  background: #fff; border: 1px solid #D0CEC8; border-radius: 16px;
+  overflow: hidden; margin-top: 10px; transition: border-color 0.2s;
+}
+.rank-card.open { border-color: #0F4C3A; }
+
+.card-header {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 1.25rem 1.5rem; cursor: pointer; user-select: none;
+}
+.card-header:hover { background: rgba(15,76,58,0.02); }
+
+.rank-num {
+  font-family: 'Fraunces', serif; font-size: 12px; color: #9E9E8E;
+  font-weight: 400; min-width: 26px; padding-top: 4px; flex-shrink: 0;
+}
+.rank-card.open .rank-num { color: #0F4C3A; }
+
+.card-body { flex: 1; min-width: 0; }
+.title-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 5px; }
+.rank-name { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 400; line-height: 1.2; }
+.tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.06em; border-radius: 9999px; padding: 3px 10px; border: 1px solid; flex-shrink: 0;
+}
+.tag-setor { background: #D4E6DE; color: #0F4C3A; border-color: #B8D4C8; }
+.tag-stage { background: #F0EEE8; color: #6B6B5E; border-color: #D0CEC8; }
+
+.rank-summary { font-size: 13px; color: #6B6B5E; line-height: 1.55; margin-bottom: 10px; font-weight: 300; }
+.score-bar-track { height: 2px; background: #E8E6E0; border-radius: 2px; overflow: hidden; }
+.score-bar-fill { height: 100%; background: #0F4C3A; border-radius: 2px; transition: width 0.6s ease; }
+
+.card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; padding-left: 10px; }
+.score-badge { text-align: right; }
+.score-num { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 300; line-height: 1; }
+.score-denom { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9E9E8E; margin-top: 1px; }
+.chevron { color: #C0BDB8; transition: transform 0.25s; }
+.rank-card.open .chevron { transform: rotate(180deg); }
+
+/* ─── Card Detail (expanded) ────────────────────────── */
+.card-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.card-detail.open { max-height: 2000px; opacity: 1; }
+.card-detail-inner { padding: 0 1.5rem 1.5rem; border-top: 1px solid #F0EEE8; }
+
+.dim-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.1em; color: #9E9E8E;
+  margin: 1.25rem 0 0.75rem;
+}
+.dim-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.dim-name { font-size: 13px; color: #4A4A3A; width: 145px; flex-shrink: 0; }
+.dim-track { flex: 1; height: 4px; background: #E8E6E0; border-radius: 2px; overflow: hidden; }
+.dim-fill { height: 100%; border-radius: 2px; transition: width 0.6s ease; }
+.fill-high { background: #0F4C3A; }
+.fill-mid  { background: #7BAB8C; }
+.fill-low  { background: #C8A87A; }
+.dim-score { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 400; width: 26px; text-align: right; flex-shrink: 0; }
+
+.narrative-row {
+  display: flex; align-items: center; gap: 10px;
+  background: #F7F6F2; border-radius: 10px; padding: 10px 14px; margin-top: 0.875rem;
+}
+.narrative-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; flex: 1; }
+.narrative-score { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; color: #0F4C3A; }
+
+.divider { height: 1px; background: #F0EEE8; margin: 1.25rem 0; }
+
+.points-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.points-box { background: #F7F6F2; border-radius: 12px; padding: 1rem; }
+.points-box.pos { background: #EAF4EE; }
+.points-box-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; margin-bottom: 8px; }
+.points-box.pos .points-box-label { color: #1A7A50; }
+.point-item { display: flex; gap: 7px; font-size: 12.5px; line-height: 1.5; color: #1C1C1A; margin-bottom: 6px; }
+.pt-icon { flex-shrink: 0; font-size: 13px; line-height: 1.4; }
+
+.deck-gate {
+  margin-top: 1.25rem; background: #F7F6F2;
+  border: 1.5px dashed #C0BDB8; border-radius: 14px;
+  padding: 1.25rem; text-align: center;
+}
+.deck-gate p { font-size: 13px; color: #6B6B5E; font-weight: 300; line-height: 1.6; margin-bottom: 1rem; }
+.btn-deck {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #0F4C3A; color: #fff; border: none;
+  border-radius: 9999px; padding: 11px 22px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.btn-deck:hover { opacity: 0.88; }
+
+/* ─── Investor Section ──────────────────────────────── */
+.investor-section {
+  background: #fff; border: 1px solid #D0CEC8; border-radius: 20px;
+  padding: 2rem; margin: 2.5rem 0;
+}
+.inv-header { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 1.25rem; }
+.inv-icon { font-size: 28px; flex-shrink: 0; }
+.inv-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 400; margin-bottom: 5px; }
+.inv-sub { font-size: 13px; color: #6B6B5E; font-weight: 300; line-height: 1.6; }
+.inv-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem; }
+.inv-perk { display: flex; gap: 9px; font-size: 13px; color: #4A4A3A; line-height: 1.5; }
+.inv-perk-dot { color: #0F4C3A; flex-shrink: 0; font-size: 16px; line-height: 1.2; }
+.btn-investor {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #0F4C3A; color: #fff; border: none;
+  border-radius: 9999px; padding: 12px 24px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.2s; text-decoration: none;
+}
+.btn-investor:hover { opacity: 0.88; }
+
+/* ─── Founder CTA ───────────────────────────────────── */
+.founder-cta {
+  background: #0F4C3A; border-radius: 20px;
+  padding: 2.5rem 2rem; text-align: center; margin-bottom: 4rem;
+}
+.founder-cta h2 { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 400; color: #fff; margin-bottom: 0.75rem; line-height: 1.25; }
+.founder-cta h2 em { font-style: italic; color: #B8D4C8; }
+.founder-cta p { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+.btn-founder {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  border-radius: 9999px; padding: 12px 24px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: background 0.2s; text-decoration: none;
+}
+.btn-founder:hover { background: rgba(255,255,255,0.1); }
+
+/* ─── Footer ────────────────────────────────────────── */
+footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
+.footer-inner {
+  max-width: 860px; margin: 0 auto; padding: 0 1.25rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;
+}
+.footer-brand { font-family: 'Fraunces', serif; font-size: 14px; color: #6B6B5E; }
+.footer-brand em { font-style: italic; color: #0F4C3A; }
+.footer-links { display: flex; gap: 1.25rem; }
+.footer-link { font-size: 12px; color: #9E9E8E; text-decoration: none; }
+.footer-link:hover { color: #0F4C3A; }
+
+/* ─── Modal ─────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(28,28,26,0.55); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center; padding: 1.25rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #fff; border-radius: 20px; max-width: 480px; width: 100%;
+  padding: 2rem; position: relative; animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-close {
+  position: absolute; top: 14px; right: 16px; background: none; border: none;
+  font-size: 20px; color: #9E9E8E; cursor: pointer; line-height: 1; padding: 4px;
+}
+.modal-close:hover { color: #1C1C1A; }
+.modal-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #D4E6DE; border-radius: 9999px; padding: 4px 12px; margin-bottom: 1rem;
+}
+.modal-badge span { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F4C3A; }
+.modal h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 6px; }
+.modal-sub { font-size: 13px; color: #6B6B5E; font-weight: 300; line-height: 1.5; margin-bottom: 1.25rem; }
+
+.form-field { margin-bottom: 0.875rem; }
+.form-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #6B6B5E; margin-bottom: 5px; }
+.form-input {
+  width: 100%; padding: 10px 14px; border: 1px solid #D0CEC8; border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1C1C1A;
+  background: #fff; transition: border-color 0.2s; outline: none;
+}
+.form-input:focus { border-color: #0F4C3A; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.terms-box {
+  background: #F7F6F2; border-radius: 10px; padding: 10px 12px;
+  font-size: 11.5px; color: #6B6B5E; line-height: 1.5; margin-bottom: 1rem;
+  max-height: 90px; overflow-y: auto;
+}
+.terms-check { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 1rem; font-size: 13px; color: #4A4A3A; line-height: 1.5; cursor: pointer; }
+.terms-check input { margin-top: 3px; flex-shrink: 0; accent-color: #0F4C3A; width: 15px; height: 15px; cursor: pointer; }
+
+.btn-submit {
+  width: 100%; padding: 13px; background: #0F4C3A; color: #fff; border: none;
+  border-radius: 9999px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.btn-submit:hover:not(:disabled) { opacity: 0.88; }
+.btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Success state */
+.modal-success { text-align: center; display: none; }
+.modal-success.show { display: block; }
+.modal-form.hide { display: none; }
+.success-icon { font-size: 40px; margin-bottom: 1rem; }
+.success-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 8px; }
+.success-sub { font-size: 13px; color: #6B6B5E; font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem; }
+.btn-link { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: #0F4C3A; background: none; border: none; cursor: pointer; text-decoration: underline; }
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .audience-grid { grid-template-columns: 1fr; }
+  .points-grid { grid-template-columns: 1fr; }
+  .inv-perks { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .card-header { padding: 1rem; }
+  .card-detail-inner { padding: 0 1rem 1.25rem; }
+  .hero { padding: 2.5rem 0 2rem; }
+  .score-num { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── Nav ─────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://pitchdeck.com.br" class="nav-brand">
+      <span class="nav-wordmark"><em>Pitch</em>Deck</span>
+      <span class="nav-separator">/</span>
+      <span class="nav-sub">by Equity Rio</span>
+    </a>
+    <a href="https://wa.me/5521936194950?text=Analisar+meu+Deck" class="nav-cta" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.524 5.849L.057 23.882l6.183-1.621A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.882 0-3.64-.513-5.145-1.404l-.368-.22-3.675.964.98-3.584-.24-.373A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Enviar meu deck
+    </a>
+  </div>
+</nav>
+
+<!-- ─── Hero ─────────────────────────────────────────── -->
+<div class="container">
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>Ranking Mensal — Jun 2026</span>
+    </div>
+    <h1>Os pitch decks que <em>impressionaram</em> os analistas</h1>
+    <p class="hero-sub">Ranking dos melhores decks analisados pela nossa equipe. Score VC baseado em critérios reais de investidores early-stage.</p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num font-serif">47</div>
+        <div class="stat-label">Decks analisados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num font-serif">8.2</div>
+        <div class="stat-label">Score médio (top 10)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num font-serif">9.5</div>
+        <div class="stat-label">Maior score do mês</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Audience ──────────────────────────────────── -->
+  <div class="audience-grid">
+    <div class="aud-card" onclick="setAudience('founder', this)">
+      <div class="aud-icon">🚀</div>
+      <div class="aud-title font-serif">Sou fundador</div>
+      <div class="aud-desc">Quero ver onde meu deck se posiciona e descobrir o que os melhores fazem diferente.</div>
+    </div>
+    <div class="aud-card" onclick="setAudience('investor', this)">
+      <div class="aud-icon">🔍</div>
+      <div class="aud-title font-serif">Sou investidor</div>
+      <div class="aud-desc">Quero acessar os decks completos para descobrir startups promissoras em deal flow qualificado.</div>
+    </div>
+  </div>
+
+  <!-- ─── Filters ───────────────────────────────────── -->
+  <div class="filters">
+    <span class="filter-label">Setor</span>
+    <button class="pill active" onclick="filterBy('todos', this)">Todos</button>
+    <button class="pill" onclick="filterBy('fintech', this)">Fintech</button>
+    <button class="pill" onclick="filterBy('saude', this)">Saúde</button>
+    <button class="pill" onclick="filterBy('edtech', this)">EdTech</button>
+    <button class="pill" onclick="filterBy('agro', this)">Agro</button>
+    <button class="pill" onclick="filterBy('b2b-saas', this)">B2B SaaS</button>
+    <button class="pill" onclick="filterBy('marketplace', this)">Marketplace</button>
+  </div>
+
+  <!-- ─── Section Header ───────────────────────────── -->
+  <div class="section-header">
+    <span class="section-title font-serif">Ranking de junho</span>
+    <span class="section-meta font-mono">10 melhores decks</span>
+  </div>
+
+  <!-- ─── Rank List ─────────────────────────────────── -->
+  <div class="rank-list" id="rankList">
+
+    <!-- Card #1 -->
+    <div class="rank-card" data-setor="fintech" data-rank="1">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="rank-num">#1</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">Fintrust</span>
+            <span class="tag tag-setor">Fintech</span>
+            <span class="tag tag-stage">Pre-Seed</span>
+          </div>
+          <p class="rank-summary">Proposta de valor clara, tração comprovada com MRR crescente e fundador com exit anterior no setor.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:87%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">8.7</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="dim-label">Score nos slides que mais pesam</div>
+          <div class="dim-row"><span class="dim-name">Problema</span><div class="dim-track"><div class="dim-fill fill-high" style="width:95%"></div></div><span class="dim-score font-serif">9.5</span></div>
+          <div class="dim-row"><span class="dim-name">Solução</span><div class="dim-track"><div class="dim-fill fill-high" style="width:85%"></div></div><span class="dim-score font-serif">8.5</span></div>
+          <div class="dim-row"><span class="dim-name">Time</span><div class="dim-track"><div class="dim-fill fill-high" style="width:85%"></div></div><span class="dim-score font-serif">8.5</span></div>
+          <div class="dim-row"><span class="dim-name">Mercado</span><div class="dim-track"><div class="dim-fill fill-high" style="width:90%"></div></div><span class="dim-score font-serif">9.0</span></div>
+          <div class="dim-row"><span class="dim-name">Tração</span><div class="dim-track"><div class="dim-fill fill-high" style="width:92%"></div></div><span class="dim-score font-serif">9.2</span></div>
+          <div class="dim-row"><span class="dim-name">Modelo de negócio</span><div class="dim-track"><div class="dim-fill fill-high" style="width:88%"></div></div><span class="dim-score font-serif">8.8</span></div>
+          <div class="narrative-row">
+            <span class="narrative-label font-mono">Narrativa geral</span>
+            <span class="narrative-score font-serif">7.5 / 10</span>
+          </div>
+          <div class="divider"></div>
+          <div class="points-grid">
+            <div class="points-box pos">
+              <div class="points-box-label font-mono">Pontos fortes</div>
+              <div class="point-item"><span class="pt-icon">+</span><span>TAM bem dimensionado com fonte primária de mercado</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>MRR de R$ 45k crescendo 20% m/m por 6 meses</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Fundador com exit anterior no setor financeiro</span></div>
+            </div>
+            <div class="points-box">
+              <div class="points-box-label font-mono">A melhorar</div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Projeções financeiras sem premissas explícitas</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Slide de competição trata rivais superficialmente</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Uso do capital da rodada pouco detalhado</span></div>
+            </div>
+          </div>
+          <div class="deck-gate">
+            <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
+            <button class="btn-deck" onclick="openModal('Fintrust')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver pitch deck completo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card #2 -->
+    <div class="rank-card" data-setor="saude" data-rank="2">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="rank-num">#2</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">MedFlow</span>
+            <span class="tag tag-setor" style="background:#E8F0FD;color:#2A52BE;border-color:#C8D8F8">Saúde</span>
+            <span class="tag tag-stage">Seed</span>
+          </div>
+          <p class="rank-summary">Problema de saúde crítico com urgência regulatória clara e time técnico com publicações no setor.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:83%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">8.3</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="dim-label">Score nos slides que mais pesam</div>
+          <div class="dim-row"><span class="dim-name">Problema</span><div class="dim-track"><div class="dim-fill fill-high" style="width:92%"></div></div><span class="dim-score font-serif">9.2</span></div>
+          <div class="dim-row"><span class="dim-name">Solução</span><div class="dim-track"><div class="dim-fill fill-high" style="width:88%"></div></div><span class="dim-score font-serif">8.8</span></div>
+          <div class="dim-row"><span class="dim-name">Time</span><div class="dim-track"><div class="dim-fill fill-high" style="width:90%"></div></div><span class="dim-score font-serif">9.0</span></div>
+          <div class="dim-row"><span class="dim-name">Mercado</span><div class="dim-track"><div class="dim-fill fill-high" style="width:85%"></div></div><span class="dim-score font-serif">8.5</span></div>
+          <div class="dim-row"><span class="dim-name">Tração</span><div class="dim-track"><div class="dim-fill mid" style="width:65%"></div></div><span class="dim-score font-serif">6.5</span></div>
+          <div class="dim-row"><span class="dim-name">Modelo de negócio</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:72%"></div></div><span class="dim-score font-serif">7.2</span></div>
+          <div class="narrative-row">
+            <span class="narrative-label font-mono">Narrativa geral</span>
+            <span class="narrative-score font-serif">8.1 / 10</span>
+          </div>
+          <div class="divider"></div>
+          <div class="points-grid">
+            <div class="points-box pos">
+              <div class="points-box-label font-mono">Pontos fortes</div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Urgência regulatória (ANVISA 2025) cria janela de mercado</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Time com 3 publicações peer-reviewed em oncologia</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Parceria piloto com hospital de referência</span></div>
+            </div>
+            <div class="points-box">
+              <div class="points-box-label font-mono">A melhorar</div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Modelo de monetização ainda em definição</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Tração ainda em fase de piloto — sem receita</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Slide de roadmap vago nos marcos de 12 meses</span></div>
+            </div>
+          </div>
+          <div class="deck-gate">
+            <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
+            <button class="btn-deck" onclick="openModal('MedFlow')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver pitch deck completo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card #3 -->
+    <div class="rank-card" data-setor="b2b-saas" data-rank="3">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="rank-num">#3</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">Operazen</span>
+            <span class="tag tag-setor" style="background:#F0E8FD;color:#6A2BE8;border-color:#D8C8F8">B2B SaaS</span>
+            <span class="tag tag-stage">Pre-Seed</span>
+          </div>
+          <p class="rank-summary">Automação de operações industriais com IA. NPS 9.1 em clientes piloto e pipeline de R$ 2M em negociação.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:79%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">7.9</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="dim-label">Score nos slides que mais pesam</div>
+          <div class="dim-row"><span class="dim-name">Problema</span><div class="dim-track"><div class="dim-fill fill-high" style="width:82%"></div></div><span class="dim-score font-serif">8.2</span></div>
+          <div class="dim-row"><span class="dim-name">Solução</span><div class="dim-track"><div class="dim-fill fill-high" style="width:80%"></div></div><span class="dim-score font-serif">8.0</span></div>
+          <div class="dim-row"><span class="dim-name">Time</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:75%"></div></div><span class="dim-score font-serif">7.5</span></div>
+          <div class="dim-row"><span class="dim-name">Mercado</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:78%"></div></div><span class="dim-score font-serif">7.8</span></div>
+          <div class="dim-row"><span class="dim-name">Tração</span><div class="dim-track"><div class="dim-fill fill-high" style="width:85%"></div></div><span class="dim-score font-serif">8.5</span></div>
+          <div class="dim-row"><span class="dim-name">Modelo de negócio</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:76%"></div></div><span class="dim-score font-serif">7.6</span></div>
+          <div class="narrative-row">
+            <span class="narrative-label font-mono">Narrativa geral</span>
+            <span class="narrative-score font-serif">7.2 / 10</span>
+          </div>
+          <div class="divider"></div>
+          <div class="points-grid">
+            <div class="points-box pos">
+              <div class="points-box-label font-mono">Pontos fortes</div>
+              <div class="point-item"><span class="pt-icon">+</span><span>NPS 9.1 em 4 clientes piloto industriais</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Pipeline qualificado de R$ 2M em negociação ativa</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Integração nativa com ERPs legados (diferencial técnico)</span></div>
+            </div>
+            <div class="points-box">
+              <div class="points-box-label font-mono">A melhorar</div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Narrativa do "por quê agora" pouco articulada</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Time de produto sem experiência em indústria pesada</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>CAC estimado sem base em dados reais ainda</span></div>
+            </div>
+          </div>
+          <div class="deck-gate">
+            <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
+            <button class="btn-deck" onclick="openModal('Operazen')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver pitch deck completo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card #4 (collapsed, no expanded content) -->
+    <div class="rank-card" data-setor="agro" data-rank="4">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="rank-num">#4</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">AgroSat</span>
+            <span class="tag tag-setor" style="background:#FBF0D8;color:#8B5E1A;border-color:#E8D4A0">Agro</span>
+            <span class="tag tag-stage">Seed</span>
+          </div>
+          <p class="rank-summary">Monitoramento de lavoura via satélite com modelos preditivos de produtividade. Contratos com 3 cooperativas.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:77%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">7.7</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="dim-label">Score nos slides que mais pesam</div>
+          <div class="dim-row"><span class="dim-name">Problema</span><div class="dim-track"><div class="dim-fill fill-high" style="width:80%"></div></div><span class="dim-score font-serif">8.0</span></div>
+          <div class="dim-row"><span class="dim-name">Solução</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:75%"></div></div><span class="dim-score font-serif">7.5</span></div>
+          <div class="dim-row"><span class="dim-name">Time</span><div class="dim-track"><div class="dim-fill fill-high" style="width:82%"></div></div><span class="dim-score font-serif">8.2</span></div>
+          <div class="dim-row"><span class="dim-name">Mercado</span><div class="dim-track"><div class="dim-fill fill-high" style="width:85%"></div></div><span class="dim-score font-serif">8.5</span></div>
+          <div class="dim-row"><span class="dim-name">Tração</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:72%"></div></div><span class="dim-score font-serif">7.2</span></div>
+          <div class="dim-row"><span class="dim-name">Modelo de negócio</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:68%"></div></div><span class="dim-score font-serif">6.8</span></div>
+          <div class="narrative-row">
+            <span class="narrative-label font-mono">Narrativa geral</span>
+            <span class="narrative-score font-serif">7.0 / 10</span>
+          </div>
+          <div class="divider"></div>
+          <div class="points-grid">
+            <div class="points-box pos">
+              <div class="points-box-label font-mono">Pontos fortes</div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Contratos fechados com 3 cooperativas do PR e MT</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Modelo preditivo validado em 12 safras de dados</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>CEO ex-Embrapa com rede no setor</span></div>
+            </div>
+            <div class="points-box">
+              <div class="points-box-label font-mono">A melhorar</div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Receita recorrente ainda baixa — precisa de escala</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Slide de competição ignora players internacionais</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Custo de satélite vs. drone não justificado no deck</span></div>
+            </div>
+          </div>
+          <div class="deck-gate">
+            <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
+            <button class="btn-deck" onclick="openModal('AgroSat')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver pitch deck completo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card #5 -->
+    <div class="rank-card" data-setor="edtech" data-rank="5">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="rank-num">#5</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">EduLoop</span>
+            <span class="tag tag-setor" style="background:#FDE8E8;color:#BE2A2A;border-color:#F8C8C8">EdTech</span>
+            <span class="tag tag-stage">Pre-Seed</span>
+          </div>
+          <p class="rank-summary">Plataforma de reforço escolar com IA adaptativa. 18k alunos ativos e retorno mensal de 68%.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:74%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">7.4</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="dim-label">Score nos slides que mais pesam</div>
+          <div class="dim-row"><span class="dim-name">Problema</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:75%"></div></div><span class="dim-score font-serif">7.5</span></div>
+          <div class="dim-row"><span class="dim-name">Solução</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:78%"></div></div><span class="dim-score font-serif">7.8</span></div>
+          <div class="dim-row"><span class="dim-name">Time</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:68%"></div></div><span class="dim-score font-serif">6.8</span></div>
+          <div class="dim-row"><span class="dim-name">Mercado</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:72%"></div></div><span class="dim-score font-serif">7.2</span></div>
+          <div class="dim-row"><span class="dim-name">Tração</span><div class="dim-track"><div class="dim-fill fill-high" style="width:82%"></div></div><span class="dim-score font-serif">8.2</span></div>
+          <div class="dim-row"><span class="dim-name">Modelo de negócio</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:70%"></div></div><span class="dim-score font-serif">7.0</span></div>
+          <div class="narrative-row">
+            <span class="narrative-label font-mono">Narrativa geral</span>
+            <span class="narrative-score font-serif">6.8 / 10</span>
+          </div>
+          <div class="divider"></div>
+          <div class="points-grid">
+            <div class="points-box pos">
+              <div class="points-box-label font-mono">Pontos fortes</div>
+              <div class="point-item"><span class="pt-icon">+</span><span>18k alunos ativos com retenção mensal de 68%</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>CAC R$ 12 vs. LTV R$ 180 — unit economics saudáveis</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Distribuição via escolas públicas (MEC parceiro)</span></div>
+            </div>
+            <div class="points-box">
+              <div class="points-box-label font-mono">A melhorar</div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Time sem CTO dedicado na captação</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Mercado endereçável subestimado no deck</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Risco de concentração: 80% da receita vem de SP</span></div>
+            </div>
+          </div>
+          <div class="deck-gate">
+            <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
+            <button class="btn-deck" onclick="openModal('EduLoop')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver pitch deck completo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card #6 -->
+    <div class="rank-card" data-setor="marketplace" data-rank="6">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="rank-num">#6</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">Tradespark</span>
+            <span class="tag tag-setor" style="background:#E8F5FD;color:#1A6A8B;border-color:#B8DFF8">Marketplace</span>
+            <span class="tag tag-stage">Seed</span>
+          </div>
+          <p class="rank-summary">Marketplace B2B de insumos industriais com modelo de leilão reverso. GMV de R$ 3.2M em 8 meses.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:71%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">7.1</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="dim-label">Score nos slides que mais pesam</div>
+          <div class="dim-row"><span class="dim-name">Problema</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:73%"></div></div><span class="dim-score font-serif">7.3</span></div>
+          <div class="dim-row"><span class="dim-name">Solução</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:70%"></div></div><span class="dim-score font-serif">7.0</span></div>
+          <div class="dim-row"><span class="dim-name">Time</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:72%"></div></div><span class="dim-score font-serif">7.2</span></div>
+          <div class="dim-row"><span class="dim-name">Mercado</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:76%"></div></div><span class="dim-score font-serif">7.6</span></div>
+          <div class="dim-row"><span class="dim-name">Tração</span><div class="dim-track"><div class="dim-fill fill-high" style="width:80%"></div></div><span class="dim-score font-serif">8.0</span></div>
+          <div class="dim-row"><span class="dim-name">Modelo de negócio</span><div class="dim-track"><div class="dim-fill fill-mid" style="width:65%"></div></div><span class="dim-score font-serif">6.5</span></div>
+          <div class="narrative-row">
+            <span class="narrative-label font-mono">Narrativa geral</span>
+            <span class="narrative-score font-serif">6.5 / 10</span>
+          </div>
+          <div class="divider"></div>
+          <div class="points-grid">
+            <div class="points-box pos">
+              <div class="points-box-label font-mono">Pontos fortes</div>
+              <div class="point-item"><span class="pt-icon">+</span><span>GMV de R$ 3.2M em apenas 8 meses de operação</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>NPS de fornecedores 8.7 — difícil de replicar</span></div>
+              <div class="point-item"><span class="pt-icon">+</span><span>Modelo de leilão reverso reduz 28% do custo de compra</span></div>
+            </div>
+            <div class="points-box">
+              <div class="points-box-label font-mono">A melhorar</div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Take rate de 2% abaixo do benchmark de marketplace B2B</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Dependência de 2 clientes que representam 60% do GMV</span></div>
+              <div class="point-item"><span class="pt-icon" style="color:#9E9E8E">–</span><span>Estratégia de expansão geográfica indefinida</span></div>
+            </div>
+          </div>
+          <div class="deck-gate">
+            <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
+            <button class="btn-deck" onclick="openModal('Tradespark')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver pitch deck completo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards #7-10 (sem detalhe expandido por enquanto) -->
+    <div class="rank-card" data-setor="fintech" data-rank="7">
+      <div class="card-header" style="cursor:default">
+        <div class="rank-num">#7</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">Recebix</span>
+            <span class="tag tag-setor">Fintech</span>
+            <span class="tag tag-stage">Pre-Seed</span>
+          </div>
+          <p class="rank-summary">Antecipação de recebíveis para PMEs com aprovação em 4 horas via open finance.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:69%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">6.9</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rank-card" data-setor="b2b-saas" data-rank="8">
+      <div class="card-header" style="cursor:default">
+        <div class="rank-num">#8</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">Logvance</span>
+            <span class="tag tag-setor" style="background:#F0E8FD;color:#6A2BE8;border-color:#D8C8F8">B2B SaaS</span>
+            <span class="tag tag-stage">Seed</span>
+          </div>
+          <p class="rank-summary">Otimização de rotas de última milha para e-commerce com redução de 22% no custo de entrega.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:66%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">6.6</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rank-card" data-setor="saude" data-rank="9">
+      <div class="card-header" style="cursor:default">
+        <div class="rank-num">#9</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">NutriAI</span>
+            <span class="tag tag-setor" style="background:#E8F0FD;color:#2A52BE;border-color:#C8D8F8">Saúde</span>
+            <span class="tag tag-stage">Pre-Seed</span>
+          </div>
+          <p class="rank-summary">Prescrição nutricional personalizada via IA com integração a exames laboratoriais.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:63%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">6.3</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rank-card" data-setor="agro" data-rank="10">
+      <div class="card-header" style="cursor:default">
+        <div class="rank-num">#10</div>
+        <div class="card-body">
+          <div class="title-row">
+            <span class="rank-name font-serif">SiloTech</span>
+            <span class="tag tag-setor" style="background:#FBF0D8;color:#8B5E1A;border-color:#E8D4A0">Agro</span>
+            <span class="tag tag-stage">Pre-Seed</span>
+          </div>
+          <p class="rank-summary">Monitoramento de armazenagem de grãos com IoT para detecção antecipada de perdas.</p>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:61%"></div></div>
+        </div>
+        <div class="card-right">
+          <div class="score-badge">
+            <div class="score-num font-serif">6.1</div>
+            <div class="score-denom font-mono">Score VC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /rankList -->
+
+  <!-- ─── Investor Section ─────────────────────────── -->
+  <div class="investor-section">
+    <div class="inv-header">
+      <div class="inv-icon">🔍</div>
+      <div>
+        <div class="inv-title font-serif">Acesso completo para investidores</div>
+        <div class="inv-sub">Cadastre-se para acessar todos os pitch decks com análise detalhada, dados financeiros e contato direto com os founders.</div>
+      </div>
+    </div>
+    <div class="inv-perks">
+      <div class="inv-perk"><span class="inv-perk-dot">→</span><span>Pitch decks completos de todos os rankings</span></div>
+      <div class="inv-perk"><span class="inv-perk-dot">→</span><span>Relatório de análise VC slide a slide</span></div>
+      <div class="inv-perk"><span class="inv-perk-dot">→</span><span>Contato direto com os founders selecionados</span></div>
+      <div class="inv-perk"><span class="inv-perk-dot">→</span><span>Deal flow mensal curado pela Equity Rio</span></div>
+    </div>
+    <!-- Substitua o href pelo link do formulário Airtable dos investidores -->
+    <a href="https://airtable.com/shrXXXXXXXXXXXX" class="btn-investor" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      Cadastrar como investidor
+    </a>
+  </div>
+
+  <!-- ─── Founder CTA ─────────────────────────────── -->
+  <div class="founder-cta">
+    <h2>Seu deck merece<br><em>uma análise de verdade</em></h2>
+    <p>Análise gratuita com score VC real, feedback slide a slide e comparativo com os melhores decks do ranking.</p>
+    <a href="https://wa.me/5521936194950?text=Analisar+meu+Deck" class="btn-founder" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.524 5.849L.057 23.882l6.183-1.621A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.882 0-3.64-.513-5.145-1.404l-.368-.22-3.675.964.98-3.584-.24-.373A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Enviar meu deck pelo WhatsApp
+    </a>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ─── Footer ───────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand font-serif"><em>Pitch</em>Deck · by Equity Rio</span>
+    <div class="footer-links">
+      <a href="https://pitchdeck.com.br" class="footer-link">Home</a>
+      <a href="mailto:contato@pitchdeck.com.br" class="footer-link">Contato</a>
+      <a href="/termos.html" class="footer-link">Termos de uso</a>
+      <a href="/privacidade.html" class="footer-link">Privacidade</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Modal de acesso ao deck ──────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+
+    <div class="modal-form" id="modalForm">
+      <div class="modal-badge"><span>🔒 Acesso gratuito</span></div>
+      <h3 class="font-serif">Acessar pitch deck — <span id="modalCompanyName"></span></h3>
+      <p class="modal-sub">Cadastre-se gratuitamente para visualizar o deck completo e receber o ranking mensal por e-mail.</p>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label font-mono">Nome</label>
+          <input type="text" class="form-input" id="fieldNome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label font-mono">E-mail</label>
+          <input type="email" class="form-input" id="fieldEmail" placeholder="seu@email.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label font-mono">WhatsApp (opcional)</label>
+          <input type="tel" class="form-input" id="fieldWhats" placeholder="+55 11 99999-9999">
+        </div>
+        <div class="form-field">
+          <label class="form-label font-mono">Perfil</label>
+          <select class="form-input" id="fieldPerfil">
+            <option value="">Selecionar...</option>
+            <option value="investidor">Investidor / VC</option>
+            <option value="founder">Founder / Empreendedor</option>
+            <option value="aceleradora">Aceleradora / Hub</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="terms-box">
+        <strong>Termo de confidencialidade:</strong> As informações contidas nos pitch decks disponibilizados nesta plataforma são de caráter estritamente confidencial e destinam-se exclusivamente à avaliação de oportunidades de investimento. É vedada a reprodução, distribuição ou uso comercial sem autorização expressa dos fundadores. O acesso implica ciência e aceite integral destes termos. Este acesso não constitui oferta pública de valores mobiliários nem assessoria de investimento.
+      </div>
+      <label class="terms-check">
+        <input type="checkbox" id="termsCheck" onchange="toggleSubmit()">
+        Confirmo que li e aceito os termos de confidencialidade e a política de privacidade.
+      </label>
+
+      <button class="btn-submit" id="btnSubmit" disabled onclick="submitForm()">
+        Acessar pitch deck gratuitamente
+      </button>
+    </div>
+
+    <div class="modal-success" id="modalSuccess">
+      <div class="success-icon">✅</div>
+      <div class="success-title font-serif">Acesso liberado!</div>
+      <p class="success-sub">O link para o pitch deck foi enviado para o seu e-mail. Você também receberá o próximo ranking mensal automaticamente.</p>
+      <!-- Substitua o href pelo link real do deck -->
+      <a href="#" class="btn-submit" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;justify-content:center">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Abrir pitch deck
+      </a>
+      <br><br>
+      <button class="btn-link" onclick="closeModal()">Voltar ao ranking</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Scripts ──────────────────────────────────────── -->
+<script>
+// ── Expand/collapse cards ─────────────────────────────
+function toggleCard(header) {
+  const card = header.closest('.rank-card');
+  const detail = card.querySelector('.card-detail');
+  if (!detail) return;
+
+  const isOpen = card.classList.contains('open');
+
+  // Fecha todos
+  document.querySelectorAll('.rank-card.open').forEach(c => {
+    c.classList.remove('open');
+    const d = c.querySelector('.card-detail');
+    if (d) d.classList.remove('open');
+  });
+
+  // Abre o clicado (se não estava aberto)
+  if (!isOpen) {
+    card.classList.add('open');
+    detail.classList.add('open');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  }
+}
+
+// ── Filter by sector ──────────────────────────────────
+function filterBy(setor, btn) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.rank-card').forEach(card => {
+    if (setor === 'todos' || card.dataset.setor === setor) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+      card.classList.remove('open');
+      const d = card.querySelector('.card-detail');
+      if (d) d.classList.remove('open');
+    }
+  });
+}
+
+// ── Audience toggle ───────────────────────────────────
+function setAudience(type, el) {
+  document.querySelectorAll('.aud-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ── Modal ─────────────────────────────────────────────
+function openModal(company) {
+  document.getElementById('modalCompanyName').textContent = company;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.getElementById('modalForm').classList.remove('hide');
+  document.getElementById('modalSuccess').classList.remove('show');
+  document.getElementById('termsCheck').checked = false;
+  document.getElementById('btnSubmit').disabled = true;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function toggleSubmit() {
+  document.getElementById('btnSubmit').disabled = !document.getElementById('termsCheck').checked;
+}
+
+function submitForm() {
+  const nome   = document.getElementById('fieldNome').value.trim();
+  const email  = document.getElementById('fieldEmail').value.trim();
+  const perfil = document.getElementById('fieldPerfil').value;
+
+  if (!nome || !email) { alert('Por favor, preencha nome e e-mail.'); return; }
+
+  // TODO: POST para Airtable (tabela Investidores/Ranking)
+  // fetch('https://api.airtable.com/v0/BASE_ID/TABELA', { ... })
+
+  document.getElementById('modalForm').classList.add('hide');
+  document.getElementById('modalSuccess').classList.add('show');
+}
+
+// Fecha modal com Esc
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body>
+</html>
