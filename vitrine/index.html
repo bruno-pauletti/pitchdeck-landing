@@ -199,6 +199,26 @@ nav {
 .pill:hover { border-color: #0F4C3A; color: #0F4C3A; }
 .pill.active { background: #0F4C3A; color: #fff; border-color: #0F4C3A; }
 
+/* ─── Search bar ────────────────────────────────────── */
+.search-bar-wrapper { padding: 1rem 0 0.25rem; }
+.search-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: #fff; border: 1px solid #C0BDB8; border-radius: 9999px;
+  padding: 9px 16px; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-bar:focus-within { border-color: #0F4C3A; box-shadow: 0 0 0 3px rgba(15,76,58,0.08); }
+.search-bar svg { color: #9E9E8E; flex-shrink: 0; }
+.search-bar input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1C1C1A; min-width: 0;
+}
+.search-bar input::placeholder { color: #C0BDB8; }
+.search-clear {
+  background: none; border: none; cursor: pointer;
+  color: #9E9E8E; font-size: 18px; padding: 0 0 1px 4px; line-height: 1; flex-shrink: 0;
+}
+.search-clear:hover { color: #1C1C1A; }
+
 /* ─── Section header ────────────────────────────────── */
 .section-header {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -467,6 +487,15 @@ footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
     <button class="pill" onclick="filterBy('proptech', this)">PropTech</button>
   </div>
 
+  <!-- ─── Search bar ─────────────────────────────────── -->
+  <div class="search-bar-wrapper">
+    <div class="search-bar">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar startup…" oninput="searchCards(this.value)" autocomplete="off" spellcheck="false">
+      <button class="search-clear" id="searchClear" onclick="clearSearch()" style="display:none" aria-label="Limpar busca">×</button>
+    </div>
+  </div>
+
   <!-- ─── Section Header ───────────────────────────── -->
   <div class="section-header">
     <span class="section-title font-serif">Vitrine</span>
@@ -605,13 +634,42 @@ function toggleCard(header) {
   }
 }
 
+// ── Filter state ──────────────────────────────────────
+let currentSetor = 'todos';
+let currentSearch = '';
+
 // ── Filter by sector ──────────────────────────────────
 function filterBy(setor, btn) {
+  currentSetor = setor;
   document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
+  applyFilters();
+}
+
+// ── Search cards ──────────────────────────────────────
+function searchCards(val) {
+  currentSearch = (val || '').toLowerCase().trim();
+  const clearBtn = document.getElementById('searchClear');
+  if (clearBtn) clearBtn.style.display = currentSearch ? '' : 'none';
+  applyFilters();
+}
+
+function clearSearch() {
+  const input = document.getElementById('searchInput');
+  if (input) { input.value = ''; input.focus(); }
+  searchCards('');
+}
+
+function applyFilters() {
+  let visible = 0;
   document.querySelectorAll('.rank-card').forEach(card => {
-    if (setor === 'todos' || card.dataset.setor === setor) {
+    const sectorMatch = currentSetor === 'todos' || card.dataset.setor === currentSetor;
+    const name    = (card.querySelector('.rank-name')?.textContent    || '').toLowerCase();
+    const summary = (card.querySelector('.rank-summary')?.textContent || '').toLowerCase();
+    const searchMatch = !currentSearch || name.includes(currentSearch) || summary.includes(currentSearch);
+    if (sectorMatch && searchMatch) {
       card.style.display = '';
+      visible++;
     } else {
       card.style.display = 'none';
       card.classList.remove('open');
@@ -619,6 +677,13 @@ function filterBy(setor, btn) {
       if (d) d.classList.remove('open');
     }
   });
+  const total = document.querySelectorAll('.rank-card').length;
+  const meta  = document.getElementById('sectionMeta');
+  if (meta && total > 0) {
+    meta.textContent = visible === total
+      ? `${total} deck${total > 1 ? 's' : ''} publicados`
+      : `${visible} de ${total} deck${total > 1 ? 's' : ''}`;
+  }
 }
 
 // ── Airtable Ranking (read-only PAT) ─────────────────
