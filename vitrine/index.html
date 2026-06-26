@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitrine de Pitch Decks — PitchDeck by Equity Rio</title>
+<meta name="description" content="Uma vitrine de pitch decks reais analisados por VCs. Inspiração, divulgação e comunidade para founders early-stage — com pontos fortes e acesso ao deck completo.">
+  <!-- Favicon (SVG inline + PNG fallback) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwRjRDM0EiLz4KICA8dGV4dCB4PSIzMiIgeT0iNDQiIAogICAgICAgIGZvbnQtZmFtaWx5PSJGcmF1bmNlcywgR2VvcmdpYSwgc2VyaWYiIAogICAgICAgIGZvbnQtc2l6ZT0iMzIiIAogICAgICAgIGZvbnQtd2VpZ2h0PSI3MDAiIAogICAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiIAogICAgICAgIGZpbGw9IiNGNUYxRUEiCiAgICAgICAgbGV0dGVyLXNwYWNpbmc9Ii0wLjAyZW0iPlBEPC90ZXh0Pgo8L3N2Zz4=" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── Reset & Base ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #EDEBE4;
+  color: #1C1C1A;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ─── Typography ────────────────────────────────────── */
+.font-serif  { font-family: 'Fraunces', serif; }
+.font-mono   { font-family: 'IBM Plex Mono', monospace; }
+
+/* ─── Layout ────────────────────────────────────────── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 1; }
+
+/* ─── Nav ───────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(237,235,228,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.nav-inner {
+  max-width: 860px; margin: 0 auto; padding: 0 1.25rem;
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.nav-wordmark {
+  font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400;
+  color: #1C1C1A; letter-spacing: -0.01em;
+}
+.nav-wordmark em { font-style: italic; color: #0F4C3A; }
+.nav-separator { color: #C0BDB8; font-size: 14px; }
+.nav-sub { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B6B5E; text-transform: uppercase; letter-spacing: 0.08em; }
+.nav-cta {
+  display: flex; align-items: center; gap: 7px;
+  background: #0F4C3A; color: #fff; border: none;
+  border-radius: 9999px; padding: 8px 16px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; text-decoration: none; transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.88; }
+.nav-cta svg { flex-shrink: 0; }
+
+/* ─── Hero ──────────────────────────────────────────── */
+.hero { padding: 3.5rem 0 2.5rem; text-align: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #D4E6DE; border: 1px solid #B8D4C8;
+  border-radius: 9999px; padding: 5px 14px; margin-bottom: 1.25rem;
+}
+.hero-badge span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #0F4C3A; }
+.hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #0F4C3A; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.hero h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.02em;
+  max-width: 640px; margin: 0 auto 1.25rem;
+}
+.hero h1 em { font-style: italic; color: #0F4C3A; }
+.hero-sub { font-size: 16px; color: #6B6B5E; font-weight: 300; line-height: 1.6; max-width: 520px; margin: 0 auto 2rem; }
+
+.stats-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.stat-card {
+  background: #fff; border: 1px solid #D0CEC8; border-radius: 14px;
+  padding: 1rem 1.5rem; text-align: center; min-width: 130px;
+}
+.stat-num { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 400; line-height: 1; }
+.stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; margin-top: 4px; }
+
+/* ─── Dual CTA ──────────────────────────────────────── */
+.dual-cta {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 2.5rem 0 4rem;
+}
+.dual-cta-card {
+  border-radius: 20px; padding: 2rem 1.75rem;
+}
+.dual-cta-dark {
+  background: #0F4C3A;
+}
+.dual-cta-light {
+  background: #fff; border: 1px solid #D0CEC8;
+}
+.dual-cta-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.dual-cta-dark .dual-cta-label { color: rgba(255,255,255,0.5); }
+.dual-cta-light .dual-cta-label { color: #9E9E8E; }
+.dual-cta-title {
+  font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 400;
+  line-height: 1.25; margin-bottom: 0.75rem;
+}
+.dual-cta-dark .dual-cta-title { color: #fff; }
+.dual-cta-dark .dual-cta-title em { font-style: italic; color: #B8D4C8; }
+.dual-cta-light .dual-cta-title { color: #1C1C1A; }
+.dual-cta-light .dual-cta-title em { font-style: italic; color: #0F4C3A; }
+.dual-cta-sub {
+  font-size: 13px; font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem;
+}
+.dual-cta-dark .dual-cta-sub { color: rgba(255,255,255,0.65); }
+.dual-cta-light .dual-cta-sub { color: #6B6B5E; }
+.dual-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border-radius: 9999px; padding: 11px 22px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.2s; text-decoration: none; border: none;
+}
+.dual-cta-btn-light {
+  background: #fff; color: #0F4C3A;
+}
+.dual-cta-btn-dark {
+  background: #0F4C3A; color: #fff;
+}
+.dual-cta-btn:hover { opacity: 0.85; }
+
+/* ─── Filters ───────────────────────────────────────── */
+.filters { padding: 1.75rem 0 0.25rem; display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; align-self: center; margin-right: 4px; }
+.pill {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.06em; border: 1px solid #C0BDB8; border-radius: 9999px;
+  padding: 5px 14px; background: transparent; color: #6B6B5E; cursor: pointer;
+  transition: all 0.15s;
+}
+.pill:hover { border-color: #0F4C3A; color: #0F4C3A; }
+.pill.active { background: #0F4C3A; color: #fff; border-color: #0F4C3A; }
+
+/* ─── Section header ────────────────────────────────── */
+.section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 1.5rem 0 1rem; border-bottom: 1px solid #D0CEC8; margin-bottom: 0;
+}
+.section-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 400; }
+.section-meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #9E9E8E; }
+
+/* ─── Rank Cards ────────────────────────────────────── */
+.rank-list { padding-bottom: 3rem; }
+
+.rank-card {
+  background: #fff; border: 1px solid #D0CEC8; border-radius: 16px;
+  overflow: hidden; margin-top: 10px; transition: border-color 0.2s;
+}
+.rank-card.open { border-color: #0F4C3A; }
+
+.card-header {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 1.25rem 1.5rem; cursor: pointer; user-select: none;
+}
+.card-header:hover { background: rgba(15,76,58,0.02); }
+
+.rank-num {
+  font-family: 'Fraunces', serif; font-size: 12px; color: #9E9E8E;
+  font-weight: 400; min-width: 26px; padding-top: 4px; flex-shrink: 0;
+}
+.rank-card.open .rank-num { color: #0F4C3A; }
+
+.card-body { flex: 1; min-width: 0; }
+.title-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 5px; }
+.rank-name { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 400; line-height: 1.2; }
+.tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.06em; border-radius: 9999px; padding: 3px 10px; border: 1px solid; flex-shrink: 0;
+}
+.tag-setor { background: #D4E6DE; color: #0F4C3A; border-color: #B8D4C8; }
+.tag-stage { background: #F0EEE8; color: #6B6B5E; border-color: #D0CEC8; }
+
+.rank-summary { font-size: 13px; color: #6B6B5E; line-height: 1.55; margin-bottom: 10px; font-weight: 300; }
+.score-bar-track { height: 2px; background: #E8E6E0; border-radius: 2px; overflow: hidden; }
+.score-bar-fill { height: 100%; background: #0F4C3A; border-radius: 2px; transition: width 0.6s ease; }
+
+.card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; padding-left: 10px; }
+.score-badge { text-align: right; }
+.score-num { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 300; line-height: 1; }
+.score-denom { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9E9E8E; margin-top: 1px; }
+.chevron { color: #C0BDB8; transition: transform 0.25s; }
+.rank-card.open .chevron { transform: rotate(180deg); }
+
+/* ─── Card Detail (expanded) ────────────────────────── */
+.card-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.card-detail.open { max-height: 2000px; opacity: 1; }
+.card-detail-inner { padding: 0 1.5rem 1.5rem; border-top: 1px solid #F0EEE8; }
+
+.dim-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.1em; color: #9E9E8E;
+  margin: 1.25rem 0 0.75rem;
+}
+.dim-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.dim-name { font-size: 13px; color: #4A4A3A; width: 145px; flex-shrink: 0; }
+.dim-track { flex: 1; height: 4px; background: #E8E6E0; border-radius: 2px; overflow: hidden; }
+.dim-fill { height: 100%; border-radius: 2px; transition: width 0.6s ease; }
+.fill-high { background: #0F4C3A; }
+.fill-mid  { background: #7BAB8C; }
+.fill-low  { background: #C8A87A; }
+.dim-score { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 400; width: 26px; text-align: right; flex-shrink: 0; }
+
+.narrative-row {
+  display: flex; align-items: center; gap: 10px;
+  background: #F7F6F2; border-radius: 10px; padding: 10px 14px; margin-top: 0.875rem;
+}
+.narrative-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; flex: 1; }
+.narrative-score { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; color: #0F4C3A; }
+
+.divider { height: 1px; background: #F0EEE8; margin: 1.25rem 0; }
+
+.points-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.points-box { background: #F7F6F2; border-radius: 12px; padding: 1rem; }
+.points-box.pos { background: #EAF4EE; }
+.points-box-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #9E9E8E; margin-bottom: 8px; }
+.points-box.pos .points-box-label { color: #1A7A50; }
+.point-item { display: flex; gap: 7px; font-size: 12.5px; line-height: 1.5; color: #1C1C1A; margin-bottom: 6px; }
+.pt-icon { flex-shrink: 0; font-size: 13px; line-height: 1.4; }
+
+.deck-gate {
+  margin-top: 1.25rem; background: #F7F6F2;
+  border: 1.5px dashed #C0BDB8; border-radius: 14px;
+  padding: 1.25rem; text-align: center;
+}
+.deck-gate p { font-size: 13px; color: #6B6B5E; font-weight: 300; line-height: 1.6; margin-bottom: 1rem; }
+.btn-deck {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #0F4C3A; color: #fff; border: none;
+  border-radius: 9999px; padding: 11px 22px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.btn-deck:hover { opacity: 0.88; }
+
+
+/* ─── Field validation ──────────────────────────────── */
+.field-error {
+  display: block; font-size: 11px; color: #c0392b;
+  font-family: 'IBM Plex Mono', monospace; margin-top: 4px;
+  min-height: 14px;
+}
+.form-input.invalid { border-color: #c0392b !important; }
+.form-input.valid   { border-color: #0F4C3A !important; }
+
+/* ─── Footer ────────────────────────────────────────── */
+footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
+.footer-inner {
+  max-width: 860px; margin: 0 auto; padding: 0 1.25rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;
+}
+.footer-brand { font-family: 'Fraunces', serif; font-size: 14px; color: #6B6B5E; }
+.footer-brand em { font-style: italic; color: #0F4C3A; }
+.footer-links { display: flex; gap: 1.25rem; }
+.footer-link { font-size: 12px; color: #9E9E8E; text-decoration: none; }
+.footer-link:hover { color: #0F4C3A; }
+
+/* ─── Modal ─────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(28,28,26,0.55); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center; padding: 1.25rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #fff; border-radius: 20px; max-width: 480px; width: 100%;
+  padding: 2rem; position: relative; animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-close {
+  position: absolute; top: 14px; right: 16px; background: none; border: none;
+  font-size: 20px; color: #9E9E8E; cursor: pointer; line-height: 1; padding: 4px;
+}
+.modal-close:hover { color: #1C1C1A; }
+.modal-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #D4E6DE; border-radius: 9999px; padding: 4px 12px; margin-bottom: 1rem;
+}
+.modal-badge span { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F4C3A; }
+.modal h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 6px; }
+.modal-sub { font-size: 13px; color: #6B6B5E; font-weight: 300; line-height: 1.5; margin-bottom: 1.25rem; }
+
+.form-field { margin-bottom: 0.875rem; }
+.form-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #6B6B5E; margin-bottom: 5px; }
+.form-input {
+  width: 100%; padding: 10px 14px; border: 1px solid #D0CEC8; border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1C1C1A;
+  background: #fff; transition: border-color 0.2s; outline: none;
+}
+.form-input:focus { border-color: #0F4C3A; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.terms-box {
+  background: #F7F6F2; border-radius: 10px; padding: 10px 12px;
+  font-size: 11.5px; color: #6B6B5E; line-height: 1.5; margin-bottom: 1rem;
+  max-height: 90px; overflow-y: auto;
+}
+.terms-check { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 1rem; font-size: 13px; color: #4A4A3A; line-height: 1.5; cursor: pointer; }
+.terms-check input { margin-top: 3px; flex-shrink: 0; accent-color: #0F4C3A; width: 15px; height: 15px; cursor: pointer; }
+
+.btn-submit {
+  width: 100%; padding: 13px; background: #0F4C3A; color: #fff; border: none;
+  border-radius: 9999px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.btn-submit:hover:not(:disabled) { opacity: 0.88; }
+.btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Success state */
+.modal-success { text-align: center; display: none; }
+.modal-success.show { display: block; }
+.modal-form.hide { display: none; }
+.success-icon { font-size: 40px; margin-bottom: 1rem; }
+.success-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 8px; }
+.success-sub { font-size: 13px; color: #6B6B5E; font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem; }
+.btn-link { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: #0F4C3A; background: none; border: none; cursor: pointer; text-decoration: underline; }
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .points-grid { grid-template-columns: 1fr; }
+  .dual-cta { grid-template-columns: 1fr; }
+.form-row { grid-template-columns: 1fr; }
+  .card-header { padding: 1rem; }
+  .card-detail-inner { padding: 0 1rem 1.25rem; }
+  .hero { padding: 2.5rem 0 2rem; }
+  .score-num { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── Nav ─────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://pitchdeck.com.br" class="nav-brand">
+      <span class="nav-wordmark"><em>Pitch</em>Deck</span>
+      <span class="nav-separator">/</span>
+      <span class="nav-sub">by Equity Rio</span>
+    </a>
+    <a href="https://wa.me/5521936194950?text=Analisar+meu+Deck" class="nav-cta" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.524 5.849L.057 23.882l6.183-1.621A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.882 0-3.64-.513-5.145-1.404l-.368-.22-3.675.964.98-3.584-.24-.373A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Enviar meu deck
+    </a>
+  </div>
+</nav>
+
+<!-- ─── Hero ─────────────────────────────────────────── -->
+<div class="container">
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>Vitrine</span>
+    </div>
+    <h1>Os pitch decks que <em>inspiram</em> a comunidade</h1>
+    <p class="hero-sub">Uma vitrine de decks reais analisados pela nossa equipe — para inspirar, divulgar e conectar founders early-stage. Aqui é sobre comunidade e cooperação, não competição.</p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num font-serif" id="statTotal">—</div>
+        <div class="stat-label">Decks na vitrine</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num font-serif" id="statAvg">—</div>
+        <div class="stat-label">Score médio</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num font-serif" id="statMax">—</div>
+        <div class="stat-label">Maior score</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Filters ───────────────────────────────────── -->
+  <div class="filters">
+    <span class="filter-label">Setor</span>
+    <button class="pill active" onclick="filterBy('todos', this)">Todos</button>
+    <button class="pill" onclick="filterBy('fintech', this)">Fintech</button>
+    <button class="pill" onclick="filterBy('saude', this)">Saúde</button>
+    <button class="pill" onclick="filterBy('b2b-saas', this)">B2B SaaS</button>
+    <button class="pill" onclick="filterBy('hrtech', this)">HRTech</button>
+    <button class="pill" onclick="filterBy('edtech', this)">EdTech</button>
+    <button class="pill" onclick="filterBy('agro', this)">Agro</button>
+    <button class="pill" onclick="filterBy('marketplace', this)">Marketplace</button>
+    <button class="pill" onclick="filterBy('energia', this)">Energia</button>
+    <button class="pill" onclick="filterBy('martech', this)">MarTech</button>
+    <button class="pill" onclick="filterBy('proptech', this)">PropTech</button>
+  </div>
+
+  <!-- ─── Section Header ───────────────────────────── -->
+  <div class="section-header">
+    <span class="section-title font-serif">Vitrine</span>
+    <span class="section-meta font-mono" id="sectionMeta">carregando…</span>
+  </div>
+
+  <!-- ─── Rank List ─────────────────────────────────── -->
+  <div class="rank-list" id="rankList">
+    <!-- cards injetados dinamicamente por loadRanking() -->
+    <!-- cards dinâmicos aqui -->
+
+  </div><!-- /rankList -->
+
+  <!-- ─── Dual CTA ──────────────────────────────────── -->
+  <div class="dual-cta">
+    <div class="dual-cta-card dual-cta-dark">
+      <div class="dual-cta-label font-mono">Para investidores</div>
+      <h2 class="dual-cta-title font-serif">Acesse os decks.<br><em>Descubra o próximo deal.</em></h2>
+      <p class="dual-cta-sub">Deal flow qualificado, curado pela Equity Rio. Pitch decks completos com análise slide a slide.</p>
+      <button class="dual-cta-btn dual-cta-btn-light" onclick="openModal('')">
+        Acessar os pitch decks
+        <span>→</span>
+      </button>
+    </div>
+    <div class="dual-cta-card dual-cta-light">
+      <div class="dual-cta-label font-mono">Para founders</div>
+      <h2 class="dual-cta-title font-serif">Seu deck merece<br><em>análise de verdade.</em></h2>
+      <p class="dual-cta-sub">Score VC real, feedback slide a slide e a chance de ter seu deck na vitrine da comunidade.</p>
+      <a href="https://wa.me/5521936194950?text=Analisar+meu+Deck" class="dual-cta-btn dual-cta-btn-dark" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.524 5.849L.057 23.882l6.183-1.621A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.882 0-3.64-.513-5.145-1.404l-.368-.22-3.675.964.98-3.584-.24-.373A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Enviar meu deck pelo WhatsApp
+      </a>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ─── Footer ───────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand font-serif"><em>Pitch</em>Deck · by Equity Rio</span>
+    <div class="footer-links">
+      <a href="https://pitchdeck.com.br" class="footer-link">Home</a>
+      <a href="mailto:contato@pitchdeck.com.br" class="footer-link">Contato</a>
+      <a href="/termos.html" class="footer-link">Termos de uso</a>
+      <a href="/privacidade.html" class="footer-link">Privacidade</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Modal de acesso ao deck ──────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+
+    <div class="modal-form" id="modalForm">
+      <div class="modal-badge"><span>🔒 Acesso gratuito</span></div>
+      <h3 class="font-serif">Acessar pitch deck — <span id="modalCompanyName"></span></h3>
+      <p class="modal-sub">Cadastre-se gratuitamente para visualizar o deck completo e receber as novidades da vitrine por e-mail.</p>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label font-mono">Nome</label>
+          <input type="text" class="form-input" id="fieldNome" placeholder="Seu nome" required oninput="validateNome(this)">
+          <span class="field-error" id="errNome"></span>
+        </div>
+        <div class="form-field">
+          <label class="form-label font-mono">E-mail</label>
+          <input type="email" class="form-input" id="fieldEmail" placeholder="seu@email.com" required oninput="validateEmail(this)">
+          <span class="field-error" id="errEmail"></span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label font-mono">WhatsApp (opcional)</label>
+          <input type="tel" class="form-input" id="fieldWhats" placeholder="+55 11 99999-9999" oninput="formatWhats(this)">
+          <span class="field-error" id="errWhats"></span>
+        </div>
+        <div class="form-field">
+          <label class="form-label font-mono">Perfil</label>
+          <select class="form-input" id="fieldPerfil">
+            <option value="">Selecionar...</option>
+            <option value="Investidor">Investidor / VC</option>
+            <option value="Founder">Founder / Empreendedor</option>
+            <option value="Aceleradora">Aceleradora / Hub</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="terms-box">
+        <strong>Termo de confidencialidade:</strong> As informações contidas nos pitch decks disponibilizados nesta plataforma são de caráter estritamente confidencial e destinam-se exclusivamente à avaliação de oportunidades de investimento. É vedada a reprodução, distribuição ou uso comercial sem autorização expressa dos fundadores. O acesso implica ciência e aceite integral destes termos. Este acesso não constitui oferta pública de valores mobiliários nem assessoria de investimento.
+      </div>
+      <label class="terms-check">
+        <input type="checkbox" id="termsCheck" onchange="toggleSubmit()">
+        Confirmo que li e aceito os termos de confidencialidade e a política de privacidade.
+      </label>
+
+      <button class="btn-submit" id="btnSubmit" disabled onclick="submitForm()">
+        Acessar pitch deck gratuitamente
+      </button>
+    </div>
+
+    <div class="modal-success" id="modalSuccess">
+      <div class="success-icon">✅</div>
+      <div class="success-title font-serif">Acesso liberado!</div>
+      <p class="success-sub">O link para o pitch deck foi enviado para o seu e-mail. Você também receberá as novidades da vitrine automaticamente.</p>
+      <!-- Substitua o href pelo link real do deck -->
+      <a href="#" class="btn-submit" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;justify-content:center">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Abrir pitch deck
+      </a>
+      <br><br>
+      <button class="btn-link" onclick="closeModal()">Voltar à vitrine</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Scripts ──────────────────────────────────────── -->
+<script>
+// ── Expand/collapse cards ─────────────────────────────
+function toggleCard(header) {
+  const card = header.closest('.rank-card');
+  const detail = card.querySelector('.card-detail');
+  if (!detail) return;
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.rank-card.open').forEach(c => {
+    c.classList.remove('open');
+    const d = c.querySelector('.card-detail');
+    if (d) d.classList.remove('open');
+  });
+  if (!isOpen) {
+    card.classList.add('open');
+    detail.classList.add('open');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  }
+}
+
+// ── Filter by sector ──────────────────────────────────
+function filterBy(setor, btn) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.rank-card').forEach(card => {
+    if (setor === 'todos' || card.dataset.setor === setor) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+      card.classList.remove('open');
+      const d = card.querySelector('.card-detail');
+      if (d) d.classList.remove('open');
+    }
+  });
+}
+
+// ── Airtable Ranking (read-only PAT) ─────────────────
+const RANKING_PAT   = ['patKeAlqvxs5HJWfO','47d266b8c2d8172f039af16b08ee388db022cf925c821f32e4646b81727c8698'].join('.');
+const RANKING_BASE  = 'app59di7WZDzVeO9m';
+const RANKING_TABLE = 'tblI8rEx7JAh4sv4q';
+
+const SETOR_COLORS = {
+  'Fintech':     'background:#D4E6DE;color:#0F4C3A;border-color:#B8D4C8',
+  'Saúde':       'background:#E8F0FD;color:#2A52BE;border-color:#C8D8F8',
+  'B2B SaaS':    'background:#F0E8FD;color:#6A2BE8;border-color:#D8C8F8',
+  'EdTech':      'background:#FDE8E8;color:#BE2A2A;border-color:#F8C8C8',
+  'Agro':        'background:#FBF0D8;color:#8B5E1A;border-color:#E8D4A0',
+  'Marketplace': 'background:#E8F5FD;color:#1A6A8B;border-color:#B8DFF8',
+  'HRTech':      'background:#D4F0E8;color:#0F6B4A;border-color:#A8DCC8',
+  'PropTech':    'background:#FDE8D4;color:#8B3A0F;border-color:#F8C8A0',
+  'Energia':     'background:#D4F0D4;color:#1A7A1A;border-color:#A8D4A8',
+  'MarTech':     'background:#FDE8F0;color:#8B2A5A;border-color:#F8C8DC',
+  'Outro':       'background:#F0EEE8;color:#6B6B5E;border-color:#D0CEC8',
+};
+
+function slugify(s) {
+  return (s || '').toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
+
+async function loadRanking() {
+  const list = document.getElementById('rankList');
+  list.innerHTML = '<div style="padding:3rem;text-align:center;color:#9E9E8E;font-family:\'IBM Plex Mono\',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Carregando vitrine…</div>';
+
+  const params = new URLSearchParams();
+  params.append('filterByFormula', '{Autorizado Ranking}=TRUE()');
+  params.append('sort[0][field]', 'Score VC');
+  params.append('sort[0][direction]', 'desc');
+  params.append('fields[]', 'Score VC');
+  params.append('fields[]', 'Resumo Executivo');
+  params.append('fields[]', 'Nome Startup');
+  params.append('fields[]', 'Setor Ranking');
+  const url = `https://api.airtable.com/v0/${RANKING_BASE}/${RANKING_TABLE}?${params.toString()}`;
+
+  try {
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${RANKING_PAT}` } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const { records = [] } = await res.json();
+
+    if (!records.length) {
+      list.innerHTML = '<div style="padding:3rem;text-align:center;color:#9E9E8E;font-family:\'IBM Plex Mono\',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Nenhum deck publicado ainda.</div>';
+      document.getElementById('sectionMeta').textContent = '0 decks';
+      return;
+    }
+
+    // Atualiza stats
+    const scores = records.map(r => Number(r.fields['Score VC'] || 0));
+    const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+    document.getElementById('statTotal').textContent = records.length;
+    document.getElementById('statAvg').textContent = avg.toFixed(1);
+    document.getElementById('statMax').textContent = Math.max(...scores).toFixed(1);
+    document.getElementById('sectionMeta').textContent = `${records.length} deck${records.length > 1 ? 's' : ''} publicados`;
+
+    // Renderiza cards
+    list.innerHTML = records.map((r, i) => renderCard(r, i + 1)).join('');
+
+  } catch (e) {
+    console.error('Ranking fetch error:', e);
+    list.innerHTML = '<div style="padding:3rem;text-align:center;color:#9E9E8E;font-family:\'IBM Plex Mono\',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Erro ao carregar a vitrine. Tente novamente.</div>';
+    document.getElementById('sectionMeta').textContent = '';
+  }
+}
+
+function renderCard(record, rank) {
+  const f      = record.fields;
+  const nome   = (f['Nome Startup'] || 'Startup').replace(/[<>'"]/g, c => ({'<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const score  = Number(f['Score VC'] || 0);
+  const resumo = (f['Resumo Executivo'] || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const setor  = (f['Setor Ranking'] && typeof f['Setor Ranking'] === 'object' ? f['Setor Ranking'].name : f['Setor Ranking']) || 'Outro';
+  const slug   = slugify(setor);
+  const pct    = Math.round(score * 10);
+  const style  = SETOR_COLORS[setor] || SETOR_COLORS['Outro'];
+  const resumoShort = resumo.length > 150 ? resumo.slice(0, 147) + '…' : resumo;
+
+  return `
+<div class="rank-card" data-setor="${slug}" data-rank="${rank}">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="rank-num">#${rank}</div>
+    <div class="card-body">
+      <div class="title-row">
+        <span class="rank-name font-serif">${nome}</span>
+        <span class="tag tag-setor" style="${style}">${setor}</span>
+      </div>
+      <p class="rank-summary">${resumoShort}</p>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="card-right">
+      <div class="score-badge">
+        <div class="score-num font-serif">${score}</div>
+        <div class="score-denom font-mono">Score VC</div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="card-detail">
+    <div class="card-detail-inner">
+      <div class="dim-label">Resumo da análise</div>
+      <p style="font-size:13px;color:#4A4A3A;line-height:1.65;margin-bottom:1.25rem">${resumo}</p>
+      <div class="deck-gate">
+        <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
+        <button class="btn-deck" onclick="openModal('${nome}')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Ver pitch deck completo
+        </button>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+// ── Modal ─────────────────────────────────────────────
+let currentCompany = '';
+
+function openModal(company) {
+  currentCompany = company;
+  document.getElementById('modalCompanyName').textContent = company;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.getElementById('modalForm').classList.remove('hide');
+  document.getElementById('modalSuccess').classList.remove('show');
+  document.getElementById('termsCheck').checked = false;
+  document.getElementById('btnSubmit').disabled = true;
+  document.body.style.overflow = 'hidden';
+  ['fieldNome','fieldEmail','fieldWhats','fieldPerfil'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = ''; el.classList.remove('valid','invalid');
+  });
+  ['errNome','errEmail','errWhats'].forEach(id => document.getElementById(id).textContent = '');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function toggleSubmit() {
+  document.getElementById('btnSubmit').disabled = !document.getElementById('termsCheck').checked;
+}
+
+// ── Validações de campo ───────────────────────────────
+function setFieldState(input, errId, msg) {
+  const err = document.getElementById(errId);
+  if (msg) {
+    input.classList.add('invalid'); input.classList.remove('valid');
+    err.textContent = msg; return false;
+  } else {
+    input.classList.remove('invalid'); input.classList.add('valid');
+    err.textContent = ''; return true;
+  }
+}
+
+function validateNome(input) {
+  const v = input.value.trim();
+  if (!v) return setFieldState(input, 'errNome', 'Campo obrigatório.');
+  if (/[0-9]/.test(v)) return setFieldState(input, 'errNome', 'Nome não pode conter números.');
+  return setFieldState(input, 'errNome', '');
+}
+
+function validateEmail(input) {
+  const v = input.value.trim();
+  if (!v) return setFieldState(input, 'errEmail', 'Campo obrigatório.');
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  return setFieldState(input, 'errEmail', ok ? '' : 'E-mail inválido.');
+}
+
+function formatWhats(input) {
+  let v = input.value.replace(/\D/g, '');
+  if (v.startsWith('55')) v = v.slice(2);
+  if (v.length > 11) v = v.slice(0, 11);
+  let fmt = '';
+  if (v.length > 0) fmt = '+55 (' + v.slice(0, 2);
+  if (v.length >= 2) fmt += ') ' + v.slice(2, 7);
+  if (v.length >= 7) fmt += '-' + v.slice(7, 11);
+  input.value = fmt;
+  validateWhats(input);
+}
+
+function validateWhats(input) {
+  const v = input.value.replace(/\D/g, '');
+  if (!input.value.trim()) return setFieldState(input, 'errWhats', '');
+  const digits = v.startsWith('55') ? v.slice(2) : v;
+  return setFieldState(input, 'errWhats', digits.length === 11 ? '' : 'Número inválido. Ex: +55 11 99999-9999');
+}
+
+// ─── Airtable Leads Ranking (write) ──────────────────
+const AIRTABLE_PAT      = 'SEU_PERSONAL_ACCESS_TOKEN_AQUI';
+const AIRTABLE_BASE_ID  = 'app59di7WZDzVeO9m';
+const AIRTABLE_TABLE_ID = 'tblty4tQBKilPPxaX';
+// ─────────────────────────────────────────────────────
+
+async function submitForm() {
+  const nome   = document.getElementById('fieldNome').value.trim();
+  const email  = document.getElementById('fieldEmail').value.trim();
+  const whats  = document.getElementById('fieldWhats').value.trim();
+  const perfil = document.getElementById('fieldPerfil').value;
+
+  const nomeOk  = validateNome(document.getElementById('fieldNome'));
+  const emailOk = validateEmail(document.getElementById('fieldEmail'));
+  validateWhats(document.getElementById('fieldWhats'));
+  if (!nomeOk || !emailOk) return;
+
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true; btn.textContent = 'Salvando...';
+
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${AIRTABLE_PAT}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: {
+        'Nome': nome, 'Email': email,
+        'WhatsApp': whats || null, 'Perfil': perfil || null,
+        'Deck Solicitado': currentCompany || '',
+        'Data Cadastro': new Date().toISOString(),
+        'Origem': 'ranking-page'
+      }})
+    });
+    if (!res.ok) console.error('Airtable error:', await res.json());
+  } catch (e) { console.error('Fetch error:', e); }
+
+  document.getElementById('modalForm').classList.add('hide');
+  document.getElementById('modalSuccess').classList.add('show');
+  btn.disabled = false;
+  btn.textContent = 'Acessar pitch deck gratuitamente';
+}
+
+// Esc fecha modal
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Carrega o ranking ao iniciar
+loadRanking();
+</script>
+
+</body>
+</html>
+
