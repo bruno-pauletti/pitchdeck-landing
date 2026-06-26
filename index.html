@@ -282,6 +282,55 @@
       margin: 0 6px;
     }
 
+    /* ========== MEGA MENU HUBS ========== */
+    .nav-hub-wrap { position: relative; }
+    .nav-hub { display: inline-flex; align-items: center; gap: 5px; }
+    .nav-hub .chev { font-size: 9px; transition: transform 0.2s ease; }
+    .nav-hub-wrap:hover .chev,
+    .nav-hub-wrap:focus-within .chev { transform: rotate(180deg); }
+
+    .megamenu {
+      position: absolute;
+      top: calc(100% + 16px);
+      right: 0;
+      width: min(620px, calc(100vw - 48px));
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px -20px rgba(15, 76, 58, 0.25);
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 60;
+    }
+    /* ponte invisível para o hover não cair ao mover o mouse */
+    .megamenu::before { content: ""; position: absolute; top: -18px; left: 0; right: 0; height: 18px; }
+    .nav-hub-wrap:hover .megamenu,
+    .nav-hub-wrap:focus-within .megamenu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .megamenu-head { margin-bottom: 16px; }
+    .megamenu-title { font-family: var(--font-display); font-size: 18px; line-height: 1.25; letter-spacing: -0.01em; margin-top: 6px; }
+    .megamenu-title em { font-style: italic; color: var(--accent); }
+    .megamenu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 900px) { .megamenu-grid { grid-template-columns: 1fr; } }
+
+    .hub-card { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); transition: border-color 0.2s ease, transform 0.2s ease; }
+    .hub-card.active:hover { border-color: var(--accent-border); transform: translateY(-2px); }
+    .hub-card.soon { opacity: 0.72; cursor: default; }
+    .hub-card-mark { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; font-size: 20px; color: #fff; flex-shrink: 0; }
+    .hub-card-mark.fc { background: #3E6FD6; }
+    .hub-card-mark.soon { background: var(--bg-deep); color: var(--text-faint); border: 1px dashed var(--border-strong); font-family: var(--font-body); font-weight: 500; }
+    .hub-card-body { display: flex; flex-direction: column; }
+    .hub-card-name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 3px; color: var(--text); }
+    .hub-card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+    .hub-pill { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+    .hub-pill.live { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-border); }
+    .hub-pill.soon { background: var(--bg-deep); color: var(--text-faint); }
+    .megamenu-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+    .megamenu-cta { font-weight: 600; color: var(--accent); white-space: nowrap; }
+
     /* ========== RANKING STRIP ========== */
     .ranking-strip {
       padding: 80px 0;
@@ -2288,6 +2337,49 @@
         <nav class="header-nav" aria-label="Navegação principal">
           <a href="#tiers" class="header-nav-link">Preços</a>
           <a href="#faq" class="header-nav-link">FAQ</a>
+          <div class="nav-hub-wrap">
+            <a href="https://pitchdeck.com.br/hubs" class="header-nav-link nav-hub" aria-haspopup="true">Hubs <span class="chev" aria-hidden="true">▾</span></a>
+            <div class="megamenu" role="menu" aria-label="Hubs parceiros">
+              <div class="megamenu-head">
+                <span class="eyebrow eyebrow-accent">Powered by PitchDeck</span>
+                <p class="megamenu-title">Comunidades onde o PitchDeck é <em>benefício gratuito</em></p>
+              </div>
+              <div class="megamenu-grid">
+                <a class="hub-card active" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem">
+                  <span class="hub-card-mark fc">F</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">FoundersClub <span class="hub-pill live">No ar</span></span>
+                    <span class="hub-card-desc">Comunidade · +1.000 founders. Análise completa do pitch grátis.</span>
+                  </span>
+                </a>
+                <span class="hub-card soon" role="menuitem" aria-disabled="true">
+                  <span class="hub-card-mark soon">+</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">Aceleradoras <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Em negociação para acelerar startups com o PitchDeck.</span>
+                  </span>
+                </span>
+                <span class="hub-card soon" role="menuitem" aria-disabled="true">
+                  <span class="hub-card-mark soon">+</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">Redes de anjos <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Em conversa com redes de investidores-anjo.</span>
+                  </span>
+                </span>
+                <span class="hub-card soon" role="menuitem" aria-disabled="true">
+                  <span class="hub-card-mark soon">+</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">Hubs de inovação <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Novos hubs entrando na rede em breve.</span>
+                  </span>
+                </span>
+              </div>
+              <div class="megamenu-foot">
+                <span>Tem uma comunidade de founders?</span>
+                <a class="megamenu-cta" href="https://wa.me/5521936194950?text=Oi!%20Tenho%20uma%20comunidade%20de%20founders%20e%20quero%20oferecer%20o%20PitchDeck%20como%20benef%C3%ADcio%20aos%20membros.%20%5BREF%3A%20hubs-parceiro%5D" target="_blank" rel="noopener">Seja um hub parceiro →</a>
+              </div>
+            </div>
+          </div>
           <div class="header-nav-sep" aria-hidden="true"></div>
           <a href="https://pitchdeck.com.br/vitrine" class="header-nav-link nav-ranking">↑ Vitrine</a>
         </nav>
@@ -2307,6 +2399,7 @@
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
     <a href="#tiers" class="mobile-menu-link" onclick="closeMobileMenu()">Preços</a>
     <a href="#faq" class="mobile-menu-link" onclick="closeMobileMenu()">FAQ</a>
+    <a href="https://pitchdeck.com.br/hubs" class="mobile-menu-link">Hubs · FoundersClub</a>
     <a href="https://pitchdeck.com.br/vitrine" class="mobile-menu-link">↑ Vitrine</a>
     <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-header%5D" target="_blank" rel="noopener" class="mobile-menu-cta">
       Rodar análise grátis →
