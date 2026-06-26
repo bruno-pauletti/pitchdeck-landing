@@ -73,6 +73,45 @@ nav {
 .nav-cta:hover { opacity: 0.88; }
 .nav-cta svg { flex-shrink: 0; }
 
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 5px; width: 36px; height: 36px;
+  background: none; border: none; cursor: pointer;
+  padding: 4px; border-radius: 8px; transition: background 0.2s;
+}
+.nav-hamburger:hover { background: rgba(0,0,0,0.05); }
+.nav-hamburger span {
+  display: block; height: 2px; background: #1C1C1A;
+  border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (min-width: 768px) { .nav-hamburger { display: none; } }
+
+/* ── Mobile menu ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; top: 56px;
+  background: rgba(237,235,228,0.97); backdrop-filter: blur(16px);
+  z-index: 99; padding: 2rem 1.5rem;
+  flex-direction: column; gap: 0.5rem;
+}
+.mobile-menu.open { display: flex; }
+@media (min-width: 768px) { .mobile-menu { display: none !important; } }
+.mobile-menu-link {
+  font-size: 18px; font-weight: 500; color: #1C1C1A;
+  padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+  text-decoration: none; transition: color 0.2s;
+}
+.mobile-menu-link:hover { color: #0F4C3A; }
+.mobile-menu-cta {
+  margin-top: 1.5rem; display: inline-flex; align-items: center;
+  justify-content: center; gap: 8px; padding: 14px 24px;
+  background: #0F4C3A; color: #fff; border-radius: 999px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+}
+
 /* ─── Hero ──────────────────────────────────────────── */
 .hero { padding: 3.5rem 0 2.5rem; text-align: center; }
 .hero-badge {
@@ -373,8 +412,19 @@ footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.524 5.849L.057 23.882l6.183-1.621A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.882 0-3.64-.513-5.145-1.404l-.368-.22-3.675.964.98-3.584-.24-.373A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Enviar meu deck
     </a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://pitchdeck.com.br" class="mobile-menu-link">← Home</a>
+  <a href="https://wa.me/5521936194950?text=Analisar+meu+Deck" target="_blank" rel="noopener" class="mobile-menu-cta">
+    Enviar meu deck
+  </a>
+</div>
 
 <!-- ─── Hero ─────────────────────────────────────────── -->
 <div class="container">
@@ -809,6 +859,28 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
 // Carrega o ranking ao iniciar
 loadRanking();
+</script>
+
+<script>
+  // ── Hamburger menu ────────────────────────────────
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileMenu.addEventListener('click', e => {
+    if (e.target === mobileMenu) {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
 </script>
 
 </body>
