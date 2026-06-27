@@ -112,14 +112,15 @@
     <div class="container">
       <div class="hubs-grid">
         <!--cms:hubs-grid:start-->
-        <span class="hubcard soon">
-          <span class="hubmark soon">+</span>
+        <a class="hubcard active" href="https://pitchdeck.com.br/hubs/foundersclub">
+          <span class="hubmark fc">F</span>
           <span>
-            <span class="hubcard-name">FoundersClub <span class="pill soon">Em breve</span></span>
-            <span class="hubcard-seg">Ecossistema para startups</span>
+            <span class="hubcard-name">FoundersClub <span class="pill live">No ar</span></span>
+            <span class="hubcard-seg">Ecossistema para startups · +10.000 founders</span>
             <span class="hubcard-desc">A comunidade de +1.000 founders agora com a análise completa do PitchDeck como benefício exclusivo.</span>
+            <span class="hublink">Acessar o benefício →</span>
           </span>
-        </span>
+        </a>
         <span class="hubcard soon">
           <span class="hubmark soon">+</span>
           <span>
@@ -172,5 +173,37 @@
       </div>
     </div>
   </footer>
+
+  <!-- HUBS — carrega do Airtable em runtime (igual à vitrine) -->
+  <script>
+  (function(){
+    // Cole um PAT read-only com acesso SOMENTE à base de conteúdo (appTfnY53iCS1DK4F).
+    var PAT = ['patR5Nusmj9oeABoe','b0c1cee326021abedbda8ebe8ad874996b6131346aa0e2cfb0598fc0878e257e'].join('.');
+    var BASE = 'appTfnY53iCS1DK4F', TABLE = 'Hubs';
+    var grid = document.querySelector('.hubs-grid');
+    if (!grid || PAT.indexOf('COLE_') === 0) return;
+    function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var url = 'https://api.airtable.com/v0/'+BASE+'/'+encodeURIComponent(TABLE)+'?pageSize=100&sort%5B0%5D%5Bfield%5D=Ordem&sort%5B0%5D%5Bdirection%5D=asc';
+    fetch(url,{headers:{Authorization:'Bearer '+PAT}})
+      .then(function(r){return r.ok?r.json():Promise.reject(r.status);})
+      .then(function(d){
+        var rows=(d.records||[]).map(function(r){return r.fields;}).filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
+        if(!rows.length) return;
+        grid.innerHTML = rows.map(function(h){
+          var logo = h.Logo && h.Logo[0] && h.Logo[0].url;
+          var mk = logo
+            ? '<span class="hubmark" style="background:#fff;padding:4px"><img src="'+esc(logo)+'" alt="" style="width:100%;height:100%;object-fit:contain"></span>'
+            : (h.Status==='No ar'
+                ? '<span class="hubmark fc">'+esc((h.Nome||'?').trim().charAt(0).toUpperCase())+'</span>'
+                : '<span class="hubmark soon">+</span>');
+          if(h.Status==='No ar'){
+            var u = h['URL hub'] || ('/hubs/'+(h.Slug||''));
+            return '<a class="hubcard active" href="'+esc(u)+'">'+mk+'<span><span class="hubcard-name">'+esc(h.Nome)+' <span class="pill live">No ar</span></span><span class="hubcard-seg">'+esc(h.Segmento||'')+' · '+esc(h['Stat destaque']||'')+'</span><span class="hubcard-desc">'+esc(h['Descrição curta']||'')+'</span><span class="hublink">Acessar o benefício →</span></span></a>';
+          }
+          return '<span class="hubcard soon">'+mk+'<span><span class="hubcard-name">'+esc(h.Nome)+' <span class="pill soon">Em breve</span></span><span class="hubcard-seg">'+esc(h.Segmento||'')+'</span><span class="hubcard-desc">'+esc(h['Descrição curta']||'')+'</span></span></span>';
+        }).join('');
+      }).catch(function(){});
+  })();
+  </script>
 </body>
 </html>
