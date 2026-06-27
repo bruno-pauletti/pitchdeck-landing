@@ -2346,13 +2346,13 @@
               </div>
               <div class="megamenu-grid">
                 <!--cms:hubs-menu:start-->
-                <span class="hub-card soon" role="menuitem" aria-disabled="true">
-                  <span class="hub-card-mark soon">+</span>
+                <a class="hub-card active" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem">
+                  <span class="hub-card-mark fc">F</span>
                   <span class="hub-card-body">
-                    <span class="hub-card-name">FoundersClub <span class="hub-pill soon">Em breve</span></span>
-                    <span class="hub-card-desc">A comunidade de +1.000 founders agora com a análise completa do PitchDeck como benefício exclusivo.</span>
+                    <span class="hub-card-name">FoundersClub <span class="hub-pill live">No ar</span></span>
+                    <span class="hub-card-desc">Ecossistema para startups · +10.000 founders. Análise completa do pitch grátis</span>
                   </span>
-                </span>
+                </a>
                 <span class="hub-card soon" role="menuitem" aria-disabled="true">
                   <span class="hub-card-mark soon">+</span>
                   <span class="hub-card-body">
@@ -3237,6 +3237,87 @@
     mobileMenu.addEventListener('click', e => {
       if (e.target === mobileMenu) closeMobileMenu();
     });
+  </script>
+
+  <!-- ============== CMS RUNTIME — carrega do Airtable (igual à vitrine), sem deploy ============== -->
+  <script>
+  (function(){
+    // Cole um PAT read-only com acesso SOMENTE à base de conteúdo (appTfnY53iCS1DK4F).
+    var PAT = ['patR5Nusmj9oeABoe','b0c1cee326021abedbda8ebe8ad874996b6131346aa0e2cfb0598fc0878e257e'].join('.');
+    if (PAT.indexOf('COLE_') === 0) return; // sem PAT: mantém o estático
+    var BASE = 'appTfnY53iCS1DK4F';
+    function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function load(table, cb){
+      var url='https://api.airtable.com/v0/'+BASE+'/'+encodeURIComponent(table)+'?pageSize=100&sort%5B0%5D%5Bfield%5D=Ordem&sort%5B0%5D%5Bdirection%5D=asc';
+      fetch(url,{headers:{Authorization:'Bearer '+PAT}})
+        .then(function(r){return r.ok?r.json():Promise.reject(r.status);})
+        .then(function(d){ cb((d.records||[]).map(function(r){return r.fields;})); })
+        .catch(function(){});
+    }
+
+    // ── Hubs (mega menu) — toggle: Status No ar / Em breve ──
+    var menu = document.querySelector('.megamenu-grid');
+    if (menu) load('Hubs', function(rows){
+      rows = rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
+      if(!rows.length) return;
+      menu.innerHTML = rows.map(function(h){
+        var logo = h.Logo && h.Logo[0] && h.Logo[0].url;
+        var mk = logo ? '<span class="hub-card-mark" style="background:#fff;padding:3px"><img src="'+esc(logo)+'" alt="" style="width:100%;height:100%;object-fit:contain"></span>'
+          : (h.Status==='No ar' ? '<span class="hub-card-mark fc">'+esc((h.Nome||'?').trim().charAt(0).toUpperCase())+'</span>' : '<span class="hub-card-mark soon">+</span>');
+        if(h.Status==='No ar'){
+          var u=h['URL hub']||('https://pitchdeck.com.br/hubs/'+(h.Slug||''));
+          var desc=esc(h.Segmento||'')+' · '+esc(h['Stat destaque']||'')+'. '+esc(h['Benefício']||'');
+          return '<a class="hub-card active" href="'+esc(u)+'" role="menuitem">'+mk+'<span class="hub-card-body"><span class="hub-card-name">'+esc(h.Nome)+' <span class="hub-pill live">No ar</span></span><span class="hub-card-desc">'+desc+'</span></span></a>';
+        }
+        return '<span class="hub-card soon" role="menuitem" aria-disabled="true">'+mk+'<span class="hub-card-body"><span class="hub-card-name">'+esc(h.Nome)+' <span class="hub-pill soon">Em breve</span></span><span class="hub-card-desc">'+esc(h['Descrição curta']||'')+'</span></span></span>';
+      }).join('');
+    });
+
+    // ── Depoimentos — toggle: checkbox Publicado ──
+    var dep = document.querySelector('.testimonials-grid');
+    if (dep) load('Depoimentos', function(rows){
+      rows = rows.filter(function(f){return f.Publicado;});
+      if(!rows.length) return;
+      dep.innerHTML = rows.map(function(d){
+        return '<div class="testimonial-card"><p class="testimonial-quote">'+(d['Citação']||'')+'</p><div class="testimonial-author"><div class="testimonial-avatar">'+esc(d.Iniciais)+'</div><div class="testimonial-meta"><span class="testimonial-name">'+esc(d.Nome)+'</span><span class="testimonial-role">'+esc(d.Contexto)+'</span></div></div></div>';
+      }).join('');
+    });
+
+    // ── Rede de Investidores — toggle: checkbox Publicado ──
+    var redeCont = document.querySelector('.partners .container');
+    if (redeCont) load('Rede de Investidores', function(rows){
+      rows = rows.filter(function(f){return f.Publicado;});
+      if(!rows.length) return;
+      var cats=['Venture Capital','Corporate Venture Capital','Redes de Anjos','Plataformas e Crédito Privado'];
+      var html = cats.map(function(c){
+        var items = rows.filter(function(r){return r.Categoria===c;});
+        if(!items.length) return '';
+        return '<div class="partners-category"><div class="partners-category-label"><span>'+esc(c)+'</span></div><div class="partners-grid">'+items.map(function(r){return '<div class="partner-logo-placeholder">'+esc(r.Nome)+'</div>';}).join('')+'</div></div>';
+      }).join('');
+      var old = redeCont.querySelectorAll('.partners-category');
+      for(var i=0;i<old.length;i++) old[i].remove();
+      redeCont.insertAdjacentHTML('beforeend', html);
+    });
+
+    // ── Logos — toggle: checkbox Publicado (Uso define onde aparece) ──
+    load('Logos', function(rows){
+      rows = rows.filter(function(f){return f.Publicado;});
+      function src(l){ return (l.Logo && l.Logo[0] && l.Logo[0].url) || l.Arquivo || ''; }
+      var slider = document.querySelector('.logos-slider');
+      if (slider){
+        var eco = rows.filter(function(l){return (l.Uso||[]).indexOf('Ecossistema')>=0;});
+        if(eco.length){
+          var tile=function(l,dup){return '<div class="client-logo"><img src="'+esc(src(l))+'" alt="'+(dup?'':esc(l.Nome))+'" loading="lazy"'+(dup?' aria-hidden="true"':'')+'></div>';};
+          slider.innerHTML = eco.map(function(l){return tile(l,false);}).join('') + eco.map(function(l){return tile(l,true);}).join('');
+        }
+      }
+      var port = document.querySelector('.authority-portfolio');
+      if (port){
+        var pf = rows.filter(function(l){return (l.Uso||[]).indexOf('Portfólio')>=0;});
+        if(pf.length) port.innerHTML = pf.map(function(l){return '<div class="portfolio-logo"><img src="'+esc(src(l))+'" alt="'+esc(l.Nome)+'" loading="lazy"></div>';}).join('');
+      }
+    });
+  })();
   </script>
 
 </body>
