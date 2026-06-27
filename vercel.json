@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "/ai-agents", "destination": "/", "permanent": false },
     { "source": "/ai-agents/pitchdeck", "destination": "/", "permanent": false },
     { "source": "/ranking", "destination": "/vitrine", "permanent": true },
     { "source": "/ranking/", "destination": "/vitrine", "permanent": true },
