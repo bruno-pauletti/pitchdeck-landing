@@ -120,22 +120,24 @@
             <span class="agentlink">Acessar o agente →</span>
           </span>
         </a>
-        <span class="agentcard soon">
+        <a class="agentcard soon" href="https://pitchdeck.com.br/ai-agents/ai-first-financials">
           <span class="agentmark soon">+</span>
           <span>
             <span class="agentcard-name">AI First Financials <span class="pill soon">Em breve</span></span>
             <span class="agentcard-seg">Financeiro AI-first</span>
             <span class="agentcard-desc">Modelagem e análise financeira AI-first para startups e PMEs — DRE, runway, burn rate, projeções e valuation, organizados no padrão de quem decide cheque.</span>
+            <span class="agentlink">Saiba mais →</span>
           </span>
-        </span>
-        <span class="agentcard soon">
+        </a>
+        <a class="agentcard soon" href="https://pitchdeck.com.br/ai-agents/market-breakdown">
           <span class="agentmark soon">+</span>
           <span>
             <span class="agentcard-name">Market Breakdown <span class="pill soon">Em breve</span></span>
             <span class="agentcard-seg">Inteligência de mercado</span>
             <span class="agentcard-desc">Destrinchamento de mercado de ponta a ponta — dimensionamento TAM/SAM/SOM, mapa de competidores, distribuição e plano de escala para a sua oportunidade.</span>
+            <span class="agentlink">Saiba mais →</span>
           </span>
-        </span>
+        </a>
         <!--cms:ai-agents-grid:end-->
       </div>
     </div>
@@ -187,11 +189,12 @@
             : (a.Status==='No ar'
                 ? '<span class="agentmark pd">'+esc((a.Nome||'?').trim().charAt(0).toUpperCase())+'</span>'
                 : '<span class="agentmark soon">+</span>');
+          var u = a['URL'] || a['URL agente'] || (a.Slug ? '/ai-agents/'+a.Slug : '');
           if(a.Status==='No ar'){
-            var u = a['URL'] || a['URL agente'] || ('/ai-agents/'+(a.Slug||''));
-            return '<a class="agentcard active" href="'+esc(u)+'">'+mk+'<span><span class="agentcard-name">'+esc(a.Nome)+' <span class="pill live">No ar</span></span><span class="agentcard-seg">'+esc(a.Segmento||'')+'</span><span class="agentcard-desc">'+esc(a['Descrição curta']||'')+'</span><span class="agentlink">Acessar o agente →</span></span></a>';
+            return '<a class="agentcard active" href="'+esc(u||'/')+'">'+mk+'<span><span class="agentcard-name">'+esc(a.Nome)+' <span class="pill live">No ar</span></span><span class="agentcard-seg">'+esc(a.Segmento||'')+'</span><span class="agentcard-desc">'+esc(a['Descrição curta']||'')+'</span><span class="agentlink">Acessar o agente →</span></span></a>';
           }
-          return '<span class="agentcard soon">'+mk+'<span><span class="agentcard-name">'+esc(a.Nome)+' <span class="pill soon">Em breve</span></span><span class="agentcard-seg">'+esc(a.Segmento||'')+'</span><span class="agentcard-desc">'+esc(a['Descrição curta']||'')+'</span></span></span>';
+          var body = mk+'<span><span class="agentcard-name">'+esc(a.Nome)+' <span class="pill soon">Em breve</span></span><span class="agentcard-seg">'+esc(a.Segmento||'')+'</span><span class="agentcard-desc">'+esc(a['Descrição curta']||'')+'</span>'+(u?'<span class="agentlink">Saiba mais →</span>':'')+'</span>';
+          return u ? '<a class="agentcard soon" href="'+esc(u)+'">'+body+'</a>' : '<span class="agentcard soon">'+body+'</span>';
         }).join('');
       }).catch(function(){});
   })();
