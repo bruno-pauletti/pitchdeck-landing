@@ -321,6 +321,7 @@
     .hub-card.soon { opacity: 0.72; cursor: default; }
     .hub-card-mark { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; font-size: 20px; color: #fff; flex-shrink: 0; }
     .hub-card-mark.fc { background: #3E6FD6; }
+    .hub-card-mark.pd { background: var(--accent); }
     .hub-card-mark.soon { background: var(--bg-deep); color: var(--text-faint); border: 1px dashed var(--border-strong); font-family: var(--font-body); font-weight: 500; }
     .hub-card-body { display: flex; flex-direction: column; }
     .hub-card-name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 3px; color: var(--text); }
@@ -2335,8 +2336,44 @@
           <span class="brand-by">by Equity Rio</span>
         </a>
         <nav class="header-nav" aria-label="Navegação principal">
-          <a href="#tiers" class="header-nav-link">Preços</a>
-          <a href="#faq" class="header-nav-link">FAQ</a>
+          <div class="nav-hub-wrap">
+            <a href="https://pitchdeck.com.br/ai-agents" class="header-nav-link nav-hub" aria-haspopup="true">AI Agents <span class="chev" aria-hidden="true">▾</span></a>
+            <div class="megamenu" role="menu" aria-label="AI Agents">
+              <div class="megamenu-head">
+                <span class="eyebrow eyebrow-accent">PitchDeck · AI Agents</span>
+                <p class="megamenu-title">Agentes de IA para <em>founders e investidores</em></p>
+              </div>
+              <div class="megamenu-grid" data-cms="ai-agents">
+                <!--cms:ai-agents-menu:start-->
+                <a class="hub-card active" href="https://pitchdeck.com.br/" role="menuitem">
+                  <span class="hub-card-mark pd">P</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">PitchDeck <span class="hub-pill live">No ar</span></span>
+                    <span class="hub-card-desc">Análise de pitch deck com framework VC. O agente que deu nome ao site.</span>
+                  </span>
+                </a>
+                <span class="hub-card soon" role="menuitem" aria-disabled="true">
+                  <span class="hub-card-mark soon">+</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">AI First Financials <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Agente financeiro AI-first para startups e PMEs.</span>
+                  </span>
+                </span>
+                <span class="hub-card soon" role="menuitem" aria-disabled="true">
+                  <span class="hub-card-mark soon">+</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">Market Breakdown <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Análise de oportunidade e dimensionamento de mercado.</span>
+                  </span>
+                </span>
+                <!--cms:ai-agents-menu:end-->
+              </div>
+              <div class="megamenu-foot">
+                <span>Quer um agente sob medida?</span>
+                <a class="megamenu-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20AI%20Agents%20do%20PitchDeck.%20%5BREF%3A%20ai-agents-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a>
+              </div>
+            </div>
+          </div>
           <div class="nav-hub-wrap">
             <a href="https://pitchdeck.com.br/hubs" class="header-nav-link nav-hub" aria-haspopup="true">Hubs <span class="chev" aria-hidden="true">▾</span></a>
             <div class="megamenu" role="menu" aria-label="Hubs parceiros">
@@ -2344,7 +2381,7 @@
                 <span class="eyebrow eyebrow-accent">Powered by PitchDeck</span>
                 <p class="megamenu-title">Comunidades onde o PitchDeck é <em>benefício gratuito</em></p>
               </div>
-              <div class="megamenu-grid">
+              <div class="megamenu-grid" data-cms="hubs">
                 <!--cms:hubs-menu:start-->
                 <a class="hub-card active" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem">
                   <span class="hub-card-mark fc">F</span>
@@ -2382,6 +2419,8 @@
               </div>
             </div>
           </div>
+          <a href="#tiers" class="header-nav-link">Preços</a>
+          <a href="#faq" class="header-nav-link">FAQ</a>
           <div class="header-nav-sep" aria-hidden="true"></div>
           <a href="https://pitchdeck.com.br/vitrine" class="header-nav-link nav-ranking">↑ Vitrine</a>
         </nav>
@@ -2399,9 +2438,10 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+    <a href="https://pitchdeck.com.br/ai-agents" class="mobile-menu-link">AI Agents · PitchDeck</a>
+    <a href="https://pitchdeck.com.br/hubs" class="mobile-menu-link">Hubs · FoundersClub</a>
     <a href="#tiers" class="mobile-menu-link" onclick="closeMobileMenu()">Preços</a>
     <a href="#faq" class="mobile-menu-link" onclick="closeMobileMenu()">FAQ</a>
-    <a href="https://pitchdeck.com.br/hubs" class="mobile-menu-link">Hubs · FoundersClub</a>
     <a href="https://pitchdeck.com.br/vitrine" class="mobile-menu-link">↑ Vitrine</a>
     <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-header%5D" target="_blank" rel="noopener" class="mobile-menu-cta">
       Rodar análise grátis →
@@ -3256,7 +3296,7 @@
     }
 
     // ── Hubs (mega menu) — toggle: Status No ar / Em breve ──
-    var menu = document.querySelector('.megamenu-grid');
+    var menu = document.querySelector('.megamenu-grid[data-cms="hubs"]');
     if (menu) load('Hubs', function(rows){
       rows = rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
       if(!rows.length) return;
