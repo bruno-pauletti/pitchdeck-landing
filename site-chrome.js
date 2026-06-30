@@ -27,6 +27,8 @@
   .pdc-brand{display:flex;align-items:baseline;gap:10px}
   .pdc-brand-name{font-family:var(--pdc-d);font-size:25px;font-weight:400;letter-spacing:-.02em;color:var(--pdc-text)}
   .pdc-brand-name em{font-style:italic;color:var(--pdc-accent)}
+  .pdc-brand-by{font-family:var(--pdc-m);font-size:11px;color:var(--pdc-faint);letter-spacing:.06em;white-space:nowrap}
+  @media(max-width:560px){.pdc-brand-by{display:none}}
   .pdc-nav{display:none;align-items:center;gap:22px}
   @media(min-width:980px){.pdc-nav{display:flex}}
   .pdc-link{font-size:13px;color:var(--pdc-muted);white-space:nowrap}
@@ -98,7 +100,7 @@
   /* ---------- HEADER ---------- */
   var headerHTML =
   '<header class="pdc-header"><div class="pdc-container"><div class="pdc-inner">'
-  + '<a href="/" class="pdc-brand"><span class="pdc-brand-name"><em>Pitch</em>Deck</span></a>'
+  + '<a href="/" class="pdc-brand"><span class="pdc-brand-name"><em>Pitch</em>Deck</span><span class="pdc-brand-by">by Equity Rio</span></a>'
   + '<nav class="pdc-nav" aria-label="Navegação principal">'
     + '<div class="pdc-hubwrap"><a href="/ai-agents" class="pdc-link pdc-hub">AI Agents <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
