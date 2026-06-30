@@ -15,9 +15,9 @@
 
   /* ---------- CSS ---------- */
   var css = `
-  .pdc-chrome{--pdc-bg:#f5f1ea;--pdc-elev:#fff;--pdc-card:#faf7f1;--pdc-deep:#ede4d4;--pdc-border:#d9d2c4;--pdc-border-strong:#a89e88;--pdc-text:#1a1a1a;--pdc-muted:#5a5550;--pdc-faint:#8a8580;--pdc-accent:#0f4c3a;--pdc-accent-deep:#0a3528;--pdc-accent-soft:rgba(15,76,58,.08);--pdc-accent-border:rgba(15,76,58,.2);--pdc-d:"Fraunces","Times New Roman",serif;--pdc-b:"DM Sans",system-ui,sans-serif;--pdc-m:"IBM Plex Mono","Courier New",monospace;}
-  .pdc-chrome,.pdc-chrome *{box-sizing:border-box}
-  .pdc-chrome a{text-decoration:none;color:inherit}
+  :root{--pdc-bg:#f5f1ea;--pdc-elev:#fff;--pdc-card:#faf7f1;--pdc-deep:#ede4d4;--pdc-border:#d9d2c4;--pdc-border-strong:#a89e88;--pdc-text:#1a1a1a;--pdc-muted:#5a5550;--pdc-faint:#8a8580;--pdc-accent:#0f4c3a;--pdc-accent-deep:#0a3528;--pdc-accent-soft:rgba(15,76,58,.08);--pdc-accent-border:rgba(15,76,58,.2);--pdc-d:"Fraunces","Times New Roman",serif;--pdc-b:"DM Sans",system-ui,sans-serif;--pdc-m:"IBM Plex Mono","Courier New",monospace;}
+  .pdc-header,.pdc-header *,.pdc-mobile,.pdc-mobile *,.pdc-footer,.pdc-footer *{box-sizing:border-box}
+  .pdc-header a,.pdc-mobile a,.pdc-footer a{text-decoration:none;color:inherit}
   .pdc-container{max-width:1180px;margin:0 auto;padding:0 24px}
   @media(min-width:768px){.pdc-container{padding:0 48px}}
 
@@ -140,15 +140,11 @@
 
   /* ---------- inject ---------- */
   function init(){
-    // remove header/footer existentes da subpágina
-    document.querySelectorAll('header, footer').forEach(function(el){ el.remove(); });
+    // remove header/footer/nav antigos da subpágina ANTES de injetar o nosso
+    document.querySelectorAll('header, footer, nav, .mobile-menu, .navbar').forEach(function(el){ el.remove(); });
     var style = document.createElement('style'); style.id='pdc-style'; style.textContent=css; document.head.appendChild(style);
-    var wrap = document.createElement('div'); wrap.className='pdc-chrome';
-    wrap.innerHTML = headerHTML;
-    // header + mobile vão no topo do body
-    while(wrap.firstChild){ document.body.insertBefore(wrap.firstChild, document.body.firstChild); }
-    var fwrap = document.createElement('div'); fwrap.className='pdc-chrome'; fwrap.innerHTML = footerHTML;
-    document.body.appendChild(fwrap);
+    document.body.insertAdjacentHTML('afterbegin', headerHTML);
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
 
     // mobile toggle
     var ham=document.getElementById('pdcHam'), mob=document.getElementById('pdcMobile');
