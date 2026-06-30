@@ -36,7 +36,7 @@
   .pdc-hub{display:inline-flex;align-items:center;gap:5px}
   .pdc-chev{font-size:9px;transition:transform .2s}
   .pdc-hubwrap:hover .pdc-chev,.pdc-hubwrap:focus-within .pdc-chev{transform:rotate(180deg)}
-  .pdc-megamenu{position:absolute;top:calc(100% + 16px);right:0;width:min(620px,calc(100vw - 48px));background:var(--pdc-elev);border:1px solid var(--pdc-border);border-radius:16px;box-shadow:0 24px 60px -20px rgba(15,76,58,.25);padding:22px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s,transform .2s,visibility .2s;z-index:60}
+  .pdc-megamenu{position:absolute;top:calc(100% + 16px);left:0;width:min(560px,calc(100vw - 48px));background:var(--pdc-elev);border:1px solid var(--pdc-border);border-radius:16px;box-shadow:0 24px 60px -20px rgba(15,76,58,.25);padding:22px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s,transform .2s,visibility .2s;z-index:60}
   .pdc-megamenu::before{content:"";position:absolute;top:-18px;left:0;right:0;height:18px}
   .pdc-hubwrap:hover .pdc-megamenu,.pdc-hubwrap:focus-within .pdc-megamenu{opacity:1;visibility:visible;transform:translateY(0)}
   .pdc-mm-eye{font-family:var(--pdc-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--pdc-accent)}
