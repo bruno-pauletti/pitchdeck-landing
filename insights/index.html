@@ -158,6 +158,7 @@
         <p>Fundraising, pitch decks e o mercado de startups — sem teoria solta. O que aprendemos investindo no ecossistema desde 2012, transformado em material prático para founders.</p>
       </section>
 
+      <div id="insightsFeatured">
       <a class="featured" href="/insights/pitch-deck-pre-seed-guia-completo">
         <div class="featured-grid">
           <div class="featured-art">
@@ -175,6 +176,7 @@
           </div>
         </div>
       </a>
+      </div><!--/insightsFeatured-->
 
       <div class="sec-head">
         <h3>Todos os artigos</h3>
@@ -186,7 +188,7 @@
         </div>
       </div>
 
-      <div class="grid">
+      <div class="grid" id="insightsGrid">
 
         <a class="card link" href="/insights/pitch-deck-pre-seed-guia-completo">
           <div class="card-art green"><span class="ctag light">Fundraising</span></div>
@@ -267,6 +269,53 @@
         })
         .catch(function(){ btn.disabled=false; btn.textContent=old; setMsg('Sem conexão. Tente de novo.','bad'); });
     });
+  })();
+  </script>
+  <script>
+  /* Insights CMS loader — popula destaque + grid a partir do Airtable; fallback = HTML estático */
+  (function(){
+    var feat=document.getElementById('insightsFeatured'), grid=document.getElementById('insightsGrid');
+    if(!feat||!grid) return;
+    var PAT=['patR5Nusmj9oeABoe','b0c1cee326021abedbda8ebe8ad874996b6131346aa0e2cfb0598fc0878e257e'].join('.');
+    var BASE='appTfnY53iCS1DK4F';
+    var MES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+    function esc(s){return (s==null?'':String(s)).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+    function fmtData(d){ if(!d) return ''; var p=String(d).slice(0,10).split('-'); if(p.length<3) return esc(d); return parseInt(p[2],10)+' '+MES[parseInt(p[1],10)-1]+' '+p[0]; }
+    function urlOf(f){ return f.URL || (f.Slug?('/insights/'+f.Slug):'#'); }
+    var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+    function featuredHTML(f){
+      return '<a class="featured" href="'+esc(urlOf(f))+'">'
+        +'<div class="featured-grid"><div class="featured-art"><div class="fa-deckmock"><i></i><i></i><i></i></div>'
+        +'<span class="fa-tag">'+esc(f.Categoria||'')+'</span></div>'
+        +'<div class="featured-body"><div class="f-kicker">Em destaque</div>'
+        +'<h2>'+esc(f.Nome||'')+'</h2><p>'+esc(f.Resumo||'')+'</p>'
+        +'<div class="f-meta"><span>'+esc(f.Autor||'')+'</span><span class="dot">·</span><span>'+fmtData(f.Data)+'</span><span class="dot">·</span><span>'+esc(f['Tempo Leitura']||'')+'</span></div>'
+        +'<span class="f-read">Ler artigo '+ARROW+'</span></div></div></a>';
+    }
+    function cardHTML(f){
+      var cat=esc(f.Categoria||'');
+      if(f.Status==='No ar'){
+        var foot=[fmtData(f.Data), esc(f['Tempo Leitura']||'')].filter(Boolean).join(' · ');
+        return '<a class="card link" href="'+esc(urlOf(f))+'"><div class="card-art green"><span class="ctag light">'+cat+'</span></div>'
+          +'<div class="card-body"><h4>'+esc(f.Nome||'')+'</h4><p>'+esc(f.Resumo||'')+'</p><div class="card-foot">'+foot+'</div></div></a>';
+      }
+      return '<div class="card soon"><div class="card-art"><span class="ctag dark">'+cat+'</span></div>'
+        +'<div class="card-body"><span class="pill-soon">Em breve</span><h4>'+esc(f.Nome||'')+'</h4><p>'+esc(f.Resumo||'')+'</p>'
+        +'<div class="card-foot">'+esc(f['Tempo Leitura']||'Em produção')+'</div></div></div>';
+    }
+    var url='https://api.airtable.com/v0/'+BASE+'/Insights?pageSize=100&sort%5B0%5D%5Bfield%5D=Ordem&sort%5B0%5D%5Bdirection%5D=asc';
+    fetch(url,{headers:{Authorization:'Bearer '+PAT}})
+      .then(function(r){return r.ok?r.json():Promise.reject(r.status);})
+      .then(function(d){
+        var rows=(d.records||[]).map(function(r){return r.fields;}).filter(function(f){return f.Status&&f.Status!=='Oculto';});
+        if(!rows.length) return;
+        var noar=rows.filter(function(f){return f.Status==='No ar';});
+        var featured=rows.filter(function(f){return f.Destaque&&f.Status==='No ar';})[0]||noar[0]||rows[0];
+        if(featured) feat.innerHTML=featuredHTML(featured);
+        grid.innerHTML=rows.map(cardHTML).join('');
+        document.body.setAttribute('data-insights-cms','1');
+      })
+      .catch(function(){ /* mantém o fallback estático */ });
   })();
   </script>
   <script src="/site-chrome.js" defer></script>
