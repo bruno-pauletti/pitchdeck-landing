@@ -1,5 +1,5 @@
 /* site-chrome.js — header + footer compartilhados do pitchdeck.com.br
- * Injeta o mesmo menu (AI Agents · Hubs · Preços · FAQ · Vitrine + CTA) e o footer
+ * Injeta o mesmo menu (AI Agents · Hubs · Vitrine + CTA) e o footer
  * completo em qualquer página. CSS próprio, prefixado "pdc-", pra não conflitar.
  * Uso: <script src="/site-chrome.js" defer></script> antes de </body>.
  * Mega-menus puxam do Airtable (mesmo PAT read-only da home).
@@ -114,8 +114,6 @@
         + '<div class="pdc-grid" data-pdc="hubs"></div>'
         + '<div class="pdc-mm-foot"><span>Tem uma comunidade de founders?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Tenho%20uma%20comunidade%20de%20founders%20e%20quero%20oferecer%20o%20PitchDeck%20como%20benef%C3%ADcio%20aos%20membros.%20%5BREF%3A%20hubs-parceiro%5D" target="_blank" rel="noopener">Seja um hub parceiro →</a></div>'
       + '</div></div>'
-    + '<a href="/#tiers" class="pdc-link">Preços</a>'
-    + '<a href="/#faq" class="pdc-link">FAQ</a>'
     + '<div class="pdc-sep" aria-hidden="true"></div>'
     + '<a href="/vitrine" class="pdc-link acc">↑ Vitrine</a>'
   + '</nav>'
@@ -123,7 +121,7 @@
   + '<button class="pdc-ham" id="pdcHam" aria-label="Abrir menu"><span></span><span></span><span></span></button>'
   + '</div></div></header>'
   + '<div class="pdc-mobile" id="pdcMobile">'
-    + '<a href="/ai-agents">AI Agents</a><a href="/hubs">Hubs</a><a href="/#tiers">Preços</a><a href="/#faq">FAQ</a><a href="/vitrine">↑ Vitrine</a>'
+    + '<a href="/ai-agents">AI Agents</a><a href="/hubs">Hubs</a><a href="/vitrine">↑ Vitrine</a>'
     + '<a href="'+WA_FULL+'" target="_blank" rel="noopener" class="cta">Rodar análise grátis →</a>'
   + '</div>';
 
