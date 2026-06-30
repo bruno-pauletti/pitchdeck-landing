@@ -87,18 +87,19 @@ module.exports = async (req, res) => {
     const a = await aRes.json();
     const fields = a.fields || {};
 
-    let url = '';
-    const deckLinks = fields['Deck'];
-    if (Array.isArray(deckLinks) && deckLinks.length) {
-      const deckId = deckLinks[0];
-      const dRes = await at(`${BASE}/${TBL_DECKS}/${encodeURIComponent(deckId)}`, token, { method: 'GET' });
-      if (dRes.ok) {
-        const d = await dRes.json();
-        url = (d.fields && d.fields['Link Drive']) || '';
+    // A vitrine mostra a ANÁLISE FREE (output da análise), não o deck original da startup.
+    let url = fields['Link Output Drive'] || '';
+    // Fallback: link do deck original, só se a análise não tiver output.
+    if (!url) {
+      const deckLinks = fields['Deck'];
+      if (Array.isArray(deckLinks) && deckLinks.length) {
+        const dRes = await at(`${BASE}/${TBL_DECKS}/${encodeURIComponent(deckLinks[0])}`, token, { method: 'GET' });
+        if (dRes.ok) {
+          const d = await dRes.json();
+          url = (d.fields && d.fields['Link Drive']) || '';
+        }
       }
     }
-    // Fallback: link do output da análise, se o deck não tiver Link Drive
-    if (!url) url = fields['Link Output Drive'] || '';
 
     if (!url) {
       return res.status(404).json({ error: 'no_deck_link', message: 'Deck ainda sem link disponível.' });
