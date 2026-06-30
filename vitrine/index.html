@@ -602,9 +602,8 @@ footer { border-top: 1px solid #D0CEC8; padding: 1.5rem 0; margin-top: 0; }
     <div class="modal-success" id="modalSuccess">
       <div class="success-icon">✅</div>
       <div class="success-title font-serif">Acesso liberado!</div>
-      <p class="success-sub">O link para o pitch deck foi enviado para o seu e-mail. Você também receberá as novidades da vitrine automaticamente.</p>
-      <!-- Substitua o href pelo link real do deck -->
-      <a href="#" class="btn-submit" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;justify-content:center">
+      <p class="success-sub">O pitch deck abriu em uma nova aba. Se não abriu (bloqueador de pop-up), use o botão abaixo. Você passa a receber as novidades da vitrine por e-mail.</p>
+      <a href="#" id="successDeckLink" target="_blank" rel="noopener" class="btn-submit" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;justify-content:center">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Abrir pitch deck
       </a>
@@ -791,7 +790,7 @@ function renderCard(record, rank) {
       <p style="font-size:13px;color:#4A4A3A;line-height:1.65;margin-bottom:1.25rem">${resumo}</p>
       <div class="deck-gate">
         <p>O pitch deck completo está disponível mediante cadastro gratuito e aceite dos termos de confidencialidade.</p>
-        <button class="btn-deck" onclick="openModal('${nome}')">
+        <button class="btn-deck" onclick="handleDeckClick(this, '${record.id}')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Ver pitch deck completo
         </button>
@@ -803,9 +802,50 @@ function renderCard(record, rank) {
 
 // ── Modal ─────────────────────────────────────────────
 let currentCompany = '';
+let currentAnaliseId = '';
 
-function openModal(company) {
+// Lembrar o cadastro neste navegador (cadastro único)
+const LEAD_KEY = 'pd_vitrine_lead';
+function getLead() { try { const r = localStorage.getItem(LEAD_KEY); return r ? JSON.parse(r) : null; } catch (_) { return null; } }
+function saveLead(l) { try { localStorage.setItem(LEAD_KEY, JSON.stringify(l)); } catch (_) {} }
+
+// Clique no deck: se já cadastrou neste navegador, abre instantâneo; senão, abre o modal.
+function handleDeckClick(btn, analiseId) {
+  const card = btn.closest('.rank-card');
+  const company = card ? (card.querySelector('.rank-name')?.textContent || '').trim() : '';
+  const lead = getLead();
+  if (lead && lead.email) {
+    const w = window.open('', '_blank');
+    if (w) w.document.write('<p style="font-family:system-ui,sans-serif;padding:2rem;color:#444">Abrindo o pitch deck…</p>');
+    unlockDeck(analiseId, company, lead, w, null);
+  } else {
+    openModal(company, analiseId);
+  }
+}
+
+// Chama a função serverless /api/deck: grava o lead e devolve o link do deck.
+async function unlockDeck(analiseId, company, lead, win, cb) {
+  try {
+    const res = await fetch('/api/deck', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome: lead.nome, email: lead.email, whatsapp: lead.whatsapp || '', perfil: lead.perfil || '', analiseId, company }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.url) throw new Error(data.message || ('HTTP ' + res.status));
+    if (win) { win.location.href = data.url; } else { window.open(data.url, '_blank', 'noopener'); }
+    if (cb) cb(data.url, null);
+    return data.url;
+  } catch (e) {
+    if (win) { try { win.close(); } catch (_) {} }
+    if (cb) cb(null, e);
+    return null;
+  }
+}
+
+function openModal(company, analiseId) {
   currentCompany = company;
+  currentAnaliseId = analiseId || '';
   document.getElementById('modalCompanyName').textContent = company;
   document.getElementById('modalOverlay').classList.add('open');
   document.getElementById('modalForm').classList.remove('hide');
@@ -878,12 +918,6 @@ function validateWhats(input) {
   return setFieldState(input, 'errWhats', digits.length === 11 ? '' : 'Número inválido. Ex: +55 11 99999-9999');
 }
 
-// ─── Airtable Leads Ranking (write) ──────────────────
-const AIRTABLE_PAT      = 'SEU_PERSONAL_ACCESS_TOKEN_AQUI';
-const AIRTABLE_BASE_ID  = 'app59di7WZDzVeO9m';
-const AIRTABLE_TABLE_ID = 'tblty4tQBKilPPxaX';
-// ─────────────────────────────────────────────────────
-
 async function submitForm() {
   const nome   = document.getElementById('fieldNome').value.trim();
   const email  = document.getElementById('fieldEmail').value.trim();
@@ -895,28 +929,28 @@ async function submitForm() {
   validateWhats(document.getElementById('fieldWhats'));
   if (!nomeOk || !emailOk) return;
 
+  const lead = { nome, email, whatsapp: whats || '', perfil: perfil || '' };
+  saveLead(lead); // cadastro único: próximos decks abrem sem novo cadastro
+
   const btn = document.getElementById('btnSubmit');
-  btn.disabled = true; btn.textContent = 'Salvando...';
+  btn.disabled = true; btn.textContent = 'Liberando acesso…';
 
-  try {
-    const res = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${AIRTABLE_PAT}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: {
-        'Nome': nome, 'Email': email,
-        'WhatsApp': whats || null, 'Perfil': perfil || null,
-        'Deck Solicitado': currentCompany || '',
-        'Data Cadastro': new Date().toISOString(),
-        'Origem': 'ranking-page'
-      }})
-    });
-    if (!res.ok) console.error('Airtable error:', await res.json());
-  } catch (e) { console.error('Fetch error:', e); }
+  // Abre a aba já no gesto do clique (evita bloqueio de pop-up) e redireciona após resolver.
+  const w = window.open('', '_blank');
+  if (w) w.document.write('<p style="font-family:system-ui,sans-serif;padding:2rem;color:#444">Abrindo o pitch deck…</p>');
 
-  document.getElementById('modalForm').classList.add('hide');
-  document.getElementById('modalSuccess').classList.add('show');
-  btn.disabled = false;
-  btn.textContent = 'Acessar pitch deck gratuitamente';
+  await unlockDeck(currentAnaliseId, currentCompany, lead, w, function (url, err) {
+    btn.disabled = false;
+    btn.textContent = 'Acessar pitch deck gratuitamente';
+    if (err || !url) {
+      alert('Não foi possível liberar o acesso agora. Tente novamente em instantes.');
+      return;
+    }
+    const link = document.getElementById('successDeckLink');
+    if (link) link.href = url;
+    document.getElementById('modalForm').classList.add('hide');
+    document.getElementById('modalSuccess').classList.add('show');
+  });
 }
 
 // Esc fecha modal
