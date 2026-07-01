@@ -105,7 +105,10 @@
     .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
     .sec-head h3{font-family:var(--font-display);font-weight:400;font-size:26px;letter-spacing:-.01em}
     .sec-head .cats{display:flex;gap:8px;flex-wrap:wrap}
-    .cat-chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-muted);background:var(--bg-deep);border:1px solid var(--border);border-radius:999px;padding:6px 13px}
+    .cat-chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-muted);background:var(--bg-deep);border:1px solid var(--border);border-radius:999px;padding:6px 13px;cursor:pointer;transition:background .18s,color .18s,border-color .18s;user-select:none}
+    .cat-chip:hover{border-color:var(--border-strong);color:var(--text)}
+    .cat-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .card[hidden],.featured[hidden]{display:none!important}
     .grid{display:grid;grid-template-columns:1fr;gap:20px}
     @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
     @media(min-width:980px){.grid{grid-template-columns:1fr 1fr 1fr}}
@@ -181,16 +184,17 @@
       <div class="sec-head">
         <h3>Todos os artigos</h3>
         <div class="cats">
-          <span class="cat-chip">Fundraising</span>
-          <span class="cat-chip">Mercado</span>
-          <span class="cat-chip">Cases</span>
-          <span class="cat-chip">M&amp;A</span>
+          <span class="cat-chip active" data-cat="Todos">Todos</span>
+          <span class="cat-chip" data-cat="Fundraising">Fundraising</span>
+          <span class="cat-chip" data-cat="Mercado">Mercado</span>
+          <span class="cat-chip" data-cat="Cases">Cases</span>
+          <span class="cat-chip" data-cat="M&amp;A">M&amp;A</span>
         </div>
       </div>
 
       <div class="grid" id="insightsGrid">
 
-        <a class="card link" href="/insights/pitch-deck-pre-seed-guia-completo">
+        <a class="card link" data-cat="Fundraising" href="/insights/pitch-deck-pre-seed-guia-completo">
           <div class="card-art green"><span class="ctag light">Fundraising</span></div>
           <div class="card-body">
             <h4>Pitch deck pré-seed: o guia completo</h4>
@@ -199,7 +203,7 @@
           </div>
         </a>
 
-        <div class="card soon">
+        <div class="card soon" data-cat="Mercado">
           <div class="card-art"><span class="ctag dark">Mercado</span></div>
           <div class="card-body">
             <span class="pill-soon">Em breve</span>
@@ -209,7 +213,7 @@
           </div>
         </div>
 
-        <div class="card soon">
+        <div class="card soon" data-cat="Cases">
           <div class="card-art"><span class="ctag dark">Cases</span></div>
           <div class="card-body">
             <span class="pill-soon">Em breve</span>
@@ -284,7 +288,7 @@
     function urlOf(f){ return f.URL || (f.Slug?('/insights/'+f.Slug):'#'); }
     var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
     function featuredHTML(f){
-      return '<a class="featured" href="'+esc(urlOf(f))+'">'
+      return '<a class="featured" data-cat="'+esc(f.Categoria||'')+'" href="'+esc(urlOf(f))+'">'
         +'<div class="featured-grid"><div class="featured-art"><div class="fa-deckmock"><i></i><i></i><i></i></div>'
         +'<span class="fa-tag">'+esc(f.Categoria||'')+'</span></div>'
         +'<div class="featured-body"><div class="f-kicker">Em destaque</div>'
@@ -296,10 +300,10 @@
       var cat=esc(f.Categoria||'');
       if(f.Status==='No ar'){
         var foot=[fmtData(f.Data), esc(f['Tempo Leitura']||'')].filter(Boolean).join(' · ');
-        return '<a class="card link" href="'+esc(urlOf(f))+'"><div class="card-art green"><span class="ctag light">'+cat+'</span></div>'
+        return '<a class="card link" data-cat="'+cat+'" href="'+esc(urlOf(f))+'"><div class="card-art green"><span class="ctag light">'+cat+'</span></div>'
           +'<div class="card-body"><h4>'+esc(f.Nome||'')+'</h4><p>'+esc(f.Resumo||'')+'</p><div class="card-foot">'+foot+'</div></div></a>';
       }
-      return '<div class="card soon"><div class="card-art"><span class="ctag dark">'+cat+'</span></div>'
+      return '<div class="card soon" data-cat="'+cat+'"><div class="card-art"><span class="ctag dark">'+cat+'</span></div>'
         +'<div class="card-body"><span class="pill-soon">Em breve</span><h4>'+esc(f.Nome||'')+'</h4><p>'+esc(f.Resumo||'')+'</p>'
         +'<div class="card-foot">'+esc(f['Tempo Leitura']||'Em produção')+'</div></div></div>';
     }
@@ -316,6 +320,36 @@
         document.body.setAttribute('data-insights-cms','1');
       })
       .catch(function(){ /* mantém o fallback estático */ });
+  })();
+  </script>
+  <script>
+  /* Filtro de categorias da grid Insights */
+  (function(){
+    var cats=document.querySelector('.cats'); if(!cats) return;
+    var featWrap=document.getElementById('insightsFeatured');
+    var grid=document.getElementById('insightsGrid');
+    function catOf(el){
+      var d=el.getAttribute('data-cat'); if(d!=null&&d!=='') return d.trim();
+      var tag=el.querySelector('.ctag,.fa-tag'); return tag?tag.textContent.trim():'';
+    }
+    function apply(sel){
+      if(grid) [].forEach.call(grid.querySelectorAll('.card'),function(c){
+        c.hidden = !(sel==='Todos'||catOf(c)===sel);
+      });
+      var featCard=featWrap?featWrap.querySelector('.featured'):null;
+      if(featCard) featCard.hidden = !(sel==='Todos'||catOf(featCard)===sel);
+    }
+    function activeSel(){ var a=cats.querySelector('.cat-chip.active'); return a?(a.getAttribute('data-cat')||a.textContent.trim()):'Todos'; }
+    cats.addEventListener('click',function(e){
+      var chip=e.target.closest('.cat-chip'); if(!chip) return;
+      [].forEach.call(cats.querySelectorAll('.cat-chip'),function(c){c.classList.remove('active');});
+      chip.classList.add('active');
+      apply(chip.getAttribute('data-cat')||chip.textContent.trim());
+    });
+    if(grid && window.MutationObserver){
+      new MutationObserver(function(){ apply(activeSel()); }).observe(grid,{childList:true});
+    }
+    apply('Todos');
   })();
   </script>
   <script src="/site-chrome.js" defer></script>
