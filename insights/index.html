@@ -307,7 +307,7 @@
     fetch(url,{headers:{Authorization:'Bearer '+PAT}})
       .then(function(r){return r.ok?r.json():Promise.reject(r.status);})
       .then(function(d){
-        var rows=(d.records||[]).map(function(r){return r.fields;}).filter(function(f){return f.Status&&f.Status!=='Oculto';});
+        var rows=(d.records||[]).map(function(r){return r.fields;}).filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
         if(!rows.length) return;
         var noar=rows.filter(function(f){return f.Status==='No ar';});
         var featured=rows.filter(function(f){return f.Destaque&&f.Status==='No ar';})[0]||noar[0]||rows[0];
