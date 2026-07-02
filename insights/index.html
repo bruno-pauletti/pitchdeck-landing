@@ -329,7 +329,7 @@
     if(!chips.length) return;
     var grid=document.getElementById('insightsGrid');
     var active=null;
-    function catOf(el){ var m=(el.className||'').match(/cat-[a-z]+/); return m?m[0]:''; }
+    function catOf(el){ var m=(el.className||'').match(/cat-(?:fundraising|mercado|cases|ma)/); return m?m[0]:''; }
     function apply(){
       if(!grid) return;
       [].slice.call(grid.querySelectorAll('.card')).forEach(function(c){
