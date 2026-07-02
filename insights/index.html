@@ -84,7 +84,7 @@
     .featured:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:0 32px 64px -28px rgba(15,76,58,.32)}
     .featured-grid{display:grid;grid-template-columns:1fr}
     @media(min-width:860px){.featured-grid{grid-template-columns:1.05fr .95fr}}
-    .featured-art{background:linear-gradient(150deg,var(--accent) 0%,var(--accent-deep) 100%);min-height:240px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:30px}
+    .featured-art{background:var(--k,var(--accent));min-height:240px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:30px}
     .featured-art::before{content:"";position:absolute;inset:0;opacity:.5;background:radial-gradient(circle at 78% 18%,rgba(255,255,255,.16),transparent 46%)}
     .fa-deckmock{position:absolute;top:26px;right:26px;display:flex;gap:7px;opacity:.95}
     .fa-deckmock i{display:block;width:34px;height:46px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:4px}
@@ -92,12 +92,12 @@
     .fa-deckmock i:nth-child(3){background:rgba(255,255,255,.08)}
     .featured-art .fa-tag{position:relative;z-index:2;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:5px;padding:6px 12px}
     .featured-body{padding:34px 32px}
-    .f-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    .f-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--k,var(--accent));margin-bottom:14px}
     .featured-body h2{font-family:var(--font-display);font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;letter-spacing:-.02em;margin-bottom:14px}
     .featured-body p{color:var(--text-muted);font-size:16px;line-height:1.6;margin-bottom:22px}
     .f-meta{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-faint);margin-bottom:22px}
     .f-meta .dot{opacity:.45}
-    .f-read{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:var(--accent)}
+    .f-read{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:var(--k,var(--accent))}
     .f-read svg{width:15px;height:15px;transition:transform .2s}
     .featured:hover .f-read svg{transform:translateX(4px)}
 
@@ -105,26 +105,23 @@
     .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
     .sec-head h3{font-family:var(--font-display);font-weight:400;font-size:26px;letter-spacing:-.01em}
     .sec-head .cats{display:flex;gap:8px;flex-wrap:wrap}
-    .cat-chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-muted);background:var(--bg-deep);border:1px solid var(--border);border-radius:999px;padding:6px 13px;cursor:pointer;transition:background .18s,color .18s,border-color .18s;user-select:none}
-    .cat-chip:hover{border-color:var(--border-strong);color:var(--text)}
-    .cat-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .card[hidden],.featured[hidden]{display:none!important}
+    .cat-chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--k,var(--text-muted));background:var(--kb,var(--bg-deep));border:1px solid var(--kd,var(--border));border-radius:999px;padding:6px 13px}
+    .cat-fundraising{--k:#0f4c3a;--kb:rgba(15,76,58,.09);--kd:rgba(15,76,58,.22)}
+    .cat-mercado{--k:#2b5d86;--kb:rgba(43,93,134,.10);--kd:rgba(43,93,134,.24)}
+    .cat-cases{--k:#a75d27;--kb:rgba(167,93,39,.10);--kd:rgba(167,93,39,.24)}
+    .cat-ma{--k:#6d4c86;--kb:rgba(109,76,134,.11);--kd:rgba(109,76,134,.24)}
     .grid{display:grid;grid-template-columns:1fr;gap:20px}
     @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
     @media(min-width:980px){.grid{grid-template-columns:1fr 1fr 1fr}}
     .card{display:flex;flex-direction:column;background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .22s ease}
     .card.link:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:0 22px 44px -26px rgba(15,76,58,.3)}
-    .card-art{height:130px;background:linear-gradient(150deg,var(--bg-deep),#e4dac8);position:relative;display:flex;align-items:flex-end;padding:16px}
-    .card-art.green{background:linear-gradient(150deg,var(--accent),var(--accent-deep))}
-    .card-art .ctag{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:4px}
-    .card-art .ctag.light{color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28)}
-    .card-art .ctag.dark{color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-border)}
+    .card-art{height:130px;background:var(--kb,linear-gradient(150deg,var(--bg-deep),#e4dac8));position:relative;display:flex;align-items:flex-end;padding:16px}
+    .card-art .ctag{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:4px;color:var(--k,var(--accent));background:#fff;border:1px solid var(--kd,var(--accent-border))}
     .card-body{padding:20px;display:flex;flex-direction:column;flex:1}
     .card-body h4{font-family:var(--font-display);font-weight:500;font-size:19px;line-height:1.18;letter-spacing:-.01em;margin-bottom:10px}
     .card-body p{font-size:14px;color:var(--text-muted);line-height:1.55;margin-bottom:16px;flex:1}
     .card-foot{font-family:var(--font-mono);font-size:11.5px;color:var(--text-faint);letter-spacing:.03em}
     .card.soon{opacity:.72}
-    .card.soon .card-art{background:linear-gradient(150deg,#e9e0d0,#ddd2bf)}
     .pill-soon{display:inline-block;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);border:1px solid rgba(192,132,21,.35);background:rgba(192,132,21,.08);border-radius:4px;padding:3px 8px;margin-bottom:10px}
 
     /* join: comunidade + newsletter */
@@ -162,7 +159,7 @@
       </section>
 
       <div id="insightsFeatured">
-      <a class="featured" href="/insights/pitch-deck-pre-seed-guia-completo">
+      <a class="featured cat-fundraising" href="/insights/pitch-deck-pre-seed-guia-completo">
         <div class="featured-grid">
           <div class="featured-art">
             <div class="fa-deckmock"><i></i><i></i><i></i></div>
@@ -184,18 +181,17 @@
       <div class="sec-head">
         <h3>Todos os artigos</h3>
         <div class="cats">
-          <span class="cat-chip active" data-cat="Todos">Todos</span>
-          <span class="cat-chip" data-cat="Fundraising">Fundraising</span>
-          <span class="cat-chip" data-cat="Mercado">Mercado</span>
-          <span class="cat-chip" data-cat="Cases">Cases</span>
-          <span class="cat-chip" data-cat="M&amp;A">M&amp;A</span>
+          <span class="cat-chip cat-fundraising">Fundraising</span>
+          <span class="cat-chip cat-mercado">Mercado</span>
+          <span class="cat-chip cat-cases">Cases</span>
+          <span class="cat-chip cat-ma">M&amp;A</span>
         </div>
       </div>
 
       <div class="grid" id="insightsGrid">
 
-        <a class="card link" data-cat="Fundraising" href="/insights/pitch-deck-pre-seed-guia-completo">
-          <div class="card-art green"><span class="ctag light">Fundraising</span></div>
+        <a class="card link cat-fundraising" href="/insights/pitch-deck-pre-seed-guia-completo">
+          <div class="card-art"><span class="ctag">Fundraising</span></div>
           <div class="card-body">
             <h4>Pitch deck pré-seed: o guia completo</h4>
             <p>Estrutura slide a slide, os erros fatais e como o investidor lê seu deck.</p>
@@ -203,8 +199,8 @@
           </div>
         </a>
 
-        <div class="card soon" data-cat="Mercado">
-          <div class="card-art"><span class="ctag dark">Mercado</span></div>
+        <div class="card soon cat-mercado">
+          <div class="card-art"><span class="ctag">Mercado</span></div>
           <div class="card-body">
             <span class="pill-soon">Em breve</span>
             <h4>TAM, SAM e SOM: como dimensionar mercado sem inflar</h4>
@@ -213,8 +209,8 @@
           </div>
         </div>
 
-        <div class="card soon" data-cat="Cases">
-          <div class="card-art"><span class="ctag dark">Cases</span></div>
+        <div class="card soon cat-cases">
+          <div class="card-art"><span class="ctag">Cases</span></div>
           <div class="card-body">
             <span class="pill-soon">Em breve</span>
             <h4>O que aprendemos analisando decks de founders brasileiros</h4>
@@ -286,9 +282,10 @@
     function esc(s){return (s==null?'':String(s)).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
     function fmtData(d){ if(!d) return ''; var p=String(d).slice(0,10).split('-'); if(p.length<3) return esc(d); return parseInt(p[2],10)+' '+MES[parseInt(p[1],10)-1]+' '+p[0]; }
     function urlOf(f){ return f.URL || (f.Slug?('/insights/'+f.Slug):'#'); }
+    function catClass(c){ c=(c||'').toLowerCase(); if(c.indexOf('fund')===0)return 'cat-fundraising'; if(c.indexOf('merc')===0)return 'cat-mercado'; if(c.indexOf('case')===0)return 'cat-cases'; if(c.indexOf('m&a')===0)return 'cat-ma'; return ''; }
     var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
     function featuredHTML(f){
-      return '<a class="featured" data-cat="'+esc(f.Categoria||'')+'" href="'+esc(urlOf(f))+'">'
+      return '<a class="featured '+catClass(f.Categoria)+'" href="'+esc(urlOf(f))+'">'
         +'<div class="featured-grid"><div class="featured-art"><div class="fa-deckmock"><i></i><i></i><i></i></div>'
         +'<span class="fa-tag">'+esc(f.Categoria||'')+'</span></div>'
         +'<div class="featured-body"><div class="f-kicker">Em destaque</div>'
@@ -300,10 +297,10 @@
       var cat=esc(f.Categoria||'');
       if(f.Status==='No ar'){
         var foot=[fmtData(f.Data), esc(f['Tempo Leitura']||'')].filter(Boolean).join(' · ');
-        return '<a class="card link" data-cat="'+cat+'" href="'+esc(urlOf(f))+'"><div class="card-art green"><span class="ctag light">'+cat+'</span></div>'
+        return '<a class="card link '+catClass(f.Categoria)+'" href="'+esc(urlOf(f))+'"><div class="card-art"><span class="ctag">'+cat+'</span></div>'
           +'<div class="card-body"><h4>'+esc(f.Nome||'')+'</h4><p>'+esc(f.Resumo||'')+'</p><div class="card-foot">'+foot+'</div></div></a>';
       }
-      return '<div class="card soon" data-cat="'+cat+'"><div class="card-art"><span class="ctag dark">'+cat+'</span></div>'
+      return '<div class="card soon '+catClass(f.Categoria)+'"><div class="card-art"><span class="ctag">'+cat+'</span></div>'
         +'<div class="card-body"><span class="pill-soon">Em breve</span><h4>'+esc(f.Nome||'')+'</h4><p>'+esc(f.Resumo||'')+'</p>'
         +'<div class="card-foot">'+esc(f['Tempo Leitura']||'Em produção')+'</div></div></div>';
     }
@@ -320,36 +317,6 @@
         document.body.setAttribute('data-insights-cms','1');
       })
       .catch(function(){ /* mantém o fallback estático */ });
-  })();
-  </script>
-  <script>
-  /* Filtro de categorias da grid Insights */
-  (function(){
-    var cats=document.querySelector('.cats'); if(!cats) return;
-    var featWrap=document.getElementById('insightsFeatured');
-    var grid=document.getElementById('insightsGrid');
-    function catOf(el){
-      var d=el.getAttribute('data-cat'); if(d!=null&&d!=='') return d.trim();
-      var tag=el.querySelector('.ctag,.fa-tag'); return tag?tag.textContent.trim():'';
-    }
-    function apply(sel){
-      if(grid) [].forEach.call(grid.querySelectorAll('.card'),function(c){
-        c.hidden = !(sel==='Todos'||catOf(c)===sel);
-      });
-      var featCard=featWrap?featWrap.querySelector('.featured'):null;
-      if(featCard) featCard.hidden = !(sel==='Todos'||catOf(featCard)===sel);
-    }
-    function activeSel(){ var a=cats.querySelector('.cat-chip.active'); return a?(a.getAttribute('data-cat')||a.textContent.trim()):'Todos'; }
-    cats.addEventListener('click',function(e){
-      var chip=e.target.closest('.cat-chip'); if(!chip) return;
-      [].forEach.call(cats.querySelectorAll('.cat-chip'),function(c){c.classList.remove('active');});
-      chip.classList.add('active');
-      apply(chip.getAttribute('data-cat')||chip.textContent.trim());
-    });
-    if(grid && window.MutationObserver){
-      new MutationObserver(function(){ apply(activeSel()); }).observe(grid,{childList:true});
-    }
-    apply('Todos');
   })();
   </script>
   <script src="/site-chrome.js" defer></script>
