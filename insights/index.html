@@ -106,9 +106,11 @@
     .sec-head h3{font-family:var(--font-display);font-weight:400;font-size:26px;letter-spacing:-.01em}
     .sec-head .cats{display:flex;gap:8px;flex-wrap:wrap}
     .cat-chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-muted);background:var(--bg-deep);border:1px solid var(--border);border-radius:999px;padding:6px 13px;cursor:pointer;transition:color .18s ease,background .18s ease,border-color .18s ease;user-select:none}
-    .cat-chip:hover{color:var(--k,var(--accent));background:var(--kb,var(--accent-soft));border-color:var(--kd,var(--accent-border))}
-    .cat-chip.active{color:var(--k,var(--accent));background:var(--kb,var(--accent-soft));border-color:var(--k,var(--accent))}
-    .cat-chip:focus-visible{outline:2px solid var(--k,var(--accent));outline-offset:2px}
+    .cat-chip.cat-fundraising:hover,.cat-chip.cat-fundraising.active{color:#0f4c3a;background:rgba(15,76,58,.10);border-color:#0f4c3a}
+    .cat-chip.cat-mercado:hover,.cat-chip.cat-mercado.active{color:#2b5d86;background:rgba(43,93,134,.11);border-color:#2b5d86}
+    .cat-chip.cat-cases:hover,.cat-chip.cat-cases.active{color:#a75d27;background:rgba(167,93,39,.11);border-color:#a75d27}
+    .cat-chip.cat-ma:hover,.cat-chip.cat-ma.active{color:#6d4c86;background:rgba(109,76,134,.12);border-color:#6d4c86}
+    .cat-chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     .cat-fundraising{--k:#0f4c3a;--kb:rgba(15,76,58,.09);--kd:rgba(15,76,58,.22)}
     .cat-mercado{--k:#2b5d86;--kb:rgba(43,93,134,.10);--kd:rgba(43,93,134,.24)}
     .cat-cases{--k:#a75d27;--kb:rgba(167,93,39,.10);--kd:rgba(167,93,39,.24)}
