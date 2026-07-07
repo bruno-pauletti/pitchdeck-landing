@@ -326,6 +326,7 @@
     @media (max-width: 900px) { .megamenu-grid { grid-template-columns: 1fr; } }
     .mm-col-inv { border-left: 1px solid var(--border); padding-left: 22px; }
     @media (max-width: 900px) { .mm-col-inv { border-left: 0; padding-left: 0; border-top: 1px solid var(--border); padding-top: 14px; } }
+    .megamenu-grid[data-cms="hubs"] { display: block; }
     .mm-group { display: block; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
     .svc-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 7px 8px; margin: 0 -8px; border-radius: 8px; text-decoration: none; }
     a.svc-row:hover { background: var(--accent-soft); }
@@ -2386,40 +2387,12 @@
           <div class="nav-hub-wrap">
             <a href="https://pitchdeck.com.br/hubs" class="header-nav-link nav-hub" aria-haspopup="true">Hubs <span class="chev" aria-hidden="true">▾</span></a>
             <div class="megamenu" role="menu" aria-label="Hubs parceiros">
-              <div class="megamenu-head">
-                <span class="eyebrow eyebrow-accent">Powered by PitchDeck</span>
-                <p class="megamenu-title">Comunidades onde o PitchDeck é <em>benefício gratuito</em></p>
-              </div>
               <div class="megamenu-grid" data-cms="hubs">
                 <!--cms:hubs-menu:start-->
-                <a class="hub-card active" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem">
-                  <span class="hub-card-mark fc">F</span>
-                  <span class="hub-card-body">
-                    <span class="hub-card-name">FoundersClub <span class="hub-pill live">No ar</span></span>
-                    <span class="hub-card-desc">Ecossistema para startups · +10.000 founders. Análise completa do pitch grátis</span>
-                  </span>
-                </a>
-                <span class="hub-card soon" role="menuitem" aria-disabled="true">
-                  <span class="hub-card-mark soon">+</span>
-                  <span class="hub-card-body">
-                    <span class="hub-card-name">Gávea Angels <span class="hub-pill soon">Em breve</span></span>
-                    <span class="hub-card-desc">Em negociação para trazer o PitchDeck às startups aceleradas.</span>
-                  </span>
-                </span>
-                <span class="hub-card soon" role="menuitem" aria-disabled="true">
-                  <span class="hub-card-mark soon">+</span>
-                  <span class="hub-card-body">
-                    <span class="hub-card-name">Redes de anjos <span class="hub-pill soon">Em breve</span></span>
-                    <span class="hub-card-desc">Em conversa com redes de investidores-anjo.</span>
-                  </span>
-                </span>
-                <span class="hub-card soon" role="menuitem" aria-disabled="true">
-                  <span class="hub-card-mark soon">+</span>
-                  <span class="hub-card-body">
-                    <span class="hub-card-name">Hubs de inovação <span class="hub-pill soon">Em breve</span></span>
-                    <span class="hub-card-desc">Novos hubs entrando na rede em breve.</span>
-                  </span>
-                </span>
+                <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
+                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Gávea Angels <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
+                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Redes de anjos <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
+                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Hubs de inovação <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Hub de inovação</span></span>
                 <!--cms:hubs-menu:end-->
               </div>
               <div class="megamenu-foot">
@@ -2458,7 +2431,14 @@
       <span class="svc-row" aria-disabled="true"><span class="svc-name">Dossiê para Comitê <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Buy-side · Comitê</span></span>
       <a class="mm-acc-all" href="https://pitchdeck.com.br/servicos">Ver todos os serviços →</a>
     </div>
-    <a href="https://pitchdeck.com.br/hubs" class="mobile-menu-link">Hubs · FoundersClub</a>
+    <button class="mm-acc-toggle" id="mmHubToggle" aria-expanded="false" aria-controls="mmHubPanel">Hubs <span class="chev-m" aria-hidden="true">▾</span></button>
+    <div class="mm-acc" id="mmHubPanel" data-cms="hubs-mobile">
+      <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
+      <span class="svc-row" aria-disabled="true"><span class="svc-name">Gávea Angels <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
+      <span class="svc-row" aria-disabled="true"><span class="svc-name">Redes de anjos <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
+      <span class="svc-row" aria-disabled="true"><span class="svc-name">Hubs de inovação <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Hub de inovação</span></span>
+      <a class="mm-acc-all" href="https://pitchdeck.com.br/hubs">Ver todos os hubs →</a>
+    </div>
     <a href="https://pitchdeck.com.br/insights" class="mobile-menu-link">Insights</a>
     <a href="https://pitchdeck.com.br/vitrine" class="mobile-menu-link">↑ Vitrine</a>
     <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-header%5D" target="_blank" rel="noopener" class="mobile-menu-cta">
@@ -3298,6 +3278,12 @@
       svcT.setAttribute('aria-expanded', o ? 'true' : 'false');
     });
 
+    const hubT = document.getElementById('mmHubToggle'), hubP = document.getElementById('mmHubPanel');
+    if (hubT && hubP) hubT.addEventListener('click', () => {
+      const o = hubP.classList.toggle('open');
+      hubT.setAttribute('aria-expanded', o ? 'true' : 'false');
+    });
+
     // Fecha ao clicar fora
     mobileMenu.addEventListener('click', e => {
       if (e.target === mobileMenu) closeMobileMenu();
@@ -3320,22 +3306,22 @@
         .catch(function(){});
     }
 
-    // ── Hubs (mega menu) — toggle: Status No ar / Em breve ──
+    // ── Hubs (mega menu) — linhas compactas ──
     var menu = document.querySelector('.megamenu-grid[data-cms="hubs"]');
-    if (menu) load('Hubs', function(rows){
+    var hubmob = document.querySelector('.mm-acc[data-cms="hubs-mobile"]');
+    if (menu || hubmob) load('Hubs', function(rows){
       rows = rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
       if(!rows.length) return;
-      menu.innerHTML = rows.map(function(h){
-        var logo = h.Logo && h.Logo[0] && h.Logo[0].url;
-        var mk = logo ? '<span class="hub-card-mark" style="background:#fff;padding:3px"><img src="'+esc(logo)+'" alt="" style="width:100%;height:100%;object-fit:contain"></span>'
-          : (h.Status==='No ar' ? '<span class="hub-card-mark fc">'+esc((h.Nome||'?').trim().charAt(0).toUpperCase())+'</span>' : '<span class="hub-card-mark soon">+</span>');
-        if(h.Status==='No ar'){
-          var u=h['URL hub']||('https://pitchdeck.com.br/hubs/'+(h.Slug||''));
-          var desc=esc(h.Segmento||'')+' · '+esc(h['Stat destaque']||'')+'. '+esc(h['Benefício']||'');
-          return '<a class="hub-card active" href="'+esc(u)+'" role="menuitem">'+mk+'<span class="hub-card-body"><span class="hub-card-name">'+esc(h.Nome)+' <span class="hub-pill live">No ar</span></span><span class="hub-card-desc">'+desc+'</span></span></a>';
-        }
-        return '<span class="hub-card soon" role="menuitem" aria-disabled="true">'+mk+'<span class="hub-card-body"><span class="hub-card-name">'+esc(h.Nome)+' <span class="hub-pill soon">Em breve</span></span><span class="hub-card-desc">'+esc(h['Descrição curta']||'')+'</span></span></span>';
-      }).join('');
+      function rowH(h){
+        var chip = h['Stat destaque'] || h.Segmento || '';
+        var pill = h.Status==='No ar' ? ' <span class="hub-pill live">No ar</span>' : ' <span class="hub-pill soon">Em breve</span>';
+        var inner = '<span class="svc-name">'+esc(h.Nome)+pill+'</span>'+(chip?'<span class="svc-chip">'+esc(chip)+'</span>':'');
+        var u = h.Status==='No ar' ? (h['URL hub']||('https://pitchdeck.com.br/hubs/'+(h.Slug||''))) : '';
+        return u ? '<a class="svc-row" href="'+esc(u)+'" role="menuitem">'+inner+'</a>' : '<span class="svc-row" role="menuitem" aria-disabled="true">'+inner+'</span>';
+      }
+      var html = rows.map(rowH).join('');
+      if (menu) menu.innerHTML = html;
+      if (hubmob) hubmob.innerHTML = html + '<a class="mm-acc-all" href="/hubs">Ver todos os hubs →</a>';
     });
 
     // ── AI Agents (mega menu) — 2 colunas por Perfil ──

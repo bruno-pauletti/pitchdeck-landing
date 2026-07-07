@@ -108,6 +108,7 @@
   a.pdc-svc-item:hover{background:rgba(15,76,58,.08)}
   .pdc-svc-desc{display:block;font-size:12px;color:var(--pdc-muted);line-height:1.45;margin-top:2px}
   .pdc-mm-note{display:block;font-size:11.5px;color:#0F4C3A;margin-top:10px}
+  .pdc-grid[data-pdc="hubs"]{display:block}
   .pdc-macc-t{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;border-bottom:1px solid var(--pdc-border);font-family:var(--pdc-d);font-size:24px;color:var(--pdc-text);padding:10px 0;cursor:pointer;text-align:left}
   .pdc-macc-chev{font-size:13px;color:var(--pdc-muted);transition:transform .2s}
   .pdc-macc-t[aria-expanded="true"] .pdc-macc-chev{transform:rotate(180deg)}
@@ -131,7 +132,6 @@
       + '</div></div>'
     + '<div class="pdc-hubwrap"><a href="/hubs" class="pdc-link pdc-hub">Hubs <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
-        + '<span class="pdc-mm-eye">Powered by PitchDeck</span><p class="pdc-mm-title">Comunidades onde o PitchDeck é <em>benefício gratuito</em></p>'
         + '<div class="pdc-grid" data-pdc="hubs"></div>'
         + '<div class="pdc-mm-foot"><span>Tem uma comunidade de founders?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Tenho%20uma%20comunidade%20de%20founders%20e%20quero%20oferecer%20o%20PitchDeck%20como%20benef%C3%ADcio%20aos%20membros.%20%5BREF%3A%20hubs-parceiro%5D" target="_blank" rel="noopener">Seja um hub parceiro →</a></div>'
       + '</div></div>'
@@ -145,7 +145,9 @@
   + '<div class="pdc-mobile" id="pdcMobile">'
     + '<button class="pdc-macc-t" id="pdcSvcT" aria-expanded="false" aria-controls="pdcSvcP">Nossos Serviços <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
     + '<div class="pdc-macc" id="pdcSvcP" data-pdc="ai-agents-mobile"><a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a></div>'
-    + '<a href="/hubs">Hubs</a><a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
+    + '<button class="pdc-macc-t" id="pdcHubT" aria-expanded="false" aria-controls="pdcHubP">Hubs <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
+    + '<div class="pdc-macc" id="pdcHubP" data-pdc="hubs-mobile"><a class="pdc-macc-all" href="/hubs">Ver todos os hubs →</a></div>'
+    + '<a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
     + '<a href="'+WA_FULL+'" target="_blank" rel="noopener" class="cta">Rodar análise grátis →</a>'
   + '</div>';
 
@@ -176,7 +178,9 @@
     if(ham&&mob){ ham.addEventListener('click',function(){ var o=mob.classList.toggle('open'); ham.classList.toggle('open',o); document.body.style.overflow=o?'hidden':''; });
       mob.addEventListener('click',function(e){ if(e.target.closest('a')){mob.classList.remove('open');ham.classList.remove('open');document.body.style.overflow='';} });
       var st=document.getElementById('pdcSvcT'), sp=document.getElementById('pdcSvcP');
-      if(st&&sp) st.addEventListener('click',function(){ var o=sp.classList.toggle('open'); st.setAttribute('aria-expanded',o?'true':'false'); }); }
+      if(st&&sp) st.addEventListener('click',function(){ var o=sp.classList.toggle('open'); st.setAttribute('aria-expanded',o?'true':'false'); });
+      var ht=document.getElementById('pdcHubT'), hp=document.getElementById('pdcHubP');
+      if(ht&&hp) ht.addEventListener('click',function(){ var o=hp.classList.toggle('open'); ht.setAttribute('aria-expanded',o?'true':'false'); }); }
 
     loadMenus();
   }
@@ -216,20 +220,21 @@
         +'<span class="pdc-mm-group">Para investidores</span>'+inv.map(rowE).join('')
         +'<a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a>';
     });
-    // Hubs
+    // Hubs — linhas compactas
     var hb=document.querySelector('.pdc-grid[data-pdc="hubs"]');
-    if(hb) load('Hubs',function(rows){
+    var hbm=document.querySelector('.pdc-macc[data-pdc="hubs-mobile"]');
+    if(hb||hbm) load('Hubs',function(rows){
       rows=rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';}); if(!rows.length) return;
-      hb.innerHTML=rows.map(function(h){
-        var logo=h.Logo&&h.Logo[0]&&h.Logo[0].url;
-        var mk=logo?'<span class="pdc-mark" style="background:#fff;padding:3px"><img src="'+esc(logo)+'" alt="" style="width:100%;height:100%;object-fit:contain"></span>':(h.Status==='No ar'?'<span class="pdc-mark fc">'+esc((h.Nome||'?').trim().charAt(0).toUpperCase())+'</span>':'<span class="pdc-mark soon">+</span>');
-        if(h.Status==='No ar'){
-          var u=h['URL hub']||'https://pitchdeck.com.br/hubs/'+(h.Slug||'');
-          var desc=esc(h.Segmento||'')+' · '+esc(h['Stat destaque']||'')+'. '+esc(h['Benefício']||'');
-          return '<a class="pdc-card active" href="'+esc(u)+'" role="menuitem">'+mk+'<span class="pdc-cbody"><span class="pdc-cname">'+esc(h.Nome)+' <span class="pdc-pill live">No ar</span></span><span class="pdc-cdesc">'+desc+'</span></span></a>';
-        }
-        return '<span class="pdc-card soon" role="menuitem" aria-disabled="true">'+mk+'<span class="pdc-cbody"><span class="pdc-cname">'+esc(h.Nome)+' <span class="pdc-pill soon">Em breve</span></span><span class="pdc-cdesc">'+esc(h['Descrição curta']||'')+'</span></span></span>';
-      }).join('');
+      function rowH(h){
+        var chip=h['Stat destaque']||h.Segmento||'';
+        var pill=h.Status==='No ar'?' <span class="pdc-pill live">No ar</span>':' <span class="pdc-pill soon">Em breve</span>';
+        var inner='<span class="pdc-svc-name">'+esc(h.Nome)+pill+'</span>'+(chip?'<span class="pdc-svc-chip">'+esc(chip)+'</span>':'');
+        var u=h.Status==='No ar'?(h['URL hub']||('https://pitchdeck.com.br/hubs/'+(h.Slug||''))):'';
+        return u?'<a class="pdc-svc-row" href="'+esc(u)+'" role="menuitem">'+inner+'</a>':'<span class="pdc-svc-row" role="menuitem" aria-disabled="true">'+inner+'</span>';
+      }
+      var html=rows.map(rowH).join('');
+      if(hb) hb.innerHTML=html;
+      if(hbm) hbm.innerHTML=html+'<a class="pdc-macc-all" href="/hubs">Ver todos os hubs →</a>';
     });
   }
 
