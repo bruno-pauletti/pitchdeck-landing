@@ -326,7 +326,6 @@
     @media (max-width: 900px) { .megamenu-grid { grid-template-columns: 1fr; } }
     .mm-col-inv { border-left: 1px solid var(--border); padding-left: 22px; }
     @media (max-width: 900px) { .mm-col-inv { border-left: 0; padding-left: 0; border-top: 1px solid var(--border); padding-top: 14px; } }
-    .megamenu-grid[data-cms="hubs"] { display: block; }
     .mm-group { display: block; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
     .svc-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 7px 8px; margin: 0 -8px; border-radius: 8px; text-decoration: none; }
     a.svc-row:hover { background: var(--accent-soft); }
@@ -2389,14 +2388,23 @@
             <div class="megamenu" role="menu" aria-label="Hubs parceiros">
               <div class="megamenu-grid" data-cms="hubs">
                 <!--cms:hubs-menu:start-->
-                <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
-                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Gávea Angels <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
-                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Redes de anjos <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
-                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Hubs de inovação <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Hub de inovação</span></span>
+                <div class="mm-col">
+                  <span class="mm-group">Comunidades &amp; aceleração</span>
+                  <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
+                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Aceleradoras &amp; incubadoras <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Benefício p/ portfólio</span></span>
+                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Programas públicos &amp; universidades <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Fomento &amp; ensino</span></span>
+                </div>
+                <div class="mm-col mm-col-inv">
+                  <span class="mm-group">Capital &amp; corporates</span>
+                  <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Gávea Angels <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
+                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Gestoras VC · CVC · PE <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Portfólio + triagem</span></span>
+                <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Open innovation &amp; scale-ups <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Programas corporativos</span></span>
+                  <span class="mm-note">Casas de capital acessam também os serviços buy-side — triagem e dossiê</span>
+                </div>
                 <!--cms:hubs-menu:end-->
               </div>
               <div class="megamenu-foot">
-                <span>Tem uma comunidade de founders?</span>
+                <span>Tem uma comunidade de founders ou recebe dealflow?</span>
                 <a class="megamenu-cta" href="https://wa.me/5521936194950?text=Oi!%20Tenho%20uma%20comunidade%20de%20founders%20e%20quero%20oferecer%20o%20PitchDeck%20como%20benef%C3%ADcio%20aos%20membros.%20%5BREF%3A%20hubs-parceiro%5D" target="_blank" rel="noopener">Seja um hub parceiro →</a>
               </div>
             </div>
@@ -2433,10 +2441,14 @@
     </div>
     <button class="mm-acc-toggle" id="mmHubToggle" aria-expanded="false" aria-controls="mmHubPanel">Hubs <span class="chev-m" aria-hidden="true">▾</span></button>
     <div class="mm-acc" id="mmHubPanel" data-cms="hubs-mobile">
-      <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
-      <span class="svc-row" aria-disabled="true"><span class="svc-name">Gávea Angels <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
-      <span class="svc-row" aria-disabled="true"><span class="svc-name">Redes de anjos <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
-      <span class="svc-row" aria-disabled="true"><span class="svc-name">Hubs de inovação <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Hub de inovação</span></span>
+      <span class="mm-group">Comunidades &amp; aceleração</span>
+      <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
+      <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Aceleradoras &amp; incubadoras <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Benefício p/ portfólio</span></span>
+      <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Programas públicos &amp; universidades <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Fomento &amp; ensino</span></span>
+      <span class="mm-group">Capital &amp; corporates</span>
+      <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Gávea Angels <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Rede de anjos</span></span>
+      <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Gestoras VC · CVC · PE <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Portfólio + triagem</span></span>
+      <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Open innovation &amp; scale-ups <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Programas corporativos</span></span>
       <a class="mm-acc-all" href="https://pitchdeck.com.br/hubs">Ver todos os hubs →</a>
     </div>
     <a href="https://pitchdeck.com.br/insights" class="mobile-menu-link">Insights</a>
@@ -3306,22 +3318,30 @@
         .catch(function(){});
     }
 
-    // ── Hubs (mega menu) — linhas compactas ──
+    // ── Hubs (mega menu) — 2 colunas por Categoria ──
     var menu = document.querySelector('.megamenu-grid[data-cms="hubs"]');
     var hubmob = document.querySelector('.mm-acc[data-cms="hubs-mobile"]');
     if (menu || hubmob) load('Hubs', function(rows){
       rows = rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
       if(!rows.length) return;
+      var CAPITAL = {'Redes de anjos':1,'Gestoras VC · CVC · PE':1,'Open innovation & scale-ups':1};
       function rowH(h){
-        var chip = h['Stat destaque'] || h.Segmento || '';
+        var chip = h['Stat destaque'] || h.Categoria || h.Segmento || '';
         var pill = h.Status==='No ar' ? ' <span class="hub-pill live">No ar</span>' : ' <span class="hub-pill soon">Em breve</span>';
         var inner = '<span class="svc-name">'+esc(h.Nome)+pill+'</span>'+(chip?'<span class="svc-chip">'+esc(chip)+'</span>':'');
         var u = h.Status==='No ar' ? (h['URL hub']||('https://pitchdeck.com.br/hubs/'+(h.Slug||''))) : '';
         return u ? '<a class="svc-row" href="'+esc(u)+'" role="menuitem">'+inner+'</a>' : '<span class="svc-row" role="menuitem" aria-disabled="true">'+inner+'</span>';
       }
-      var html = rows.map(rowH).join('');
-      if (menu) menu.innerHTML = html;
-      if (hubmob) hubmob.innerHTML = html + '<a class="mm-acc-all" href="/hubs">Ver todos os hubs →</a>';
+      var com = rows.filter(function(f){return !CAPITAL[f.Categoria];});
+      var cap = rows.filter(function(f){return CAPITAL[f.Categoria];});
+      if (menu) menu.innerHTML =
+        '<div class="mm-col"><span class="mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')+'</div>'
+        + '<div class="mm-col mm-col-inv"><span class="mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
+        + '<span class="mm-note">Casas de capital acessam também os serviços buy-side — triagem e dossiê</span></div>';
+      if (hubmob) hubmob.innerHTML =
+        '<span class="mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')
+        + '<span class="mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
+        + '<a class="mm-acc-all" href="/hubs">Ver todos os hubs →</a>';
     });
 
     // ── AI Agents (mega menu) — 2 colunas por Perfil ──

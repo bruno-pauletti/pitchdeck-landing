@@ -108,7 +108,8 @@
   a.pdc-svc-item:hover{background:rgba(15,76,58,.08)}
   .pdc-svc-desc{display:block;font-size:12px;color:var(--pdc-muted);line-height:1.45;margin-top:2px}
   .pdc-mm-note{display:block;font-size:11.5px;color:#0F4C3A;margin-top:10px}
-  .pdc-grid[data-pdc="hubs"]{display:block}
+  .pdc-grid[data-pdc="hubs"]{grid-template-columns:1.15fr 1fr;gap:22px}
+  @media(max-width:900px){.pdc-grid[data-pdc="hubs"]{grid-template-columns:1fr}}
   .pdc-macc-t{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;border-bottom:1px solid var(--pdc-border);font-family:var(--pdc-d);font-size:24px;color:var(--pdc-text);padding:10px 0;cursor:pointer;text-align:left}
   .pdc-macc-chev{font-size:13px;color:var(--pdc-muted);transition:transform .2s}
   .pdc-macc-t[aria-expanded="true"] .pdc-macc-chev{transform:rotate(180deg)}
@@ -133,7 +134,7 @@
     + '<div class="pdc-hubwrap"><a href="/hubs" class="pdc-link pdc-hub">Hubs <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
         + '<div class="pdc-grid" data-pdc="hubs"></div>'
-        + '<div class="pdc-mm-foot"><span>Tem uma comunidade de founders?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Tenho%20uma%20comunidade%20de%20founders%20e%20quero%20oferecer%20o%20PitchDeck%20como%20benef%C3%ADcio%20aos%20membros.%20%5BREF%3A%20hubs-parceiro%5D" target="_blank" rel="noopener">Seja um hub parceiro →</a></div>'
+        + '<div class="pdc-mm-foot"><span>Tem uma comunidade de founders ou recebe dealflow?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Tenho%20uma%20comunidade%20de%20founders%20e%20quero%20oferecer%20o%20PitchDeck%20como%20benef%C3%ADcio%20aos%20membros.%20%5BREF%3A%20hubs-parceiro%5D" target="_blank" rel="noopener">Seja um hub parceiro →</a></div>'
       + '</div></div>'
     + '<a href="/insights" class="pdc-link">Insights</a>'
     + '<div class="pdc-sep" aria-hidden="true"></div>'
@@ -220,21 +221,27 @@
         +'<span class="pdc-mm-group">Para investidores</span>'+inv.map(rowE).join('')
         +'<a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a>';
     });
-    // Hubs — linhas compactas
+    // Hubs — 2 colunas por Categoria
     var hb=document.querySelector('.pdc-grid[data-pdc="hubs"]');
     var hbm=document.querySelector('.pdc-macc[data-pdc="hubs-mobile"]');
     if(hb||hbm) load('Hubs',function(rows){
       rows=rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';}); if(!rows.length) return;
+      var CAPITAL={'Redes de anjos':1,'Gestoras VC · CVC · PE':1,'Open innovation & scale-ups':1};
       function rowH(h){
-        var chip=h['Stat destaque']||h.Segmento||'';
+        var chip=h['Stat destaque']||h.Categoria||h.Segmento||'';
         var pill=h.Status==='No ar'?' <span class="pdc-pill live">No ar</span>':' <span class="pdc-pill soon">Em breve</span>';
         var inner='<span class="pdc-svc-name">'+esc(h.Nome)+pill+'</span>'+(chip?'<span class="pdc-svc-chip">'+esc(chip)+'</span>':'');
         var u=h.Status==='No ar'?(h['URL hub']||('https://pitchdeck.com.br/hubs/'+(h.Slug||''))):'';
         return u?'<a class="pdc-svc-row" href="'+esc(u)+'" role="menuitem">'+inner+'</a>':'<span class="pdc-svc-row" role="menuitem" aria-disabled="true">'+inner+'</span>';
       }
-      var html=rows.map(rowH).join('');
-      if(hb) hb.innerHTML=html;
-      if(hbm) hbm.innerHTML=html+'<a class="pdc-macc-all" href="/hubs">Ver todos os hubs →</a>';
+      var com=rows.filter(function(f){return !CAPITAL[f.Categoria];});
+      var cap=rows.filter(function(f){return CAPITAL[f.Categoria];});
+      if(hb) hb.innerHTML='<div><span class="pdc-mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')+'</div>'
+        +'<div class="pdc-col-inv"><span class="pdc-mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
+        +'<span class="pdc-mm-note">Casas de capital acessam também os serviços buy-side — triagem e dossiê</span></div>';
+      if(hbm) hbm.innerHTML='<span class="pdc-mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')
+        +'<span class="pdc-mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
+        +'<a class="pdc-macc-all" href="/hubs">Ver todos os hubs →</a>';
     });
   }
 
