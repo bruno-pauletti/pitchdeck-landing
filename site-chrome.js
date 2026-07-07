@@ -108,6 +108,15 @@
   a.pdc-svc-item:hover{background:rgba(15,76,58,.08)}
   .pdc-svc-desc{display:block;font-size:12px;color:var(--pdc-muted);line-height:1.45;margin-top:2px}
   .pdc-mm-note{display:block;font-size:11.5px;color:#0F4C3A;margin-top:10px}
+  .pdc-macc-t{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;border-bottom:1px solid var(--pdc-border);font-family:var(--pdc-d);font-size:24px;color:var(--pdc-text);padding:10px 0;cursor:pointer;text-align:left}
+  .pdc-macc-chev{font-size:13px;color:var(--pdc-muted);transition:transform .2s}
+  .pdc-macc-t[aria-expanded="true"] .pdc-macc-chev{transform:rotate(180deg)}
+  .pdc-macc{display:none;padding:6px 0 12px;border-bottom:1px solid var(--pdc-border)}
+  .pdc-macc.open{display:block}
+  .pdc-mobile .pdc-macc a{font-family:var(--pdc-b);font-size:15px;border-bottom:0;padding:8px 0}
+  .pdc-macc .pdc-mm-group{margin:10px 0 4px}
+  .pdc-macc .pdc-svc-row{margin:0;padding:8px 0}
+  .pdc-mobile .pdc-macc a.pdc-macc-all{display:inline-block;margin-top:8px;font-weight:600;font-size:14px;color:#0F4C3A}
   `;
 
   /* ---------- HEADER ---------- */
@@ -134,7 +143,9 @@
   + '<button class="pdc-ham" id="pdcHam" aria-label="Abrir menu"><span></span><span></span><span></span></button>'
   + '</div></div></header>'
   + '<div class="pdc-mobile" id="pdcMobile">'
-    + '<a href="/servicos">Nossos Serviços</a><a href="/hubs">Hubs</a><a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
+    + '<button class="pdc-macc-t" id="pdcSvcT" aria-expanded="false" aria-controls="pdcSvcP">Nossos Serviços <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
+    + '<div class="pdc-macc" id="pdcSvcP" data-pdc="ai-agents-mobile"><a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a></div>'
+    + '<a href="/hubs">Hubs</a><a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
     + '<a href="'+WA_FULL+'" target="_blank" rel="noopener" class="cta">Rodar análise grátis →</a>'
   + '</div>';
 
@@ -163,7 +174,9 @@
     // mobile toggle
     var ham=document.getElementById('pdcHam'), mob=document.getElementById('pdcMobile');
     if(ham&&mob){ ham.addEventListener('click',function(){ var o=mob.classList.toggle('open'); ham.classList.toggle('open',o); document.body.style.overflow=o?'hidden':''; });
-      mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');ham.classList.remove('open');document.body.style.overflow='';});}); }
+      mob.addEventListener('click',function(e){ if(e.target.closest('a')){mob.classList.remove('open');ham.classList.remove('open');document.body.style.overflow='';} });
+      var st=document.getElementById('pdcSvcT'), sp=document.getElementById('pdcSvcP');
+      if(st&&sp) st.addEventListener('click',function(){ var o=sp.classList.toggle('open'); st.setAttribute('aria-expanded',o?'true':'false'); }); }
 
     loadMenus();
   }
@@ -179,7 +192,8 @@
     }
     // AI Agents — 2 colunas por Perfil
     var ag=document.querySelector('.pdc-grid[data-pdc="ai-agents"]');
-    if(ag) load('AI Agents',function(rows){
+    var agm=document.querySelector('.pdc-macc[data-pdc="ai-agents-mobile"]');
+    if(ag||agm) load('AI Agents',function(rows){
       rows=rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';}); if(!rows.length) return;
       function pill(a){return a.Status==='No ar'?' <span class="pdc-pill live">No ar</span>':' <span class="pdc-pill soon">Em breve</span>';}
       function urlOf(a){return a['URL']||(a.Slug?'/servicos/'+a.Slug:'');}
@@ -195,9 +209,12 @@
       }
       var emp=rows.filter(function(f){return f.Perfil!=='Investidores';});
       var inv=rows.filter(function(f){return f.Perfil==='Investidores';});
-      ag.innerHTML='<div><span class="pdc-mm-group">Para empreendedores</span>'+emp.map(rowE).join('')+'</div>'
+      if(ag) ag.innerHTML='<div><span class="pdc-mm-group">Para empreendedores</span>'+emp.map(rowE).join('')+'</div>'
         +'<div class="pdc-col-inv"><span class="pdc-mm-group">Para investidores</span>'+inv.map(itemI).join('')
         +'<span class="pdc-mm-note">Acesso para family offices, private banking e boutiques parceiras</span></div>';
+      if(agm) agm.innerHTML='<span class="pdc-mm-group">Para empreendedores</span>'+emp.map(rowE).join('')
+        +'<span class="pdc-mm-group">Para investidores</span>'+inv.map(rowE).join('')
+        +'<a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a>';
     });
     // Hubs
     var hb=document.querySelector('.pdc-grid[data-pdc="hubs"]');

@@ -236,6 +236,15 @@
       transition: color 0.2s;
     }
     .mobile-menu-link:hover { color: var(--accent); }
+    .mm-acc-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--border); font-family: var(--font-body); font-size: 18px; font-weight: 500; color: var(--text); padding: 14px 0; cursor: pointer; }
+    .mm-acc-toggle .chev-m { font-size: 11px; color: var(--text-faint); transition: transform .2s; }
+    .mm-acc-toggle[aria-expanded="true"] .chev-m { transform: rotate(180deg); }
+    .mm-acc { display: none; padding: 6px 0 14px; border-bottom: 1px solid var(--border); }
+    .mm-acc.open { display: block; }
+    .mm-acc .mm-group { margin: 10px 0 4px; }
+    .mm-acc .svc-row { margin: 0; padding: 8px 0; }
+    .mm-acc .svc-name { font-size: 15px; }
+    .mm-acc-all { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
     .mobile-menu-cta {
       margin-top: 1.5rem;
       display: inline-flex;
@@ -2437,7 +2446,18 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
-    <a href="https://pitchdeck.com.br/servicos" class="mobile-menu-link">Nossos Serviços</a>
+    <button class="mm-acc-toggle" id="mmSvcToggle" aria-expanded="false" aria-controls="mmSvcPanel">Nossos Serviços <span class="chev-m" aria-hidden="true">▾</span></button>
+    <div class="mm-acc" id="mmSvcPanel" data-cms="ai-agents-mobile">
+      <span class="mm-group">Para empreendedores</span>
+      <a class="svc-row" href="https://pitchdeck.com.br/servicos/analise-de-pitch-deck"><span class="svc-name">Análise de Pitch Deck <span class="hub-pill live">No ar</span></span><span class="svc-chip">Pre-seed · Seed</span></a>
+      <a class="svc-row" href="https://pitchdeck.com.br/servicos/financials-startups-agenticas"><span class="svc-name">Análise Financeira <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Todos os estágios</span></a>
+      <a class="svc-row" href="https://pitchdeck.com.br/servicos/market-breakdown"><span class="svc-name">Raio-X de Mercado <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Todos os estágios</span></a>
+      <a class="svc-row" href="https://pitchdeck.com.br/servicos/ma-advisor"><span class="svc-name">Assessoria de M&amp;A <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Growth → Exit</span></a>
+      <span class="mm-group">Para investidores</span>
+      <span class="svc-row" aria-disabled="true"><span class="svc-name">Triagem de Ofertas <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">FO · Private banking</span></span>
+      <span class="svc-row" aria-disabled="true"><span class="svc-name">Dossiê para Comitê <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Buy-side · Comitê</span></span>
+      <a class="mm-acc-all" href="https://pitchdeck.com.br/servicos">Ver todos os serviços →</a>
+    </div>
     <a href="https://pitchdeck.com.br/hubs" class="mobile-menu-link">Hubs · FoundersClub</a>
     <a href="https://pitchdeck.com.br/insights" class="mobile-menu-link">Insights</a>
     <a href="https://pitchdeck.com.br/vitrine" class="mobile-menu-link">↑ Vitrine</a>
@@ -3271,6 +3291,13 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
+    // Accordion de serviços no mobile
+    const svcT = document.getElementById('mmSvcToggle'), svcP = document.getElementById('mmSvcPanel');
+    if (svcT && svcP) svcT.addEventListener('click', () => {
+      const o = svcP.classList.toggle('open');
+      svcT.setAttribute('aria-expanded', o ? 'true' : 'false');
+    });
+
     // Fecha ao clicar fora
     mobileMenu.addEventListener('click', e => {
       if (e.target === mobileMenu) closeMobileMenu();
@@ -3313,7 +3340,8 @@
 
     // ── AI Agents (mega menu) — 2 colunas por Perfil ──
     var aimenu = document.querySelector('.megamenu-grid[data-cms="ai-agents"]');
-    if (aimenu) load('AI Agents', function(rows){
+    var aimob = document.querySelector('.mm-acc[data-cms="ai-agents-mobile"]');
+    if (aimenu || aimob) load('AI Agents', function(rows){
       rows = rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
       if(!rows.length) return;
       function pill(a){return a.Status==='No ar' ? ' <span class="hub-pill live">No ar</span>' : ' <span class="hub-pill soon">Em breve</span>';}
@@ -3330,10 +3358,14 @@
       }
       var emp = rows.filter(function(f){return f.Perfil!=='Investidores';});
       var inv = rows.filter(function(f){return f.Perfil==='Investidores';});
-      aimenu.innerHTML =
+      if (aimenu) aimenu.innerHTML =
         '<div class="mm-col"><span class="mm-group">Para empreendedores</span>'+emp.map(rowE).join('')+'</div>'
         + '<div class="mm-col mm-col-inv"><span class="mm-group">Para investidores</span>'+inv.map(itemI).join('')
         + '<span class="mm-note">Acesso para family offices, private banking e boutiques parceiras</span></div>';
+      if (aimob) aimob.innerHTML =
+        '<span class="mm-group">Para empreendedores</span>'+emp.map(rowE).join('')
+        + '<span class="mm-group">Para investidores</span>'+inv.map(rowE).join('')
+        + '<a class="mm-acc-all" href="/servicos">Ver todos os serviços →</a>';
     });
 
     // ── Depoimentos — toggle: checkbox Publicado ──
