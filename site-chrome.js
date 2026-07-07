@@ -117,7 +117,6 @@
   + '<nav class="pdc-nav" aria-label="Navegação principal">'
     + '<div class="pdc-hubwrap"><a href="/servicos" class="pdc-link pdc-hub">Nossos Serviços <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
-        + '<span class="pdc-mm-eye">PitchDeck · Nossos Serviços</span><p class="pdc-mm-title">Serviços entregues por <em>agentes de IA</em></p>'
         + '<div class="pdc-grid" data-pdc="ai-agents"></div>'
         + '<div class="pdc-mm-foot"><span>Serviços entregues por agentes de IA proprietários — envie o documento, receba o resultado.</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20do%20PitchDeck.%20%5BREF%3A%20servicos-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a></div>'
       + '</div></div>'
