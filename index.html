@@ -314,6 +314,7 @@
     .megamenu-title { font-family: var(--font-display); font-size: 18px; line-height: 1.25; letter-spacing: -0.01em; margin-top: 6px; }
     .megamenu-title em { font-style: italic; color: var(--accent); }
     .megamenu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .mm-group { grid-column: 1 / -1; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 6px 0 -2px; }
     @media (max-width: 900px) { .megamenu-grid { grid-template-columns: 1fr; } }
 
     .hub-card { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); transition: border-color 0.2s ease, transform 0.2s ease; }
@@ -2337,47 +2338,63 @@
         </a>
         <nav class="header-nav" aria-label="Navegação principal">
           <div class="nav-hub-wrap">
-            <a href="https://pitchdeck.com.br/ai-agents" class="header-nav-link nav-hub" aria-haspopup="true">AI Agents <span class="chev" aria-hidden="true">▾</span></a>
-            <div class="megamenu" role="menu" aria-label="AI Agents">
+            <a href="https://pitchdeck.com.br/servicos" class="header-nav-link nav-hub" aria-haspopup="true">Nossos Serviços <span class="chev" aria-hidden="true">▾</span></a>
+            <div class="megamenu" role="menu" aria-label="Nossos serviços">
               <div class="megamenu-head">
-                <span class="eyebrow eyebrow-accent">PitchDeck · AI Agents</span>
-                <p class="megamenu-title">Agentes de IA para <em>founders e investidores</em></p>
+                <span class="eyebrow eyebrow-accent">PitchDeck · Nossos Serviços</span>
+                <p class="megamenu-title">Serviços entregues por <em>agentes de IA</em></p>
               </div>
               <div class="megamenu-grid" data-cms="ai-agents">
                 <!--cms:ai-agents-menu:start-->
+                <span class="mm-group">Para empreendedores</span>
                 <a class="hub-card active" href="https://pitchdeck.com.br/" role="menuitem">
-                  <span class="hub-card-mark pd">P</span>
+                  <span class="hub-card-mark pd">A</span>
                   <span class="hub-card-body">
-                    <span class="hub-card-name">PitchDeck <span class="hub-pill live">No ar</span></span>
-                    <span class="hub-card-desc">Análise de pitch deck com framework VC. O agente que deu nome ao site.</span>
+                    <span class="hub-card-name">Análise de Pitch Deck <span class="hub-pill live">No ar</span></span>
+                    <span class="hub-card-desc">Análise de pitch deck com framework VC. O serviço que deu nome ao site.</span>
                   </span>
                 </a>
-                <a class="hub-card soon" href="https://pitchdeck.com.br/ai-agents/financials-startups-agenticas" role="menuitem">
+                <a class="hub-card soon" href="https://pitchdeck.com.br/servicos/financials-startups-agenticas" role="menuitem">
                   <span class="hub-card-mark soon">+</span>
                   <span class="hub-card-body">
-                    <span class="hub-card-name">Financials para startups agênticas <span class="hub-pill soon">Em breve</span></span>
-                    <span class="hub-card-desc">Agente financeiro AI-first para startups e PMEs.</span>
+                    <span class="hub-card-name">Análise Financeira <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Modelagem e análise financeira AI-first para startups e PMEs.</span>
                   </span>
                 </a>
-                <a class="hub-card soon" href="https://pitchdeck.com.br/ai-agents/market-breakdown" role="menuitem">
+                <a class="hub-card soon" href="https://pitchdeck.com.br/servicos/market-breakdown" role="menuitem">
                   <span class="hub-card-mark soon">+</span>
                   <span class="hub-card-body">
-                    <span class="hub-card-name">Market Breakdown <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-name">Raio-X de Mercado <span class="hub-pill soon">Em breve</span></span>
                     <span class="hub-card-desc">Análise de oportunidade e dimensionamento de mercado.</span>
                   </span>
                 </a>
-                <a class="hub-card soon" href="https://pitchdeck.com.br/ai-agents/ma-advisor" role="menuitem">
+                <a class="hub-card soon" href="https://pitchdeck.com.br/servicos/ma-advisor" role="menuitem">
                   <span class="hub-card-mark soon">+</span>
                   <span class="hub-card-body">
-                    <span class="hub-card-name">M&amp;A Advisor <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-name">Assessoria de M&amp;A <span class="hub-pill soon">Em breve</span></span>
                     <span class="hub-card-desc">Fusões e aquisições de tecnologia — buy-side e sell-side.</span>
                   </span>
                 </a>
+                <span class="mm-group">Para investidores</span>
+                <span class="hub-card soon" role="menuitem" aria-disabled="true">
+                  <span class="hub-card-mark soon">+</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">Triagem de Ofertas <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Checklist institucional do deck recebido — club deal, rodada direta ou IPO.</span>
+                  </span>
+                </span>
+                <span class="hub-card soon" role="menuitem" aria-disabled="true">
+                  <span class="hub-card-mark soon">+</span>
+                  <span class="hub-card-body">
+                    <span class="hub-card-name">Dossiê para Comitê <span class="hub-pill soon">Em breve</span></span>
+                    <span class="hub-card-desc">Mercado, comps e riscos para a decisão de alocação do comitê.</span>
+                  </span>
+                </span>
                 <!--cms:ai-agents-menu:end-->
               </div>
               <div class="megamenu-foot">
-                <span>Quer um agente sob medida?</span>
-                <a class="megamenu-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20AI%20Agents%20do%20PitchDeck.%20%5BREF%3A%20ai-agents-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a>
+                <span>Quer um serviço sob medida?</span>
+                <a class="megamenu-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20do%20PitchDeck.%20%5BREF%3A%20servicos-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a>
               </div>
             </div>
           </div>
@@ -2444,7 +2461,7 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
-    <a href="https://pitchdeck.com.br/ai-agents" class="mobile-menu-link">AI Agents · PitchDeck</a>
+    <a href="https://pitchdeck.com.br/servicos" class="mobile-menu-link">Nossos Serviços</a>
     <a href="https://pitchdeck.com.br/hubs" class="mobile-menu-link">Hubs · FoundersClub</a>
     <a href="https://pitchdeck.com.br/insights" class="mobile-menu-link">Insights</a>
     <a href="https://pitchdeck.com.br/vitrine" class="mobile-menu-link">↑ Vitrine</a>
@@ -3318,22 +3335,28 @@
       }).join('');
     });
 
-    // ── AI Agents (mega menu) — toggle: Status No ar / Em breve ──
+    // ── AI Agents (mega menu) — agrupado por Perfil ──
     var aimenu = document.querySelector('.megamenu-grid[data-cms="ai-agents"]');
     if (aimenu) load('AI Agents', function(rows){
       rows = rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
       if(!rows.length) return;
-      aimenu.innerHTML = rows.map(function(a){
+      function card(a){
         var logo = a.Logo && a.Logo[0] && a.Logo[0].url;
         var mk = logo ? '<span class="hub-card-mark" style="background:#fff;padding:3px"><img src="'+esc(logo)+'" alt="" style="width:100%;height:100%;object-fit:contain"></span>'
           : (a.Status==='No ar' ? '<span class="hub-card-mark pd">'+esc((a.Nome||'?').trim().charAt(0).toUpperCase())+'</span>' : '<span class="hub-card-mark soon">+</span>');
-        var u = a['URL'] || (a.Slug ? '/ai-agents/'+a.Slug : '');
+        var u = a['URL'] || (a.Slug ? '/servicos/'+a.Slug : '');
         if(a.Status==='No ar'){
           return '<a class="hub-card active" href="'+esc(u||'/')+'" role="menuitem">'+mk+'<span class="hub-card-body"><span class="hub-card-name">'+esc(a.Nome)+' <span class="hub-pill live">No ar</span></span><span class="hub-card-desc">'+esc(a['Descrição curta']||'')+'</span></span></a>';
         }
         var body = mk+'<span class="hub-card-body"><span class="hub-card-name">'+esc(a.Nome)+' <span class="hub-pill soon">Em breve</span></span><span class="hub-card-desc">'+esc(a['Descrição curta']||'')+'</span></span>';
         return u ? '<a class="hub-card soon" href="'+esc(u)+'" role="menuitem">'+body+'</a>' : '<span class="hub-card soon" role="menuitem" aria-disabled="true">'+body+'</span>';
-      }).join('');
+      }
+      var emp = rows.filter(function(f){return f.Perfil!=='Investidores';});
+      var inv = rows.filter(function(f){return f.Perfil==='Investidores';});
+      var html = '';
+      if(emp.length) html += '<span class="mm-group">Para empreendedores</span>'+emp.map(card).join('');
+      if(inv.length) html += '<span class="mm-group">Para investidores</span>'+inv.map(card).join('');
+      aimenu.innerHTML = html;
     });
 
     // ── Depoimentos — toggle: checkbox Publicado ──

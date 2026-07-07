@@ -1,5 +1,5 @@
 /* site-chrome.js — header + footer compartilhados do pitchdeck.com.br
- * Injeta o mesmo menu (AI Agents · Hubs · Insights · Vitrine + CTA) e o footer
+ * Injeta o mesmo menu (Nossos Serviços · Hubs · Insights · Vitrine + CTA) e o footer
  * completo em qualquer página. CSS próprio, prefixado "pdc-", pra não conflitar.
  * Uso: <script src="/site-chrome.js" defer></script> antes de </body>.
  * Mega-menus puxam do Airtable (mesmo PAT read-only da home).
@@ -95,6 +95,7 @@
   @media(min-width:768px){.pdc-flegal{align-items:flex-start;text-align:left}}
   .pdc-fline{font-family:var(--pdc-m);font-size:11px;color:var(--pdc-faint);letter-spacing:.04em;line-height:1.6}
   .pdc-fline strong{color:var(--pdc-muted)}
+  .pdc-mm-group{grid-column:1/-1;font-family:var(--pdc-m);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0F4C3A;margin:6px 0 -2px}
   `;
 
   /* ---------- HEADER ---------- */
@@ -102,11 +103,11 @@
   '<header class="pdc-header"><div class="pdc-container"><div class="pdc-inner">'
   + '<a href="/" class="pdc-brand"><span class="pdc-brand-name"><em>Pitch</em>Deck</span><span class="pdc-brand-by">by Equity Rio</span></a>'
   + '<nav class="pdc-nav" aria-label="Navegação principal">'
-    + '<div class="pdc-hubwrap"><a href="/ai-agents" class="pdc-link pdc-hub">AI Agents <span class="pdc-chev" aria-hidden="true">▾</span></a>'
+    + '<div class="pdc-hubwrap"><a href="/servicos" class="pdc-link pdc-hub">Nossos Serviços <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
-        + '<span class="pdc-mm-eye">PitchDeck · AI Agents</span><p class="pdc-mm-title">Agentes de IA para <em>founders e investidores</em></p>'
+        + '<span class="pdc-mm-eye">PitchDeck · Nossos Serviços</span><p class="pdc-mm-title">Serviços entregues por <em>agentes de IA</em></p>'
         + '<div class="pdc-grid" data-pdc="ai-agents"></div>'
-        + '<div class="pdc-mm-foot"><span>Quer um agente sob medida?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20AI%20Agents%20do%20PitchDeck.%20%5BREF%3A%20ai-agents-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a></div>'
+        + '<div class="pdc-mm-foot"><span>Quer um serviço sob medida?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20do%20PitchDeck.%20%5BREF%3A%20servicos-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a></div>'
       + '</div></div>'
     + '<div class="pdc-hubwrap"><a href="/hubs" class="pdc-link pdc-hub">Hubs <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
@@ -122,7 +123,7 @@
   + '<button class="pdc-ham" id="pdcHam" aria-label="Abrir menu"><span></span><span></span><span></span></button>'
   + '</div></div></header>'
   + '<div class="pdc-mobile" id="pdcMobile">'
-    + '<a href="/ai-agents">AI Agents</a><a href="/hubs">Hubs</a><a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
+    + '<a href="/servicos">Nossos Serviços</a><a href="/hubs">Hubs</a><a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
     + '<a href="'+WA_FULL+'" target="_blank" rel="noopener" class="cta">Rodar análise grátis →</a>'
   + '</div>';
 
@@ -165,17 +166,23 @@
       fetch(url,{headers:{Authorization:'Bearer '+PAT}}).then(function(r){return r.ok?r.json():Promise.reject(r.status);})
         .then(function(d){cb((d.records||[]).map(function(r){return r.fields;}));}).catch(function(){});
     }
-    // AI Agents
+    // AI Agents — agrupado por Perfil
     var ag=document.querySelector('.pdc-grid[data-pdc="ai-agents"]');
     if(ag) load('AI Agents',function(rows){
       rows=rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';}); if(!rows.length) return;
-      ag.innerHTML=rows.map(function(a){
+      function card(a){
         var mk=a.Status==='No ar'?'<span class="pdc-mark pd">'+esc((a.Nome||'?').trim().charAt(0).toUpperCase())+'</span>':'<span class="pdc-mark soon">+</span>';
-        var u=a['URL']||(a.Slug?'/ai-agents/'+a.Slug:'');
+        var u=a['URL']||(a.Slug?'/servicos/'+a.Slug:'');
         if(a.Status==='No ar') return '<a class="pdc-card active" href="'+esc(u||'/')+'" role="menuitem">'+mk+'<span class="pdc-cbody"><span class="pdc-cname">'+esc(a.Nome)+' <span class="pdc-pill live">No ar</span></span><span class="pdc-cdesc">'+esc(a['Descrição curta']||'')+'</span></span></a>';
         var body=mk+'<span class="pdc-cbody"><span class="pdc-cname">'+esc(a.Nome)+' <span class="pdc-pill soon">Em breve</span></span><span class="pdc-cdesc">'+esc(a['Descrição curta']||'')+'</span></span>';
         return u?'<a class="pdc-card soon" href="'+esc(u)+'" role="menuitem">'+body+'</a>':'<span class="pdc-card soon" role="menuitem" aria-disabled="true">'+body+'</span>';
-      }).join('');
+      }
+      var emp=rows.filter(function(f){return f.Perfil!=='Investidores';});
+      var inv=rows.filter(function(f){return f.Perfil==='Investidores';});
+      var html='';
+      if(emp.length) html+='<span class="pdc-mm-group">Para empreendedores</span>'+emp.map(card).join('');
+      if(inv.length) html+='<span class="pdc-mm-group">Para investidores</span>'+inv.map(card).join('');
+      ag.innerHTML=html;
     });
     // Hubs
     var hb=document.querySelector('.pdc-grid[data-pdc="hubs"]');
