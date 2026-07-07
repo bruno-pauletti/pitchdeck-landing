@@ -95,7 +95,19 @@
   @media(min-width:768px){.pdc-flegal{align-items:flex-start;text-align:left}}
   .pdc-fline{font-family:var(--pdc-m);font-size:11px;color:var(--pdc-faint);letter-spacing:.04em;line-height:1.6}
   .pdc-fline strong{color:var(--pdc-muted)}
-  .pdc-mm-group{grid-column:1/-1;font-family:var(--pdc-m);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0F4C3A;margin:6px 0 -2px}
+  .pdc-mm-group{display:block;font-family:var(--pdc-m);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0F4C3A;margin-bottom:10px}
+  .pdc-grid[data-pdc="ai-agents"]{grid-template-columns:1.15fr 1fr;gap:22px}
+  @media(max-width:900px){.pdc-grid[data-pdc="ai-agents"]{grid-template-columns:1fr}}
+  .pdc-col-inv{border-left:1px solid var(--pdc-border);padding-left:22px}
+  @media(max-width:900px){.pdc-col-inv{border-left:0;padding-left:0;border-top:1px solid var(--pdc-border);padding-top:14px}}
+  .pdc-svc-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:7px 8px;margin:0 -8px;border-radius:8px;text-decoration:none}
+  a.pdc-svc-row:hover{background:rgba(15,76,58,.08)}
+  .pdc-svc-name{font-size:13.5px;font-weight:600;color:var(--pdc-text,#1a1a1a)}
+  .pdc-svc-chip{font-size:10.5px;color:var(--pdc-muted);background:rgba(15,76,58,.07);padding:2px 9px;border-radius:999px;white-space:nowrap}
+  .pdc-svc-item{display:block;padding:7px 8px;margin:0 -8px;border-radius:8px;text-decoration:none}
+  a.pdc-svc-item:hover{background:rgba(15,76,58,.08)}
+  .pdc-svc-desc{display:block;font-size:12px;color:var(--pdc-muted);line-height:1.45;margin-top:2px}
+  .pdc-mm-note{display:block;font-size:11.5px;color:#0F4C3A;margin-top:10px}
   `;
 
   /* ---------- HEADER ---------- */
@@ -107,7 +119,7 @@
       + '<div class="pdc-megamenu" role="menu">'
         + '<span class="pdc-mm-eye">PitchDeck · Nossos Serviços</span><p class="pdc-mm-title">Serviços entregues por <em>agentes de IA</em></p>'
         + '<div class="pdc-grid" data-pdc="ai-agents"></div>'
-        + '<div class="pdc-mm-foot"><span>Quer um serviço sob medida?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20do%20PitchDeck.%20%5BREF%3A%20servicos-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a></div>'
+        + '<div class="pdc-mm-foot"><span>Serviços entregues por agentes de IA proprietários — envie o documento, receba o resultado.</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20do%20PitchDeck.%20%5BREF%3A%20servicos-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a></div>'
       + '</div></div>'
     + '<div class="pdc-hubwrap"><a href="/hubs" class="pdc-link pdc-hub">Hubs <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
@@ -166,23 +178,27 @@
       fetch(url,{headers:{Authorization:'Bearer '+PAT}}).then(function(r){return r.ok?r.json():Promise.reject(r.status);})
         .then(function(d){cb((d.records||[]).map(function(r){return r.fields;}));}).catch(function(){});
     }
-    // AI Agents — agrupado por Perfil
+    // AI Agents — 2 colunas por Perfil
     var ag=document.querySelector('.pdc-grid[data-pdc="ai-agents"]');
     if(ag) load('AI Agents',function(rows){
       rows=rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';}); if(!rows.length) return;
-      function card(a){
-        var mk=a.Status==='No ar'?'<span class="pdc-mark pd">'+esc((a.Nome||'?').trim().charAt(0).toUpperCase())+'</span>':'<span class="pdc-mark soon">+</span>';
-        var u=a['URL']||(a.Slug?'/servicos/'+a.Slug:'');
-        if(a.Status==='No ar') return '<a class="pdc-card active" href="'+esc(u||'/')+'" role="menuitem">'+mk+'<span class="pdc-cbody"><span class="pdc-cname">'+esc(a.Nome)+' <span class="pdc-pill live">No ar</span></span><span class="pdc-cdesc">'+esc(a['Descrição curta']||'')+'</span></span></a>';
-        var body=mk+'<span class="pdc-cbody"><span class="pdc-cname">'+esc(a.Nome)+' <span class="pdc-pill soon">Em breve</span></span><span class="pdc-cdesc">'+esc(a['Descrição curta']||'')+'</span></span>';
-        return u?'<a class="pdc-card soon" href="'+esc(u)+'" role="menuitem">'+body+'</a>':'<span class="pdc-card soon" role="menuitem" aria-disabled="true">'+body+'</span>';
+      function pill(a){return a.Status==='No ar'?' <span class="pdc-pill live">No ar</span>':' <span class="pdc-pill soon">Em breve</span>';}
+      function urlOf(a){return a['URL']||(a.Slug?'/servicos/'+a.Slug:'');}
+      function rowE(a){
+        var inner='<span class="pdc-svc-name">'+esc(a.Nome)+pill(a)+'</span>'+(a.Segmento?'<span class="pdc-svc-chip">'+esc(a.Segmento)+'</span>':'');
+        var u=urlOf(a);
+        return u?'<a class="pdc-svc-row" href="'+esc(u)+'" role="menuitem">'+inner+'</a>':'<span class="pdc-svc-row" role="menuitem" aria-disabled="true">'+inner+'</span>';
+      }
+      function itemI(a){
+        var inner='<span class="pdc-svc-name">'+esc(a.Nome)+pill(a)+'</span><span class="pdc-svc-desc">'+esc(a['Descrição curta']||'')+'</span>';
+        var u=urlOf(a);
+        return u?'<a class="pdc-svc-item" href="'+esc(u)+'" role="menuitem">'+inner+'</a>':'<span class="pdc-svc-item" role="menuitem" aria-disabled="true">'+inner+'</span>';
       }
       var emp=rows.filter(function(f){return f.Perfil!=='Investidores';});
       var inv=rows.filter(function(f){return f.Perfil==='Investidores';});
-      var html='';
-      if(emp.length) html+='<span class="pdc-mm-group">Para empreendedores</span>'+emp.map(card).join('');
-      if(inv.length) html+='<span class="pdc-mm-group">Para investidores</span>'+inv.map(card).join('');
-      ag.innerHTML=html;
+      ag.innerHTML='<div><span class="pdc-mm-group">Para empreendedores</span>'+emp.map(rowE).join('')+'</div>'
+        +'<div class="pdc-col-inv"><span class="pdc-mm-group">Para investidores</span>'+inv.map(itemI).join('')
+        +'<span class="pdc-mm-note">Acesso para family offices, private banking e boutiques parceiras</span></div>';
     });
     // Hubs
     var hb=document.querySelector('.pdc-grid[data-pdc="hubs"]');

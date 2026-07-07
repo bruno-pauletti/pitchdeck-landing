@@ -117,7 +117,7 @@
             <span class="agentcard-name">PitchDeck <span class="pill live">No ar</span></span>
             <span class="agentcard-seg">Pitch deck · Framework VC</span>
             <span class="agentcard-desc">Análise honesta do seu pitch deck com o framework de comitê de investimento: score por slide, valuation, cap table benchmark e plano de ação. O agente que deu nome ao site.</span>
-            <span class="agentlink">Acessar o agente →</span>
+            <span class="agentlink">Acessar o serviço →</span>
           </span>
         </a>
         <a class="agentcard soon" href="https://pitchdeck.com.br/servicos/financials-startups-agenticas">
@@ -154,8 +154,8 @@
 
   <section class="partner">
     <div class="container">
-      <h2>Comece pelo agente que já está <em>no ar</em>.</h2>
-      <p>O PitchDeck analisa o seu deck de graça, em até 7 dias, direto no WhatsApp. Os próximos agentes — financeiro AI-first e market breakdown — entram em breve na mesma casa.</p>
+      <h2>Comece pelo serviço que já está <em>no ar</em>.</h2>
+      <p>A Análise de Pitch Deck é gratuita, direto no WhatsApp. Os próximos serviços — análise financeira, raio-x de mercado e triagem de ofertas — entram em breve na mesma casa.</p>
       <a href="/" class="btn-cream">
         Conhecer o PitchDeck
         <span aria-hidden="true">→</span>
@@ -200,7 +200,7 @@
                 : '<span class="agentmark soon">+</span>');
           var u = a['URL'] || a['URL agente'] || (a.Slug ? '/servicos/'+a.Slug : '');
           if(a.Status==='No ar'){
-            return '<a class="agentcard active" href="'+esc(u||'/')+'">'+mk+'<span><span class="agentcard-name">'+esc(a.Nome)+' <span class="pill live">No ar</span></span><span class="agentcard-seg">'+esc(a.Segmento||'')+'</span><span class="agentcard-desc">'+esc(a['Descrição curta']||'')+'</span><span class="agentlink">Acessar o agente →</span></span></a>';
+            return '<a class="agentcard active" href="'+esc(u||'/')+'">'+mk+'<span><span class="agentcard-name">'+esc(a.Nome)+' <span class="pill live">No ar</span></span><span class="agentcard-seg">'+esc(a.Segmento||'')+'</span><span class="agentcard-desc">'+esc(a['Descrição curta']||'')+'</span><span class="agentlink">Acessar o serviço →</span></span></a>';
           }
           var body = mk+'<span><span class="agentcard-name">'+esc(a.Nome)+' <span class="pill soon">Em breve</span></span><span class="agentcard-seg">'+esc(a.Segmento||'')+'</span><span class="agentcard-desc">'+esc(a['Descrição curta']||'')+'</span>'+(u?'<span class="agentlink">Saiba mais →</span>':'')+'</span>';
           return u ? '<a class="agentcard soon" href="'+esc(u)+'">'+body+'</a>' : '<span class="agentcard soon">'+body+'</span>';
