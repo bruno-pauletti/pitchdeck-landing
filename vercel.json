@@ -1,13 +1,23 @@
 {
   "redirects": [
     {
+      "source": "/servicos/financials-startups-agenticas",
+      "destination": "/servicos/analise-financeira",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/ma-advisor",
+      "destination": "/servicos/assessoria-de-ma",
+      "permanent": true
+    },
+    {
       "source": "/servicos/market-breakdown",
       "destination": "/servicos/raio-x-de-mercado",
       "permanent": true
     },
     {
       "source": "/ai-agents/ai-first-financials",
-      "destination": "/servicos/financials-startups-agenticas",
+      "destination": "/servicos/analise-financeira",
       "permanent": false
     },
     {
