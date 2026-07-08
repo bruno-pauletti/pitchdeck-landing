@@ -236,10 +236,10 @@
       }
       var com=rows.filter(function(f){return !CAPITAL[f.Categoria];});
       var cap=rows.filter(function(f){return CAPITAL[f.Categoria];});
-      if(hb) hb.innerHTML='<div><span class="pdc-mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')+'</div>'
+      if(hb) hb.innerHTML='<div><span class="pdc-mm-group">Ecossistemas, comunidades & aceleração</span>'+com.map(rowH).join('')+'</div>'
         +'<div class="pdc-col-inv"><span class="pdc-mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
         +'<span class="pdc-mm-note">Casas de capital acessam também os serviços buy-side — triagem e dossiê</span></div>';
-      if(hbm) hbm.innerHTML='<span class="pdc-mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')
+      if(hbm) hbm.innerHTML='<span class="pdc-mm-group">Ecossistemas, comunidades & aceleração</span>'+com.map(rowH).join('')
         +'<span class="pdc-mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
         +'<a class="pdc-macc-all" href="/hubs">Ver todos os hubs →</a>';
     });

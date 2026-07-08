@@ -2389,7 +2389,7 @@
               <div class="megamenu-grid" data-cms="hubs">
                 <!--cms:hubs-menu:start-->
                 <div class="mm-col">
-                  <span class="mm-group">Comunidades &amp; aceleração</span>
+                  <span class="mm-group">Ecossistemas, comunidades &amp; aceleração</span>
                   <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
                 <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Aceleradoras &amp; incubadoras <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Benefício p/ portfólio</span></span>
                 <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Programas públicos &amp; universidades <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Fomento &amp; ensino</span></span>
@@ -2441,7 +2441,7 @@
     </div>
     <button class="mm-acc-toggle" id="mmHubToggle" aria-expanded="false" aria-controls="mmHubPanel">Hubs <span class="chev-m" aria-hidden="true">▾</span></button>
     <div class="mm-acc" id="mmHubPanel" data-cms="hubs-mobile">
-      <span class="mm-group">Comunidades &amp; aceleração</span>
+      <span class="mm-group">Ecossistemas, comunidades &amp; aceleração</span>
       <a class="svc-row" href="https://pitchdeck.com.br/hubs/foundersclub" role="menuitem"><span class="svc-name">FoundersClub <span class="hub-pill live">No ar</span></span><span class="svc-chip">+10.000 founders</span></a>
       <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Aceleradoras &amp; incubadoras <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Benefício p/ portfólio</span></span>
       <span class="svc-row" role="menuitem" aria-disabled="true"><span class="svc-name">Programas públicos &amp; universidades <span class="hub-pill soon">Em breve</span></span><span class="svc-chip">Fomento &amp; ensino</span></span>
@@ -3335,11 +3335,11 @@
       var com = rows.filter(function(f){return !CAPITAL[f.Categoria];});
       var cap = rows.filter(function(f){return CAPITAL[f.Categoria];});
       if (menu) menu.innerHTML =
-        '<div class="mm-col"><span class="mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')+'</div>'
+        '<div class="mm-col"><span class="mm-group">Ecossistemas, comunidades & aceleração</span>'+com.map(rowH).join('')+'</div>'
         + '<div class="mm-col mm-col-inv"><span class="mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
         + '<span class="mm-note">Casas de capital acessam também os serviços buy-side — triagem e dossiê</span></div>';
       if (hubmob) hubmob.innerHTML =
-        '<span class="mm-group">Comunidades & aceleração</span>'+com.map(rowH).join('')
+        '<span class="mm-group">Ecossistemas, comunidades & aceleração</span>'+com.map(rowH).join('')
         + '<span class="mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
         + '<a class="mm-acc-all" href="/hubs">Ver todos os hubs →</a>';
     });
