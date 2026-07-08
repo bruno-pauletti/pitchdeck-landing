@@ -226,16 +226,16 @@
     var hbm=document.querySelector('.pdc-macc[data-pdc="hubs-mobile"]');
     if(hb||hbm) load('Hubs',function(rows){
       rows=rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';}); if(!rows.length) return;
-      var CAPITAL={'Redes de anjos':1,'Gestoras VC · CVC · PE':1,'Open innovation & scale-ups':1};
+      var CAPITAL={'Rede de anjos':1,'Gestora de VC':1,'CVC (corporate venture)':1,'Gestora de PE & growth':1,'Family office & MFO':1,'Plataforma de crowdfunding':1,'Escritório & private banking':1,'Boutique de M&A':1,'Open innovation & scale-up':1,'Gestoras VC · CVC · PE':1,'Redes de anjos':1,'Open innovation & scale-ups':1};
       function rowH(h){
-        var chip=h['Stat destaque']||h.Categoria||h.Segmento||'';
+        var chip=h['Stat destaque']||h['Tipo de Hub']||h.Segmento||'';
         var pill=h.Status==='No ar'?' <span class="pdc-pill live">No ar</span>':' <span class="pdc-pill soon">Em breve</span>';
         var inner='<span class="pdc-svc-name">'+esc(h.Nome)+pill+'</span>'+(chip?'<span class="pdc-svc-chip">'+esc(chip)+'</span>':'');
         var u=h.Status==='No ar'?(h['URL hub']||('https://pitchdeck.com.br/hubs/'+(h.Slug||''))):'';
         return u?'<a class="pdc-svc-row" href="'+esc(u)+'" role="menuitem">'+inner+'</a>':'<span class="pdc-svc-row" role="menuitem" aria-disabled="true">'+inner+'</span>';
       }
-      var com=rows.filter(function(f){return !CAPITAL[f.Categoria];});
-      var cap=rows.filter(function(f){return CAPITAL[f.Categoria];});
+      var com=rows.filter(function(f){return !CAPITAL[f['Tipo de Hub']];});
+      var cap=rows.filter(function(f){return CAPITAL[f['Tipo de Hub']];});
       if(hb) hb.innerHTML='<div><span class="pdc-mm-group">Ecossistemas, comunidades & aceleração</span>'+com.map(rowH).join('')+'</div>'
         +'<div class="pdc-col-inv"><span class="pdc-mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
         +'<span class="pdc-mm-note">Casas de capital acessam também os serviços buy-side — triagem e dossiê</span></div>';

@@ -89,6 +89,8 @@
 
     /* hubs grid (FOMO / prova social) */
     .hubs-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .hubs-tipo{grid-column:1/-1;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:14px 0 -6px}
+    .hubs-tipo:first-child{margin-top:0}
     @media(min-width:680px){.hubs-grid{grid-template-columns:1fr 1fr}}
     .hubcard{display:flex;gap:16px;align-items:flex-start;background:var(--bg-elevated);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s ease,transform .2s ease}
     .hubcard.active:hover{border-color:var(--accent-border);transform:translateY(-2px)}
@@ -178,37 +180,32 @@
       </div>
       <div class="hubs-grid">
         <!--cms:hubs-grid:start-->
+        <span class="hubs-tipo">Ecossistema &amp; comunidade</span>
         <a class="hubcard active" href="https://pitchdeck.com.br/hubs/foundersclub">
           <span class="hubmark fc">F</span>
           <span>
             <span class="hubcard-name">FoundersClub <span class="pill live">No ar</span></span>
-            <span class="hubcard-seg">Ecossistema para startups · +10.000 founders</span>
+            <span class="hubcard-seg">+10.000 founders</span>
             <span class="hubcard-desc">A comunidade de founders agora com a análise completa do PitchDeck como benefício exclusivo.</span>
             <span class="hublink">Ver a página co-branded →</span>
           </span>
         </a>
+        <span class="hubs-tipo">Rede de anjos</span>
         <span class="hubcard soon">
           <span class="hubmark soon">+</span>
           <span>
             <span class="hubcard-name">Gávea Angels <span class="pill soon">Em breve</span></span>
-            <span class="hubcard-seg">Rede de anjos · Capital &amp; corporates</span>
+            <span class="hubcard-seg">Capital &amp; corporates</span>
             <span class="hubcard-desc">Em negociação: benefício para as investidas e triagem para o dealflow da rede.</span>
           </span>
         </span>
-        <span class="hubcard soon">
-          <span class="hubmark soon">+</span>
-          <span>
-            <span class="hubcard-name">Gestoras VC · CVC · PE <span class="pill soon">Em breve</span></span>
-            <span class="hubcard-seg">Capital &amp; corporates</span>
-            <span class="hubcard-desc">Análise para investidas e triagem de dealflow para gestoras.</span>
-          </span>
-        </span>
+        <span class="hubs-tipo">Aceleradoras · Gestoras · Programas</span>
         <span class="hubcard soon">
           <span class="hubmark soon">+</span>
           <span>
             <span class="hubcard-name">O seu hub? <span class="pill soon">Vaga aberta</span></span>
-            <span class="hubcard-seg">Aceleradora · Comunidade · Hub de inovação</span>
-            <span class="hubcard-desc">Habilite agora e seja referência antes dos hubs concorrentes.</span>
+            <span class="hubcard-seg">Aceleradora · Gestora · Comunidade · Programa</span>
+            <span class="hubcard-desc">Habilite agora e seja referência no seu tipo antes dos concorrentes.</span>
           </span>
         </span>
         <!--cms:hubs-grid:end-->
@@ -362,7 +359,7 @@
       .then(function(d){
         var rows=(d.records||[]).map(function(r){return r.fields;}).filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';});
         if(!rows.length) return;
-        var html = rows.map(function(h){
+        function card(h){
           var logo = h.Logo && h.Logo[0] && h.Logo[0].url;
           var mk = logo
             ? '<span class="hubmark" style="background:#fff;padding:4px"><img src="'+esc(logo)+'" alt="" style="width:100%;height:100%;object-fit:contain"></span>'
@@ -371,12 +368,22 @@
                 : '<span class="hubmark soon">+</span>');
           if(h.Status==='No ar'){
             var u = h['URL hub'] || ('/hubs/'+(h.Slug||''));
-            return '<a class="hubcard active" href="'+esc(u)+'">'+mk+'<span><span class="hubcard-name">'+esc(h.Nome)+' <span class="pill live">No ar</span></span><span class="hubcard-seg">'+esc(h.Segmento||'')+' · '+esc(h['Stat destaque']||'')+'</span><span class="hubcard-desc">'+esc(h['Descrição curta']||'')+'</span><span class="hublink">Ver a página co-branded →</span></span></a>';
+            return '<a class="hubcard active" href="'+esc(u)+'">'+mk+'<span><span class="hubcard-name">'+esc(h.Nome)+' <span class="pill live">No ar</span></span><span class="hubcard-seg">'+esc(h['Stat destaque']||h.Segmento||'')+'</span><span class="hubcard-desc">'+esc(h['Descrição curta']||'')+'</span><span class="hublink">Ver a página co-branded →</span></span></a>';
           }
-          return '<span class="hubcard soon">'+mk+'<span><span class="hubcard-name">'+esc(h.Nome)+' <span class="pill soon">Em breve</span></span><span class="hubcard-seg">'+esc(h.Segmento||'')+'</span><span class="hubcard-desc">'+esc(h['Descrição curta']||'')+'</span></span></span>';
+          return '<span class="hubcard soon">'+mk+'<span><span class="hubcard-name">'+esc(h.Nome)+' <span class="pill soon">Em breve</span></span><span class="hubcard-seg">'+esc(h['Stat destaque']||h.Segmento||'')+'</span><span class="hubcard-desc">'+esc(h['Descrição curta']||'')+'</span></span></span>';
+        }
+        // agrupa por Tipo de Hub, na ordem de aparição (Ordem do Airtable)
+        var tipos=[], byTipo={};
+        rows.forEach(function(h){
+          var t = h['Tipo de Hub'] || 'Outros';
+          if(!byTipo[t]){ byTipo[t]=[]; tipos.push(t); }
+          byTipo[t].push(h);
+        });
+        var html = tipos.map(function(t){
+          return '<span class="hubs-tipo">'+esc(t)+'</span>' + byTipo[t].map(card).join('');
         }).join('');
-        // acrescenta o card "O seu hub?" como última vaga aberta (FOMO)
-        html += '<span class="hubcard soon"><span class="hubmark soon">+</span><span><span class="hubcard-name">O seu hub? <span class="pill soon">Vaga aberta</span></span><span class="hubcard-seg">Aceleradora · Comunidade · Hub de inovação</span><span class="hubcard-desc">Habilite agora e seja referência antes dos hubs concorrentes.</span></span></span>';
+        html += '<span class="hubs-tipo">O próximo tipo pode ser o seu</span>';
+        html += '<span class="hubcard soon"><span class="hubmark soon">+</span><span><span class="hubcard-name">O seu hub? <span class="pill soon">Vaga aberta</span></span><span class="hubcard-seg">Aceleradora · Gestora · Comunidade · Programa</span><span class="hubcard-desc">Habilite agora e seja referência no seu tipo antes dos concorrentes.</span></span></span>';
         grid.innerHTML = html;
       }).catch(function(){});
   })();
