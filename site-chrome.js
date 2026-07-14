@@ -131,7 +131,7 @@
         + '<div class="pdc-grid" data-pdc="ai-agents"></div>'
         + '<div class="pdc-mm-foot"><span>Serviços entregues por agentes de IA proprietários — envie o documento, receba o resultado.</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20do%20PitchDeck.%20%5BREF%3A%20servicos-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a></div>'
       + '</div></div>'
-    + '<div class="pdc-hubwrap"><a href="/hubs" class="pdc-link pdc-hub">Hubs <span class="pdc-chev" aria-hidden="true">▾</span></a>'
+    + '<div class="pdc-hubwrap"><a href="/b2b" class="pdc-link pdc-hub">B2B <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
         + '<div class="pdc-grid" data-pdc="hubs"></div>'
         + '<div class="pdc-mm-foot"><span>Tem uma comunidade de founders ou recebe dealflow?</span><a class="pdc-mm-cta" href="https://wa.me/5521936194950?text=Oi!%20Tenho%20uma%20comunidade%20de%20founders%20e%20quero%20oferecer%20o%20PitchDeck%20como%20benef%C3%ADcio%20aos%20membros.%20%5BREF%3A%20hubs-parceiro%5D" target="_blank" rel="noopener">Seja um hub parceiro →</a></div>'
@@ -146,8 +146,8 @@
   + '<div class="pdc-mobile" id="pdcMobile">'
     + '<button class="pdc-macc-t" id="pdcSvcT" aria-expanded="false" aria-controls="pdcSvcP">Nossos Serviços <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
     + '<div class="pdc-macc" id="pdcSvcP" data-pdc="ai-agents-mobile"><a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a></div>'
-    + '<button class="pdc-macc-t" id="pdcHubT" aria-expanded="false" aria-controls="pdcHubP">Hubs <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
-    + '<div class="pdc-macc" id="pdcHubP" data-pdc="hubs-mobile"><a class="pdc-macc-all" href="/hubs">Ver todos os hubs →</a></div>'
+    + '<button class="pdc-macc-t" id="pdcHubT" aria-expanded="false" aria-controls="pdcHubP">B2B <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
+    + '<div class="pdc-macc" id="pdcHubP" data-pdc="hubs-mobile"><a class="pdc-macc-all" href="/b2b">Conhecer a Plataforma B2B →</a></div>'
     + '<a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
     + '<a href="'+WA_FULL+'" target="_blank" rel="noopener" class="cta">Rodar análise grátis →</a>'
   + '</div>';
@@ -241,7 +241,7 @@
         +'<span class="pdc-mm-note">Casas de capital acessam também os serviços buy-side — triagem e dossiê</span></div>';
       if(hbm) hbm.innerHTML='<span class="pdc-mm-group">Ecossistemas, comunidades & aceleração</span>'+com.map(rowH).join('')
         +'<span class="pdc-mm-group">Capital & corporates</span>'+cap.map(rowH).join('')
-        +'<a class="pdc-macc-all" href="/hubs">Ver todos os hubs →</a>';
+        +'<a class="pdc-macc-all" href="/b2b">Conhecer a Plataforma B2B →</a>';
     });
   }
 
