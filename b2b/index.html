@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma B2B — seu dealflow atendido por um agente com critério de Venture Capital | PitchDeck</title>
+  <meta name="description" content="Aposente o formulário de recebimento de decks: o agente PitchDeck capta, qualifica, tria com score de Venture Capital, dá feedback em minutos e faz follow-up — white-label para hubs, gestoras, aceleradoras e redes de anjos." />
+  <link rel="canonical" href="https://pitchdeck.com.br/b2b" />
+  <meta name="theme-color" content="#0F4C3A" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Seu Hub by PitchDeck — infra de dealflow com agente de IA | PitchDeck" />
+  <meta property="og:description" content="O formulário custa zero — e perde leads em silêncio. O agente PitchDeck atende, qualifica, tria e responde cada founder do seu funil, no seu nome." />
+  <meta property="og:url" content="https://pitchdeck.com.br/b2b" />
+  <meta property="og:image" content="https://pitchdeck.com.br/favicon-180.png" />
+  <meta property="og:site_name" content="PitchDeck by Equity Rio" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "De quem são os dados e o deal flow?", "acceptedAnswer": { "@type": "Answer", "text": "Seus. Os decks e leads que entram pelo seu canal pertencem ao funil do seu hub — entregues em relatório e, no plano Plataforma, gravados direto no seu Airtable. A Equity Rio só usa como deal flow próprio com consentimento explícito." } },
+          { "@type": "Question", "name": "Quanto custa começar?", "acceptedAnswer": { "@type": "Answer", "text": "O piloto de 30 dias é gratuito. Depois: Co-branded R$149/mês (nossa infra, dealflow compartilhado) ou White Label R$299/mês + setup único R$199 (sua marca, seu número, campos customizados e dealflow direto no seu Airtable)." } },
+          { "@type": "Question", "name": "Preciso de integração ou time de TI?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Você divulga um link de WhatsApp e o agente faz o resto. No plano Plataforma, nós escrevemos os leads direto no seu Airtable atual — sem mudar nada do seu lado." } },
+          { "@type": "Question", "name": "O que são os presets?", "acceptedAnswer": { "@type": "Answer", "text": "As regras do seu funil viram configuração do agente: que perguntas fazer, como segmentar, o que dispara análise completa, quando notificar seu time. Exemplo: deal de equity entra direto no motor de análise; dívida segue outra rota." } },
+          { "@type": "Question", "name": "Tem contrato ou exclusividade?", "acceptedAnswer": { "@type": "Answer", "text": "Sem exclusividade e sem fidelidade — cancela quando quiser. O piloto não pede nem cartão." } },
+          { "@type": "Question", "name": "A análise é boa mesmo?", "acceptedAnswer": { "@type": "Answer", "text": "É o framework de Venture Capital que a Equity Rio usa para avaliar oportunidades reais — cada deck recebe score, veredicto e valuation, e é isso que alimenta a triagem automática do seu funil." } }]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#f5f1ea;--bg-elevated:#fff;--bg-card:#faf7f1;--bg-deep:#ede4d4;
+      --border:#d9d2c4;--border-light:#c5bca8;--border-strong:#a89e88;
+      --text:#1a1a1a;--text-muted:#5a5550;--text-faint:#8a8580;
+      --accent:#0f4c3a;--accent-deep:#0a3528;--accent-soft:rgba(15,76,58,0.08);--accent-border:rgba(15,76,58,0.2);
+      --warn:#c08415;
+      --font-display:"Fraunces","Times New Roman",serif;--font-body:"DM Sans",system-ui,sans-serif;--font-mono:"IBM Plex Mono","Courier New",monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+    @media(min-width:768px){.container{padding:0 48px}}
+    .eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
+    .eyebrow-accent{color:var(--accent)}
+    .wa-icon{width:18px;height:18px}.wa-icon-sm{width:15px;height:15px}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:10px;font-family:var(--font-body);font-size:15px;font-weight:600;transition:all .2s ease;white-space:nowrap;border:1px solid transparent;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(15,76,58,.4)}
+    .btn-secondary{background:transparent;color:var(--text);border-color:var(--border-strong)}
+    .btn-secondary:hover{background:var(--bg-elevated);border-color:var(--text)}
+
+    /* hero */
+    .hero{padding:64px 0 44px}
+    @media(min-width:768px){.hero{padding:92px 0 52px}}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:999px;margin-bottom:26px}
+    .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+    .hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.025em;margin-bottom:22px;max-width:17ch}
+    .hero h1 em{font-style:italic;color:var(--accent)}
+    .hero-sub{font-size:clamp(16px,1.7vw,19px);line-height:1.55;color:var(--text-muted);max-width:640px;margin-bottom:30px}
+    .hero-ctas{display:flex;flex-direction:column;gap:12px;max-width:520px}
+    @media(min-width:480px){.hero-ctas{flex-direction:row}}
+    .hero-micro{margin-top:20px;font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;color:var(--text-faint);text-transform:uppercase}
+
+    /* sections */
+    .section{padding:60px 0}
+    @media(min-width:768px){.section{padding:82px 0}}
+    .sec-head{max-width:720px;margin:0 auto 40px;text-align:center}
+    .sec-head .eyebrow{display:block;margin-bottom:14px}
+    .sec-head h2{font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px}
+    .sec-head h2 em{font-style:italic;color:var(--accent)}
+    .sec-head p{color:var(--text-muted);font-size:17px;max-width:560px;margin:0 auto}
+
+    /* hubs grid (FOMO / prova social) */
+    .hubs-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .hubs-tipo{grid-column:1/-1;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:14px 0 -6px}
+    .hubs-tipo:first-child{margin-top:0}
+    @media(min-width:680px){.hubs-grid{grid-template-columns:1fr 1fr}}
+    .hubcard{display:flex;gap:16px;align-items:flex-start;background:var(--bg-elevated);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s ease,transform .2s ease}
+    .hubcard.active:hover{border-color:var(--accent-border);transform:translateY(-2px)}
+    .hubcard.soon{opacity:.72}
+    .hubmark{width:52px;height:52px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:28px;color:#fff;flex-shrink:0}
+    .hubmark.fc{background:#3e6fd6}
+    .hubmark.soon{background:var(--bg-deep);color:var(--text-faint);border:1px dashed var(--border-strong);font-family:var(--font-body);font-weight:500;font-size:24px}
+    .hubcard-name{font-family:var(--font-display);font-size:22px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+    .hubcard-seg{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px}
+    .hubcard-desc{font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:14px}
+    .pill{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+    .pill.live{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-border)}
+    .pill.soon{background:var(--bg-deep);color:var(--text-faint)}
+    .hublink{font-size:13px;font-weight:600;color:var(--accent)}
+    .fomo-stat{text-align:center;margin-top:28px;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.04em;color:var(--text-faint)}
+    .fomo-stat b{color:var(--accent)}
+
+    /* value cards */
+    .vgrid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:640px){.vgrid{grid-template-columns:1fr 1fr}}
+    @media(min-width:1000px){.vgrid.four{grid-template-columns:repeat(4,1fr)}}
+    .vcard{background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;padding:26px 24px;transition:transform .2s,border-color .2s}
+    .vcard:hover{transform:translateY(-2px);border-color:var(--border-strong)}
+    .vcard .ico{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-family:var(--font-display);color:var(--accent);font-size:18px;font-weight:600}
+    .vcard h3{font-family:var(--font-display);font-weight:500;font-size:19px;letter-spacing:-.01em;margin-bottom:8px}
+    .vcard p{font-size:14.5px;color:var(--text-muted);line-height:1.55}
+    .subhead{text-align:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 22px}
+
+    /* steps */
+    .steps{display:grid;grid-template-columns:1fr;gap:18px;max-width:940px;margin:0 auto}
+    @media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
+    .step{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px 24px}
+    .step .n{font-family:var(--font-mono);font-size:12px;font-weight:600;color:#fff;background:var(--accent);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .step h3{font-family:var(--font-display);font-weight:500;font-size:20px;margin-bottom:8px;letter-spacing:-.01em}
+    .step p{font-size:14.5px;color:var(--text-muted);line-height:1.55}
+    .step p code{font-family:var(--font-mono);font-size:12.5px;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px}
+    .steps-note{text-align:center;margin-top:28px;font-size:16px;color:var(--text-muted)}
+    .steps-note b{color:var(--accent);font-weight:600}
+    .center-cta{text-align:center;margin-top:30px}
+
+    /* green band */
+    .band{background:var(--accent);color:#F5F1EA;text-align:center}
+    .band .eyebrow{color:rgba(245,241,234,.6);display:block;margin-bottom:16px}
+    .band h2{font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 auto 16px;max-width:17ch}
+    .band h2 em{font-style:italic;color:rgba(245,241,234,.72)}
+    .band p{color:rgba(245,241,234,.72);max-width:580px;margin:0 auto 28px;font-size:16.5px;line-height:1.55}
+    .btn-cream{display:inline-flex;align-items:center;gap:10px;background:#F5F1EA;color:var(--accent);font-weight:700;font-size:16px;padding:17px 30px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s ease}
+    .btn-cream:hover{background:#fff;transform:translateY(-2px);color:var(--accent)}
+
+    /* faq */
+    .faq-wrap{max-width:720px;margin:0 auto}
+    .faq-wrap details{border-bottom:1px solid var(--border);padding:4px 0}
+    .faq-wrap summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+    .faq-wrap summary::-webkit-details-marker{display:none}
+    .faq-wrap summary::after{content:"+";font-family:var(--font-mono);color:var(--accent);font-size:20px;flex-shrink:0}
+    .faq-wrap details[open] summary::after{content:"–"}
+    .faq-wrap details p{padding:0 0 18px;color:var(--text-muted);font-size:15.5px;line-height:1.62}
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow"><span class="dot"></span><span class="eyebrow eyebrow-accent">Plataforma B2B · Hubs, gestoras, aceleradoras e redes de anjos</span></div>
+      <h1>Aposente o formulário. Seu dealflow, <em>atendido por um agente</em>.</h1>
+      <p class="hero-sub">Hoje seu funil de decks entra por um form: assíncrono, mudo e dependente de alguém do seu time para triar e responder — e a maioria dos leads morre sem feedback. O <strong>Seu Hub by PitchDeck</strong> troca o form por um agente de WhatsApp que <strong>capta, qualifica, tria com critério de Venture Capital, responde em minutos e faz follow-up</strong> — com a sua marca, no seu funil, com os dados no seu Airtable.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5521936194950?text=Oi%21%20Quero%20a%20Plataforma%20B2B%20do%20PitchDeck%20no%20meu%20hub.%20%5BREF%3A%20b2b-hero%5D" target="_blank" rel="noopener" class="btn btn-primary"><svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg> Quero no meu hub</a>
+        <a href="#como-funciona" class="btn btn-secondary">Como funciona</a>
+      </div>
+      <p class="hero-micro">Piloto 30 dias grátis · Sem cartão · Sem integração · Dados são seus</p>
+    </div>
+  </section>
+
+  <!-- DOR DO FORM -->
+  <section class="section" style="padding-top:12px">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">O problema silencioso</span>
+        <h2>O formulário custa zero. E <em>cobra caro</em>.</h2>
+        <p>Todo hub recebe decks por um form. Funciona — até você contar o que ele perde.</p>
+      </div>
+      <div class="vgrid four">
+        <div class="vcard"><div class="ico">…</div><h3>Assíncrono e mudo</h3><p>O founder envia e fica no vácuo. A primeira impressão da sua marca é o silêncio.</p></div>
+        <div class="vcard"><div class="ico">✂</div><h3>Triagem manual</h3><p>Alguém do seu time precisa abrir cada deck, avaliar e decidir. Toda semana. Para sempre.</p></div>
+        <div class="vcard"><div class="ico">↓</div><h3>Leads que morrem</h3><p>Sem resposta e sem follow-up, boa parte do funil esfria antes de qualquer conversa.</p></div>
+        <div class="vcard"><div class="ico">▢</div><h3>Segmentação unilateral</h3><p>O form só coleta o que perguntou. Não qualifica, não aprofunda, não se adapta ao lead.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE ENTRA NO LUGAR -->
+  <section class="section" style="background:var(--bg-deep)">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">O que entra no lugar</span>
+        <h2>Um agente que trabalha o seu funil <em>24/7</em></h2>
+      </div>
+      <div class="vgrid four">
+        <div class="vcard"><div class="ico">➔</div><h3>Capta como o seu form</h3><p>Replica as perguntas do seu intake atual — mas em conversa, com validação de dado em tempo real.</p></div>
+        <div class="vcard"><div class="ico">◈</div><h3>Tria com score de VC</h3><p>Cada deck é analisado pelo motor da Equity Rio: score, veredicto e valuation viram critério objetivo de triagem do seu comitê.</p></div>
+        <div class="vcard"><div class="ico">⚡</div><h3>Feedback em minutos</h3><p>O founder recebe o diagnóstico completo do deck na hora — nenhum lead seu fica mais sem resposta.</p></div>
+        <div class="vcard"><div class="ico">↻</div><h3>Follow-up e handoff</h3><p>Quem esfria recebe acompanhamento automático; quem pede humano cai no WhatsApp do seu time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AS 3 CAMADAS -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">A arquitetura</span>
+        <h2>Motor + conhecimento + <em>presets</em></h2>
+        <p>Infraestrutura nossa, regras suas. Seu hub configura — não constrói.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <h3>Motor</h3>
+          <p>O pipeline de análise com critério de Venture Capital da Equity Rio: score por dimensão, veredicto, valuation e o PDF comentado slide a slide — o mesmo que roda no PitchDeck.com.br.</p>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <h3>Conhecimento do seu hub</h3>
+          <p>O agente fala em nome da parceria: <code>Kria by PitchDeck</code>, <code>Gávea by PitchDeck</code>. Tom, benefícios, regras e limites do seu hub em uma base de conhecimento própria.</p>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <h3>Presets do seu funil</h3>
+          <p>Suas regras viram automação: <code>deal de equity → análise completa</code>, <code>score ≥ 7 → notifica o comitê</code>, <code>lead frio → follow-up em 48h</code>. Cada hub, seu fluxo.</p>
+        </div>
+      </div>
+      <p class="steps-note">Os dados são <b>seus</b>: leads e decks do seu canal pertencem ao seu funil — no plano Plataforma, gravados <b>direto no seu Airtable</b>.</p>
+    </div>
+  </section>
+
+  <!-- PILOTOS -->
+  <section class="section" style="background:var(--bg-card)">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">Programa piloto</span>
+        <h2>Quem já está <em>testando</em></h2>
+        <p>Três parceiros fundadores moldando a plataforma — com vagas limitadas por categoria.</p>
+      </div>
+      <div class="hubs-grid">
+        <span class="hubcard active"><span class="hubmark fc">F</span><span><span class="hubcard-name">Founders Club <span class="pill live">Piloto</span></span><span class="hubcard-seg">Comunidade de founders</span><span class="hubcard-desc">Diagnóstico completo de pitch deck como benefício de membro — novo canal de valor da comunidade.</span></span></span>
+        <span class="hubcard active"><span class="hubmark fc" style="background:#0f4c3a">G</span><span><span class="hubcard-name">Gávea Angels <span class="pill live">Piloto</span></span><span class="hubcard-seg">Rede de anjos · desde 2002</span><span class="hubcard-desc">Intake conversacional e triagem por score de Venture Capital para o dealflow da rede.</span></span></span>
+        <span class="hubcard active"><span class="hubmark fc" style="background:#c08415">K</span><span><span class="hubcard-name">Kria <span class="pill live">Piloto</span></span><span class="hubcard-seg">Plataforma de investimento coletivo</span><span class="hubcard-desc">Captação qualificada com preset: deal de equity entra direto no motor de análise completa.</span></span></span>
+        <span class="hubcard soon"><span class="hubmark soon">+</span><span><span class="hubcard-name">O seu hub? <span class="pill soon">Vaga aberta</span></span><span class="hubcard-seg">Aceleradora · Gestora · Comunidade · Programa</span><span class="hubcard-desc">Uma vaga de piloto por categoria — o primeiro de cada tipo entra grátis e molda o produto.</span></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">Duas formas de operar</span>
+        <h2>Co-branded ou <em>White Label</em></h2>
+        <p>Piloto de 30 dias grátis, sem cartão. Depois, o modelo que combina com o seu hub:</p>
+      </div>
+      <div class="steps" style="grid-template-columns:1fr;max-width:940px">
+        <div class="step">
+          <div class="n">1</div>
+          <h3>Co-branded — "Seu Hub powered by PitchDeck" · R$149/mês</h3>
+          <p>Roda inteiro na nossa infraestrutura: nosso canal de WhatsApp, nosso intake, nosso motor. Seus founders entram pelo seu link co-branded, recebem o diagnóstico completo como benefício do hub — e o <b>dealflow é compartilhado</b>: a base de leads e análises do seu canal fica visível para o hub e para a Equity Rio. 10 diagnósticos/mês inclusos · excedente R$9,90/deck.</p>
+        </div>
+        <div class="step" style="border-color:var(--accent);border-width:2px">
+          <div class="n">2</div>
+          <h3>White Label — 100% a sua marca · R$299/mês + setup R$199</h3>
+          <p><b>Número de WhatsApp exclusivo com o nome do seu hub</b>, campos de cadastro customizados (o seu form atual vira conversa), presets de triagem do seu funil — e o <b>dealflow gravado direto no seu Airtable</b>, propriedade exclusiva do hub. 10 diagnósticos/mês inclusos · excedente R$9,90/deck.</p>
+        </div>
+      </div>
+      <div class="center-cta">
+        <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20conversar%20sobre%20Co-branded%20e%20White%20Label%20da%20Plataforma%20B2B%20do%20PitchDeck.%20%5BREF%3A%20b2b-planos%5D" target="_blank" rel="noopener" class="btn btn-primary">Conversar sobre os planos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE AGORA / FOMO BAND -->
+  <!-- LADO CAPITAL -->
+  <section class="section" id="capital" style="background:var(--bg-deep)">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">Para casas de capital</span>
+        <h2>Recebe dealflow? A parceria funciona <em>ao contrário</em>.</h2>
+        <p>Redes de anjos, gestoras, family offices e escritórios não distribuem só benefício — recebem análise. O mesmo motor que prepara founders faz a triagem do que chega na sua mesa.</p>
+      </div>
+      <div class="vgrid four">
+        <div class="vcard"><div class="ico">▣</div><h3>Triagem de Ofertas</h3><p>Checklist institucional sobre cada deck recebido — club deal, rodada direta ou IPO. A primeira é gratuita.</p></div>
+        <div class="vcard"><div class="ico">≡</div><h3>Dossiê para Comitê</h3><p>Mercado validado, competidores e stress test das premissas — o contraponto independente antes da alocação.</p></div>
+        <div class="vcard"><div class="ico">◆</div><h3>Benefício para investidas</h3><p>Análise e reestruturação de deck para o portfólio e afiliadas — a próxima rodada delas fica mais fácil.</p></div>
+        <div class="vcard"><div class="ico">▤</div><h3>Plano por casa</h3><p>Cota mensal de triagens e dossiês para quem recebe dealflow contínuo, com condições de parceiro.</p></div>
+      </div>
+      <p style="text-align:center;margin-top:28px">
+        <a href="https://wa.me/5521936194950?text=Oi!%20Minha%20casa%20recebe%20dealflow%20e%20quero%20conhecer%20a%20parceria%20buy-side%20do%20PitchDeck.%20%5BREF%3A%20hub-capital%5D" target="_blank" rel="noopener" class="btn btn-primary">Falar sobre a parceria buy-side →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <span class="eyebrow">Por que agora</span>
+      <h2>Enquanto você lê isto, tem lead esfriando <em>no seu form</em>.</h2>
+      <p>O piloto é gratuito, a ativação leva um dia e cada categoria tem uma vaga de parceiro fundador. Quando fechar, fecha.</p>
+      <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20o%20piloto%20da%20Plataforma%20B2B%20do%20PitchDeck.%20%5BREF%3A%20b2b-fomo%5D" target="_blank" rel="noopener" class="btn-cream">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+        Habilite o seu Hub
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">Perguntas frequentes</span>
+        <h2>Sem pegadinha. Sem letra miúda.</h2>
+      </div>
+      <div class="faq-wrap">
+        <details><summary>De quem são os dados e o deal flow?</summary><p>Seus. Os decks e leads que entram pelo seu canal pertencem ao funil do seu hub — entregues em relatório e, no plano Plataforma, gravados direto no seu Airtable. A Equity Rio só usa como deal flow próprio com consentimento explícito. LGPD por desenho, não por remendo.</p></details>
+        <details><summary>Quanto custa começar?</summary><p>O piloto de 30 dias é gratuito e sem cartão. Depois: Co-branded R$149/mês (nossa infra, dealflow compartilhado) ou White Label R$299/mês + setup único R$199 (sua marca, seu número, seu Airtable).</p></details>
+        <details><summary>Preciso de integração ou time de TI?</summary><p>Não. Você divulga um link de WhatsApp e o agente faz o resto. No plano Plataforma, nós escrevemos os leads direto no seu Airtable atual — sem mudar nada do seu lado.</p></details>
+        <details><summary>O que são os presets?</summary><p>As regras do seu funil viram configuração do agente: que perguntas fazer, como segmentar, o que dispara análise completa, quando notificar seu time. Exemplo real: na Kria, deal de equity entra direto no motor de análise completa.</p></details>
+        <details><summary>Tem contrato ou exclusividade?</summary><p>Sem exclusividade e sem fidelidade — cancela quando quiser.</p></details>
+        <details><summary>A análise é boa mesmo?</summary><p>É o framework de Venture Capital que a Equity Rio usa para avaliar oportunidades reais — o mesmo dos decks expostos na <a href="/vitrine" style="color:var(--accent)">Vitrine</a>. Cada deck recebe score, veredicto e valuation, e é isso que alimenta a triagem automática do seu funil.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section band" style="padding-top:64px;padding-bottom:80px">
+    <div class="container">
+      <h2>Seu funil trabalhando sozinho <em>começa aqui</em>.</h2>
+      <p>Piloto de 30 dias grátis, sem cartão e sem integração. Traga o form — a gente aposenta ele junto com você.</p>
+      <a href="https://wa.me/5521936194950?text=Oi!%20Quero%20o%20piloto%20da%20Plataforma%20B2B%20do%20PitchDeck.%20%5BREF%3A%20b2b-final%5D" target="_blank" rel="noopener" class="btn-cream">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+        Habilite o seu Hub
+      </a>
+    </div>
+  </section>
+
+  
+  <script src="/site-chrome.js" defer></script>
+</body>
+</html>
