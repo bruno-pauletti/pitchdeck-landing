@@ -188,7 +188,7 @@
 
   /* ---------- Airtable (mega-menus) ---------- */
   function loadMenus(){
-    var PAT = ['patR5Nusmj9oeABoe','b0c1cee326021abedbda8ebe8ad874996b6131346aa0e2cfb0598fc0878e257e'].join('.');
+    var PAT = ['pat831OZTAzZnxizk','500705ddf6979c001b5607c7bc33642de7f195fa2696fbdb1e16b2b6e1191e42'].join('.');
     var BASE='appTfnY53iCS1DK4F';
     function load(table, cb){
       var url='https://api.airtable.com/v0/'+BASE+'/'+encodeURIComponent(table)+'?pageSize=100&sort%5B0%5D%5Bfield%5D=Ordem&sort%5B0%5D%5Bdirection%5D=asc';
