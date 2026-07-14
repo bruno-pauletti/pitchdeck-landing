@@ -60,6 +60,16 @@
       "source": "/ranking/:path*",
       "destination": "/vitrine/:path*",
       "permanent": true
+    },
+    {
+      "source": "/hubs",
+      "destination": "/b2b",
+      "permanent": true
+    },
+    {
+      "source": "/hubs/",
+      "destination": "/b2b",
+      "permanent": true
     }
   ]
 }
