@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PitchDeck — A metodologia de quem decide cheque, para quem capta e para quem investe</title>
-  <meta name="description" content="Sete serviços para captação e investimento — análise e criação de pitch deck, análise financeira, raio-x de mercado, triagem de ofertas, dossiê para comitê e M&A. Entregues por agente no WhatsApp com a metodologia da Equity Rio Investimentos. Análise e triagem gratuitas." />
+  <meta name="description" content="Serviços para captação e investimento — do pitch deck ao M&A, entregues por agente no WhatsApp com a metodologia da Equity Rio Investimentos. Análise de pitch deck e triagem de ofertas gratuitas." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PitchDeck — Feedback de comitê de investimento no seu pitch deck" />
@@ -2345,6 +2345,33 @@
       transform: translateY(0);
     }
 
+    /* ===== foto do Bruno (metodologia) ===== */
+    .method-grid.with-photo { align-items: start; }
+    @media (min-width: 1024px) { .method-grid.with-photo { grid-template-columns: 250px 1fr 1fr; gap: 56px; } }
+    .method-photo { aspect-ratio: 3 / 4; max-width: 250px; border-radius: 16px; border: 1px dashed var(--border-strong); background: var(--bg-card); display: flex; align-items: center; justify-content: center; text-align: center; }
+    .method-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; display: block; }
+    .method-photo-ph { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); line-height: 2; }
+    .method-photo-caption { margin-top: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); letter-spacing: .05em; }
+    /* ===== LLMs generalistas vs PD ===== */
+    .llm-compare { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 28px; padding: 20px 22px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; }
+    .llm-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .llm-chip { width: 46px; height: 46px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .02em; background: var(--bg-deep); border: 1px solid var(--border-strong); color: var(--text-muted); }
+    .llm-chip.pd { background: var(--accent); border-color: var(--accent-deep); color: #fff; font-size: 13px; }
+    .llm-chip.pd em { font-style: italic; }
+    .llm-cap { display: block; width: 100%; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-top: 4px; }
+    .llm-vs { font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--accent); }
+    /* ===== infográfico deal flow ===== */
+    .dfx { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 900px; margin: 0 auto 52px; }
+    @media (min-width: 900px) { .dfx { flex-direction: row; justify-content: center; gap: 18px; } }
+    .dfx-node { border: 1px solid rgba(245,241,234,.35); border-radius: 12px; padding: 14px 20px; text-align: center; font-size: 14px; font-weight: 600; color: #F5F1EA; background: rgba(245,241,234,.06); }
+    .dfx-node small { display: block; font-family: var(--font-mono); font-size: 10px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: rgba(245,241,234,.6); margin-top: 4px; }
+    .dfx-node.dfx-agent { background: #F5F1EA; color: var(--accent); border-color: #F5F1EA; }
+    .dfx-node.dfx-agent small { color: var(--accent); opacity: .7; }
+    .dfx-arrow { color: rgba(245,241,234,.6); font-size: 18px; transform: rotate(90deg); }
+    @media (min-width: 900px) { .dfx-arrow { transform: none; } }
+    .dfx-fan { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 300px; }
+    .dfx-mini { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(245,241,234,.35); color: #F5F1EA; }
+    .dfx-cap { width: 100%; text-align: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: rgba(245,241,234,.55); }
     /* ===== jornada (duas trilhas) ===== */
     .journey-track { max-width: 1080px; margin: 0 auto 34px; }
     .journey-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
@@ -2528,7 +2555,7 @@
           </h1>
 
           <p class="hero-sub">
-            Sete serviços para quem <strong>capta</strong> e para quem <strong>investe</strong> — análise e criação de pitch deck, financeiro, mercado, triagem, dossiê e M&amp;A. Entregues por um agente no WhatsApp, com a metodologia e a supervisão de quem opera na <strong>Equity Rio</strong>.
+            Serviços para quem <strong>capta</strong> e para quem <strong>investe</strong> — do pitch deck ao M&amp;A, entregues por um agente no WhatsApp com a metodologia da <strong>Equity Rio</strong>.
           </p>
 
           <div class="hero-ctas">
@@ -2629,7 +2656,7 @@
           Análise comentada <em>slide a slide</em>. Como se um VC estivesse anotando ao seu lado.
         </h2>
         <p class="section-sub">
-          Este é o exemplo real da Zentro (startup fictícia): diagnóstico, valuation, investidores com fit e rota de exit — o mesmo padrão que o agente entrega para o seu deck.
+          Diagnóstico, valuation, investidores com fit e rota de exit — o mesmo padrão que o agente entrega para o seu deck.
         </p>
       </div>
 
@@ -2655,7 +2682,7 @@
           Da primeira versão do deck ao <em>exit</em>. Da oferta recebida à <em>alocação</em>.
         </h2>
         <p class="section-sub">
-          Duas trilhas, sete serviços — e as duas começam de graça. O agente te encontra onde você está.
+          Comece de graça — o agente te encontra onde você está.
         </p>
       </div>
 
@@ -2828,13 +2855,13 @@
 
         <div class="testimonial-card">
           <p class="testimonial-quote">
-            Apontaram um problema no cap table que ninguém tinha visto — nem meu advogado. Refizemos a estrutura antes da rodada e o cheque saiu sem objeção.
+            Apesar de já ter feito treinamento de pitch, a análise conseguiu entregar insights realmente valiosos e significativos — evoluí meus slides de concorrente e why now. O matching com potenciais investidores ativos brasileiros fez muito sentido. Mas o maior ouro está no papo 1-1 com o Bruno, um cara que entende de VC, do lado técnico e de ser empreendedor. Vale a pena passar pela experiência completa!
           </p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">PM</div>
+            <div class="testimonial-avatar">RF</div>
             <div class="testimonial-meta">
-              <span class="testimonial-name">CEO · PME em transição Seed</span>
-              <span class="testimonial-role">HealthTech · receita recorrente</span>
+              <span class="testimonial-name">Ruy Fortini, CEO, Doare</span>
+              <span class="testimonial-role">Plataforma de captação de recursos para ONGs</span>
             </div>
           </div>
         </div>
@@ -2847,7 +2874,15 @@
   <section class="standard reveal">
     <div class="container">
       <div class="method">
-        <div class="method-grid">
+        <div class="method-grid with-photo">
+          <div>
+            <!-- Para ativar a foto: substituir o conteúdo de .method-photo por
+                 <img src="/logos/bruno-vertical.jpg" alt="Bruno Pauletti, sócio da Equity Rio Investimentos" loading="lazy" /> -->
+            <div class="method-photo">
+              <span class="method-photo-ph">Foto<br />Bruno Pauletti<br />vertical · 3:4</span>
+            </div>
+            <p class="method-photo-caption">Bruno Pauletti · sócio, Equity Rio Investimentos</p>
+          </div>
           <div>
             <span class="eyebrow eyebrow-accent section-tag">A metodologia</span>
             <p class="method-quote">
@@ -2897,6 +2932,19 @@
             <p class="method-attr">
               No caminho médio até um seed — <strong>58 investidores contatados, ~40 reuniões, 3+ meses</strong> (estudo DocSend) — cada conversa com um deck fraco é uma porta que não reabre. A diferença entre uma opinião e um veredito é o que está do lado direito.
             </p>
+            <div class="llm-compare" aria-label="LLMs generalistas comparadas ao agente PitchDeck">
+              <div class="llm-group">
+                <span class="llm-chip">GPT</span>
+                <span class="llm-chip">Gemini</span>
+                <span class="llm-chip">Claude</span>
+                <span class="llm-cap">Generalistas — opinam sobre qualquer assunto</span>
+              </div>
+              <span class="llm-vs">vs</span>
+              <div class="llm-group">
+                <span class="llm-chip pd"><em>P</em>D</span>
+                <span class="llm-cap">Nichado — treinado na rubrica de comitê</span>
+              </div>
+            </div>
           </div>
 
           <div class="frameworks">
@@ -2933,6 +2981,20 @@
         <p class="dealflow-sub">
           Cada deck que entra no PitchDeck é avaliado também como oportunidade de investimento — pela Equity Rio Investimentos e por toda a nossa rede de parceiros. Se houver fit, a gente conecta.
         </p>
+      </div>
+
+      <div class="dfx" aria-label="Fluxo: seu deck passa pelo agente e, havendo fit, circula na rede de investidores">
+        <div class="dfx-node">📄 Seu deck<br /><small>análise grátis ou paga</small></div>
+        <span class="dfx-arrow" aria-hidden="true">→</span>
+        <div class="dfx-node dfx-agent">Agente PitchDeck<br /><small>análise + fit de tese</small></div>
+        <span class="dfx-arrow" aria-hidden="true">→</span>
+        <div class="dfx-fan">
+          <span class="dfx-mini">VCs</span>
+          <span class="dfx-mini">CVCs</span>
+          <span class="dfx-mini">Anjos</span>
+          <span class="dfx-mini">Plataformas</span>
+          <span class="dfx-cap">circula só com a sua autorização</span>
+        </div>
       </div>
 
       <div class="dealflow-grid">
