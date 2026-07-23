@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PitchDeck — Feedback de comitê de investimento no seu pitch deck</title>
-  <meta name="description" content="Não é opinião de IA: a rubrica de comitê da Equity Rio aplicada ao seu pitch deck. Prévia grátis em minutos no WhatsApp; diagnóstico completo + call por R$97; havendo fit, seu deck circula na nossa rede. Por Bruno Pauletti e Equity Rio Investimentos." />
+  <title>PitchDeck — A metodologia de quem decide cheque, para quem capta e para quem investe</title>
+  <meta name="description" content="Sete serviços para captação e investimento — análise e criação de pitch deck, análise financeira, raio-x de mercado, triagem de ofertas, dossiê para comitê e M&A. Entregues por agente no WhatsApp com a metodologia da Equity Rio Investimentos. Análise e triagem gratuitas." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PitchDeck — Feedback de comitê de investimento no seu pitch deck" />
@@ -21,8 +21,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/agent-phone.css" />
 
   <style>
     /* ========== TOKENS — TEMA B PAPER EDITORIAL ========== */
@@ -2344,6 +2344,30 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* ===== jornada (duas trilhas) ===== */
+    .journey-track { max-width: 1080px; margin: 0 auto 34px; }
+    .journey-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .journey-nodes { display: flex; flex-direction: column; gap: 12px; }
+    .journey-node { position: relative; flex: 1; display: block; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px 16px; transition: all .25s ease; }
+    .journey-node:hover { transform: translateY(-3px); border-color: var(--accent-border); box-shadow: 0 16px 32px -16px rgba(15,76,58,.25); }
+    .journey-node.free { border-color: var(--accent-border); background: linear-gradient(165deg, #fff, #f2f8f2); }
+    .jn-stage { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 6px; }
+    .jn-name { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 400; line-height: 1.15; margin-bottom: 9px; color: var(--text); }
+    .jn-price { display: inline-block; font-family: var(--font-mono); font-size: 11px; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-border); border-radius: 999px; padding: 2px 10px; }
+    .jn-price.neutral { color: var(--text-muted); background: var(--bg-card); border-color: var(--border); }
+    .journey-foot { text-align: center; margin-top: 8px; font-size: 14px; color: var(--text-muted); }
+    .journey-foot a { color: var(--accent); font-weight: 600; }
+    @media (min-width: 900px) {
+      .journey-nodes { flex-direction: row; align-items: stretch; gap: 28px; }
+      .journey-nodes.inv { max-width: 62%; }
+      .journey-node:not(:last-child)::after { content: "→"; position: absolute; right: -23px; top: 50%; transform: translateY(-50%); color: var(--border-strong); font-size: 15px; }
+    }
+    /* ===== teaser Zentro ===== */
+    .zentro-teasers { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 980px; margin: 0 auto 28px; }
+    @media (min-width: 768px) { .zentro-teasers { grid-template-columns: 1fr 1fr; } }
+    .zentro-teasers img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 18px 36px -18px rgba(15,76,58,.22); }
+    .zentro-teaser-cta { text-align: center; }
   </style>
 </head>
 <body>
@@ -2446,9 +2470,9 @@
         <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
-        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-header%5D" target="_blank" rel="noopener" class="header-cta">
+        <a href="https://wa.me/552131960982?text=Oi!%20Vim%20pelo%20site%20e%20quero%20come%C3%A7ar.%20%5BREF%3A%20site-header%5D" target="_blank" rel="noopener" class="header-cta">
           <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-          Mandar meu deck
+          Começar pelo WhatsApp
           <span aria-hidden="true">→</span>
         </a>
       </div>
@@ -2496,63 +2520,47 @@
         <div class="hero-text">
           <div class="hero-eyebrow">
             <span class="dot"></span>
-            <span class="eyebrow eyebrow-accent">Análise gratuita disponível</span>
+            <span class="eyebrow eyebrow-accent">Para quem capta · Para quem investe</span>
           </div>
 
           <h1 class="hero-headline">
-            Feedback de <em>comitê de investimento</em> no seu pitch deck.
+            A metodologia de quem <em>decide cheque</em>, em cada etapa da sua jornada.
           </h1>
 
           <p class="hero-sub">
-            Não é opinião de IA — é a rubrica que usamos para <strong>decidir cheque</strong>. Prévia grátis em minutos no WhatsApp; diagnóstico completo + <strong>call com a Equity Rio</strong> por R$97; havendo fit, seu deck circula na <strong>nossa rede</strong>.
+            Sete serviços para quem <strong>capta</strong> e para quem <strong>investe</strong> — análise e criação de pitch deck, financeiro, mercado, triagem, dossiê e M&amp;A. Entregues por um agente no WhatsApp, com a metodologia e a supervisão de quem opera na <strong>Equity Rio</strong>.
           </p>
 
           <div class="hero-ctas">
-            <a href="https://wa.me/552131960982?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-hero%5D" target="_blank" rel="noopener" class="btn btn-primary">
+            <a href="https://wa.me/552131960982?text=Oi!%20Vim%20pelo%20site%20e%20quero%20come%C3%A7ar.%20%5BREF%3A%20site-hero%5D" target="_blank" rel="noopener" class="btn btn-primary">
               <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-              Mandar meu deck — prévia em minutos
+              Começar pelo WhatsApp
               <span aria-hidden="true">→</span>
             </a>
-            <a href="#output" class="btn btn-secondary">
-              Ver exemplo de análise
+            <a href="#jornada" class="btn btn-secondary">
+              Ver todos os serviços
             </a>
           </div>
 
           <p class="hero-microcopy">
-            <strong class="accent-text">Sem cartão. Sem cadastro complicado. Você manda o PDF, recebe a análise.</strong>
+            <strong class="accent-text">Nosso agente entende seu momento — captando ou investindo — e te direciona em minutos. Análise gratuita disponível.</strong>
           </p>
         </div>
 
         <div class="hero-card-wrap">
-          <div class="analysis-card">
-            <div class="card-header">
-              <span class="card-label">Análise n° 0142</span>
-              <span class="card-status">● Concluída</span>
-            </div>
-            <div class="card-score">
-              <span class="card-score-value">7.4</span>
-              <span class="card-score-max">/ 10</span>
-            </div>
-            <p class="card-verdict">
-              Deck <em>tecnicamente sólido</em>, mas a narrativa de mercado dilui o problema. Slide 4 mata o pitch antes do slide 5 chegar.
-            </p>
-            <div class="card-divider"></div>
-            <p class="card-section-title">Top 3 issues</p>
-            <div class="card-issue">
-              <span class="card-issue-num">01</span>
-              <span>Slide de mercado infla TAM com fonte secundária — VC desconfia em 9s.</span>
-            </div>
-            <div class="card-issue">
-              <span class="card-issue-num">02</span>
-              <span>Cap table mostra 38% de diluição pré-Seed — flag vermelho do Carta 2025.</span>
-            </div>
-            <div class="card-issue">
-              <span class="card-issue-num">03</span>
-              <span>Tabela competitiva ✓/✗ não convence; falta framework defensável.</span>
-            </div>
-            <div class="card-footer">
-              <span>Equity Rio · Framework VC</span>
-              <span class="card-stamp">CONFIDENCIAL</span>
+          <div class="aphone" aria-label="Conversa ilustrativa com o agente PitchDeck no WhatsApp">
+            <div class="aphone-screen">
+              <div class="aphone-header">
+                <span class="aphone-avatar">PD</span>
+                <span><span class="aphone-title">Agente PitchDeck</span><br /><span class="aphone-status">online · responde em minutos</span></span>
+              </div>
+              <div class="aphone-chat">
+                <div class="amsg out">Oi! Vim pelo site. Sou founder, tô montando minha captação.<span class="tick">✓✓</span></div>
+                <div class="amsg in">Bem-vindo! Sou o agente do PitchDeck. Me manda o PDF do seu deck que eu já te devolvo uma prévia gratuita — olhar de comitê, não de IA genérica.</div>
+                <div class="amsg out">📎 deck-v3.pdf<span class="tick">✓✓</span></div>
+                <div class="amsg score"><span class="sc-cap">Prévia · Análise nº 0142</span><br /><span class="sc-num">7.4<small>/10</small></span><br /><span class="sc-cap">3 pontos críticos identificados</span></div>
+                <div class="amsg in">Prévia pronta ✅ A análise completa slide a slide sai em até 24h — e se você investe, também faço triagem de ofertas. É só dizer seu momento.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -2621,175 +2629,89 @@
           Análise comentada <em>slide a slide</em>. Como se um VC estivesse anotando ao seu lado.
         </h2>
         <p class="section-sub">
-          Você recebe seu deck original com anotações sobrepostas em cada slide, mais um relatório executivo separado — tudo direto no seu WhatsApp. Nada genérico. Tudo aplicável.
+          Este é o exemplo real da Zentro (startup fictícia): diagnóstico, valuation, investidores com fit e rota de exit — o mesmo padrão que o agente entrega para o seu deck.
         </p>
       </div>
 
-      <div class="preview-wrap">
-        <div class="deck-mockup">
-          <div class="deck-mockup-score-badge">
-            <span class="v">6.0</span>
-            <span class="m">/ 10</span>
-          </div>
-          <div class="deck-mockup-page">Slide 04 / 12</div>
-          <div class="deck-mockup-line"></div>
-          <div class="deck-mockup-title">The Problem</div>
-          <h3 class="deck-mockup-headline">
-            78% dos pacientes brasileiros esperam mais de 14 dias por uma consulta especializada.
-          </h3>
-          <div class="deck-mockup-bullet">Filas sobrecarregadas em 89% dos hospitais públicos</div>
-          <div class="deck-mockup-bullet">Plano de saúde privado custa R$ 3.4k+/mês para família</div>
-          <div class="deck-mockup-bullet">Mercado de telemedicina cresce 22% a.a. desde 2020</div>
-          <div class="deck-mockup-source">Source: ANS, 2024 · Acme HealthTech ©</div>
+      <div class="zentro-teasers">
+        <img src="/servicos/analise-de-pitch-deck/assets/zentro/zentro-teaser-1.webp" alt="Slide do deck Zentro com anotações de comitê sobrepostas" loading="lazy" />
+        <img src="/servicos/analise-de-pitch-deck/assets/zentro/zentro-teaser-2.webp" alt="Diagnóstico executivo do exemplo Zentro com pontos fortes e problemas críticos" loading="lazy" />
+      </div>
 
-          <div class="annotation annotation-1">
-            <span class="annotation-icon cross">×</span>
-            Fonte secundária. VCs vão pedir relatório direto da ANS — adicione link.
-          </div>
-          <div class="annotation annotation-2">
-            <span class="annotation-icon warn">!</span>
-            "78%" é o número certo, mas headline pesa demais. Cortar metade.
-          </div>
-          <div class="annotation annotation-3">
-            <span class="annotation-icon check">✓</span>
-            Storytelling forte. Conecta dor do paciente com tamanho de mercado em 3 linhas.
-          </div>
-        </div>
-
-        <div class="deliverables">
-          <!--cms:entregaveis:start-->
-          <div class="deliverable-item">
-            <span class="deliverable-num">01</span>
-            <div class="deliverable-content">
-              <h4 class="deliverable-title">PDF do deck anotado</h4>
-              <p class="deliverable-text">Seu deck original com comentários, scores e flags sobrepostos em cada slide.</p>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            <span class="deliverable-num">02</span>
-            <div class="deliverable-content">
-              <h4 class="deliverable-title">Relatório executivo</h4>
-              <p class="deliverable-text">15 páginas A4 com sumário, top issues priorizados e plano de ação.</p>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            <span class="deliverable-num">03</span>
-            <div class="deliverable-content">
-              <h4 class="deliverable-title">Modelo de valuation</h4>
-              <p class="deliverable-text">Planilha editável com 6 métodos calculados e range pre-money defensável.</p>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            <span class="deliverable-num">04</span>
-            <div class="deliverable-content">
-              <h4 class="deliverable-title">Cap table benchmark</h4>
-              <p class="deliverable-text">Sua tabela de sócios comparada com Carta 2025 — flag verde/amarelo/vermelho.</p>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            <span class="deliverable-num">05</span>
-            <div class="deliverable-content">
-              <h4 class="deliverable-title">Lista curada de fundos</h4>
-              <p class="deliverable-text">20 fundos e anjos brasileiros compatíveis com a tese da sua startup. <em>(versão paga)</em></p>
-            </div>
-          </div>
-          <!--cms:entregaveis:end-->
-        </div>
+      <div class="zentro-teaser-cta">
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20receber%20o%20exemplo%20completo%20da%20an%C3%A1lise%20Zentro.%20%5BREF%3A%20site-exemplo-zentro%5D" target="_blank" rel="noopener" class="btn btn-primary">Quero receber o exemplo completo →</a>
+        <p class="hero-microcopy" style="margin-top:12px">O agente te entrega o PDF na hora, no WhatsApp. <a href="/servicos/analise-de-pitch-deck#exemplo" style="text-decoration:underline">Ou veja slide a slide aqui →</a></p>
       </div>
     </div>
   </section>
 
+
   <!-- ============== TIERS (Os 3 níveis) ============== -->
-  <section class="standard reveal" id="tiers">
+  <section class="standard reveal" id="jornada">
     <div class="container">
       <div class="section-head centered">
-        <span class="eyebrow eyebrow-accent section-tag">Os 3 níveis</span>
+        <span class="eyebrow eyebrow-accent section-tag">Um serviço para cada momento</span>
         <h2 class="section-title">
-          Comece grátis. <em>Aprofunde quando fizer sentido.</em>
+          Da primeira versão do deck ao <em>exit</em>. Da oferta recebida à <em>alocação</em>.
         </h2>
         <p class="section-sub">
-          Você não precisa decidir tudo agora. Roda a análise gratuita, vê o valor, e escolhe se quer mais profundidade ou se quer entregar pronto.
+          Duas trilhas, sete serviços — e as duas começam de graça. O agente te encontra onde você está.
         </p>
       </div>
 
-      <div class="tiers">
-        <!--cms:planos:start-->
-        <article class="tier" id="free">
-          <div class="tier-num">01</div>
-          <div class="tier-info">
-            <h3 class="tier-name">Análise Gratuita</h3>
-            <span class="tier-price">Diagnóstico inicial</span>
-            <span class="tier-price-main">Grátis</span>
-            <span class="tier-price-meta">Prévia em minutos · Mesma metodologia da paga</span>
-          </div>
-          <ul class="tier-features">
-            <li>Seu deck anotado slide a slide</li>
-            <li>1 ponto forte destacado por slide</li>
-            <li>Mapa de problemas críticos identificados</li>
-            <li>Veredito e valuation na versão completa</li>
-          </ul>
-          <div class="tier-cta-wrap">
-            <a href="https://wa.me/552131960982?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-free%5D" target="_blank" rel="noopener" class="tier-cta secondary">
-              <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-              Receber prévia grátis
-            </a>
-            <span class="tier-cta-meta">Atendimento por WhatsApp</span>
-          </div>
-        </article>
-
-        <article class="tier featured" id="analise">
-          <div class="tier-num">02</div>
-          <div class="tier-info">
-            <h3 class="tier-name">Análise Honesta</h3>
-            <span class="tier-price">Diagnóstico de comitê</span>
-            <span class="tier-price-main">R$ 97</span>
-            <span class="tier-price-meta">Liberação imediata após o pagamento · Call inclusa</span>
-          </div>
-          <ul class="tier-features">
-            <li>Score por slide (rubrica 1–10)</li>
-            <li>PDF anotado slide a slide</li>
-            <li>Relatório executivo completo</li>
-            <li>Valuation com 6 métodos + cap table benchmark</li>
-            <li>Plano de ação priorizado</li>
-            <li>Call com a Equity Rio — feedback humano no seu deck</li>
-            <li>Havendo fit de tese: apresentação à rede de parceiros</li>
-          </ul>
-          <div class="tier-cta-wrap">
-            <a href="https://wa.me/552131960982?text=Oi!%20Quero%20a%20An%C3%A1lise%20Honesta%20(R%2497)%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-analise-97%5D" target="_blank" rel="noopener" class="tier-cta primary">
-              <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-              Análise + Call — R$ 97
-            </a>
-            <span class="tier-cta-meta">PIX na conversa · Liberação automática</span>
-          </div>
-        </article>
-
-        <article class="tier" id="reestruturacao">
-          <div class="tier-num">03</div>
-          <div class="tier-info">
-            <h3 class="tier-name">Criação de Pitch Deck</h3>
-            <span class="tier-price">Fundraising deck completo — 13 slides</span>
-            <span class="tier-price-main">R$ 1.997</span>
-            <span class="tier-price-meta">Fechamento em call · Entrega em 7 dias</span>
-          </div>
-          <ul class="tier-features">
-            <li>Tudo da Análise Honesta, e:</li>
-            <li>Deck reescrito slide a slide (PPTX)</li>
-            <li>Cap table corrigida em planilha</li>
-            <li>Modelo de valuation editável</li>
-            <li>Lista curada de 20 fundos brasileiros</li>
-            <li>1h de call de revisão final</li>
-          </ul>
-          <div class="tier-cta-wrap">
-            <a href="https://wa.me/552131960982?text=Oi!%20Quero%20criar%20o%20deck%20da%20minha%20rodada.%20%5BREF%3A%20site-criacao%5D" target="_blank" rel="noopener" class="tier-cta secondary">
-              <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-              Falar sobre meu deck
-            </a>
-            <span class="tier-cta-meta">Qualificação no WhatsApp · Fechamento em call com o Bruno</span>
-          </div>
-        </article>
-        <!--cms:planos:end-->
-
+      <div class="journey-track">
+        <h3 class="journey-label">Para quem capta</h3>
+        <div class="journey-nodes">
+          <a class="journey-node free" href="/servicos/analise-de-pitch-deck">
+            <span class="jn-stage">Validar</span>
+            <strong class="jn-name">Análise de Pitch Deck</strong>
+            <span class="jn-price">Grátis</span>
+          </a>
+          <a class="journey-node" href="/servicos/criacao-de-pitch-deck">
+            <span class="jn-stage">Construir</span>
+            <strong class="jn-name">Criação de Pitch Deck</strong>
+            <span class="jn-price neutral">Em call</span>
+          </a>
+          <a class="journey-node" href="/servicos/analise-financeira">
+            <span class="jn-stage">Provar</span>
+            <strong class="jn-name">Análise Financeira</strong>
+            <span class="jn-price neutral">R$ 497+</span>
+          </a>
+          <a class="journey-node" href="/servicos/raio-x-de-mercado">
+            <span class="jn-stage">Defender</span>
+            <strong class="jn-name">Raio-X de Mercado</strong>
+            <span class="jn-price neutral">R$ 697</span>
+          </a>
+          <a class="journey-node" href="/servicos/assessoria-de-ma">
+            <span class="jn-stage">Exit</span>
+            <strong class="jn-name">Assessoria de M&amp;A</strong>
+            <span class="jn-price neutral">Em call</span>
+          </a>
+        </div>
       </div>
+
+      <div class="journey-track">
+        <h3 class="journey-label">Para quem investe</h3>
+        <div class="journey-nodes inv">
+          <a class="journey-node free" href="/servicos/triagem-de-ofertas">
+            <span class="jn-stage">Filtrar</span>
+            <strong class="jn-name">Triagem de Ofertas</strong>
+            <span class="jn-price">Grátis</span>
+          </a>
+          <a class="journey-node" href="/servicos/dossie-para-comite">
+            <span class="jn-stage">Decidir</span>
+            <strong class="jn-name">Dossiê para Comitê</strong>
+            <span class="jn-price neutral">R$ 1.497</span>
+          </a>
+          <a class="journey-node" href="/servicos/assessoria-de-ma">
+            <span class="jn-stage">Transacionar</span>
+            <strong class="jn-name">M&amp;A Buy-Side</strong>
+            <span class="jn-price neutral">Em call</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="journey-foot">Não sabe por onde começar? <a href="https://wa.me/552131960982?text=Oi!%20Vim%20pelo%20site%20e%20n%C3%A3o%20sei%20por%20onde%20come%C3%A7ar.%20%5BREF%3A%20site-jornada%5D" target="_blank" rel="noopener">Fala com o agente — ele te direciona →</a></p>
     </div>
   </section>
 
@@ -3111,54 +3033,23 @@
       </div>
 
       <div class="faq-list">
-        <!--cms:faq:start-->
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span>Como funciona a análise gratuita?</span>
+            <span>O que é o PitchDeck?</span>
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Você manda o PDF do seu pitch deck pelo WhatsApp. Em poucos minutos, devolvemos a prévia gratuita pelo mesmo canal: seu deck anotado slide a slide, com os pontos fortes destacados e o mapa dos problemas críticos. Sem cartão, sem cadastro complicado.
+            A casa de serviços da <strong>Equity Rio Investimentos</strong> para captação e investimento: análise e criação de pitch deck, análise financeira, raio-x de mercado, triagem de ofertas, dossiê para comitê e assessoria de M&amp;A. Tudo nasceu da análise de pitch deck — o serviço que deu nome ao site — e hoje cobre a jornada inteira de quem capta e de quem investe.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span>O atendimento é todo por WhatsApp? E o email?</span>
+            <span>Como funciona o atendimento pelo agente?</span>
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Sim, todo o fluxo é por WhatsApp — envio do deck, briefing, entrega da análise e suporte pós-entrega. Mais ágil, mais prático, e funciona melhor para founders ocupados. O email contato@pitchdeck.com.br funciona como repositório oficial: confirmações de pagamento, cópia do relatório entregue e comprovantes ficam registrados lá para consulta futura ou compliance.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            <span>Qual a diferença entre a gratuita e a de R$97?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-a">
-            A gratuita é uma prévia — você sai sabendo onde estão os problemas do deck. A de R$97 é a trilha completa: score por slide, PDF inteiro anotado, relatório executivo, valuation com 6 métodos, cap table benchmark e plano de ação priorizado — mais a <strong>call com a equipe da Equity Rio</strong> para feedback humano no seu deck. Havendo fit de tese, avaliamos a apresentação à nossa rede de parceiros. É a mesma profundidade que aplicamos em comitê de investimento da Equity Rio Investimentos.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            <span>Quanto tempo demora cada análise?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-a">
-            Análise Gratuita: prévia em poucos minutos, direto no WhatsApp. Análise Honesta R$97: diagnóstico completo liberado automaticamente assim que o pagamento é confirmado — e a call com a equipe é agendada na própria conversa. Reestruturação Completa R$1.997: 7 dias após briefing inicial (alinhamento de cronograma feito em call).
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            <span>Quais os meios de pagamento aceitos?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-a">
-            Pagamento processado pelo Mercado Pago. Você pode pagar por Pix (aprovação instantânea), cartão de crédito (1x sem juros ou parcelado em até 12x com juros do Mercado Pago) ou boleto bancário (compensação em 1-3 dias úteis). Nota fiscal emitida pela NVESTOR TECNOLOGIA E INFORMACAO LTDA (CNPJ 34.821.742/0001-08), conforme rodapé.
+            Todo o fluxo acontece no WhatsApp. Nosso agente entende seu momento — captando ou investindo —, direciona para o serviço certo e entrega direto na conversa. Serviços de maior profundidade (Criação de Pitch Deck, Dossiê, M&amp;A) são fechados em call com a equipe. Toda entrega passa por revisão humana antes do envio; o email contato@pitchdeck.com.br funciona como repositório oficial de confirmações e relatórios.
           </div>
         </div>
 
@@ -3168,50 +3059,39 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Bruno Pauletti, sócio da <strong>Equity Rio Investimentos</strong> — escritório de investimentos sediado no Rio de Janeiro. Bruno também é membro da Gávea Angels e analisa pitch decks como investidor anjo.<br><br><strong>Para startups e PMEs:</strong> estruturamos rodadas de captação via equity e crédito privado.<br><strong>Para investidores:</strong> oferecemos um portfolio de investimentos alternativos e high yield.<br><br>O framework usado nesta ferramenta é o mesmo aplicado nos comitês de avaliação de oportunidades da casa.
+            Bruno Pauletti, sócio da <strong>Equity Rio Investimentos</strong> — escritório de investimentos sediado no Rio de Janeiro. Bruno também é membro da Gávea Angels e analisa pitch decks como investidor anjo.<br><br><strong>Para startups e PMEs:</strong> estruturamos rodadas de captação via equity e crédito privado.<br><strong>Para investidores:</strong> oferecemos um portfolio de investimentos alternativos e high yield.<br><br>O framework usado nos serviços é o mesmo aplicado nos comitês de avaliação de oportunidades da casa.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span>Quem vai ver meu pitch deck?</span>
+            <span>Meu deck e meus dados ficam confidenciais?</span>
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            A análise é feita exclusivamente pela equipe da <strong>Equity Rio Investimentos</strong>. Seu deck nunca é usado para treinar modelos de IA externos.<br><br>Se durante a análise identificarmos <strong>fit de tese</strong> com a Equity Rio ou com algum dos nossos parceiros de deal flow (VCs, CVCs, redes de Anjos, Plataformas de Equity e Crédito Privado), <strong>te avisamos antes</strong> e só circulamos o deck na rede com sua autorização explícita pelo WhatsApp.<br><br>Sem fit ou sem autorização? Seu deck fica restrito à equipe e é apagado dos nossos servidores 30 dias após a entrega. Se preferir NDA assinado, manda junto com o deck.
+            Sim. As análises são de uso exclusivo da equipe da <strong>Equity Rio Investimentos</strong> e seu material nunca é usado para treinar modelos de IA externos. Se identificarmos <strong>fit de tese</strong> com a Equity Rio ou parceiros de deal flow, <strong>te avisamos antes</strong> e só circulamos o deck com sua autorização explícita. Sem fit ou sem autorização, o material fica restrito à equipe e é apagado dos servidores em 30 dias. Se preferir NDA assinado, é só mandar junto.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span>Vocês só analisam ou também investem?</span>
+            <span>Também atendem quem investe?</span>
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Nosso core é a <strong>análise</strong> — gratuita, paga (R$ 97) e a reestruturação completa (R$ 1.997). É por isso que cobramos preço acessível: o valor principal da entrega é o relatório.<br><br>Mas toda vez que entendemos que há <strong>fit de tese</strong> entre o pitch deck analisado e algum dos nossos parceiros de investimento — inclusive a própria <strong>Equity Rio Investimentos</strong> — passamos a tratar aquele deck como <strong>deal flow</strong> qualificado para oportunidade de investimento.<br><br>Ou seja: você pode entrar pagando R$ 97 pra ouvir crítica honesta, e sair com warm intro pra um VC. Não é promessa de cheque, é processo natural quando há fit real. <strong>Sem taxa de sucesso, sem comissão</strong> — o encaminhamento é consequência da análise.
+            Sim — é uma trilha inteira. <strong>Triagem de Ofertas</strong> (gratuita): checklist institucional do deck que chegou na sua mesa. <strong>Dossiê para Comitê</strong>: mercado, competidores, riscos e stress test das premissas para a decisão de alocação. <strong>Assessoria de M&amp;A buy-side</strong>: tese, valuation e mapa de alvos. Family offices, private bankings e comitês de investimento são o público típico.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span>É só pra startup tech ou serve para qualquer negócio?</span>
+            <span>Quanto custa?</span>
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Funciona para <strong>startups e PMEs</strong> (de economia real, bens de consumo e tecnologia) que estejam buscando funding via equity e/ou dívida e crédito privado. Rodadas geralmente de <strong>R$ 500 mil a R$ 5 milhões</strong>. Se você está em Pre-Seed, Seed ou em transição para estágios mais maduros, o framework se aplica. Para Series A+ ou casos muito específicos (deep tech early-stage, biotech, etc.), entre em contato pelo WhatsApp para alinhamento antes.
+            Cada serviço tem sua página com preço e formato de entrega — veja a <a href="#jornada" style="text-decoration:underline">jornada completa</a>. As duas portas de entrada são <strong>gratuitas</strong>: a Análise de Pitch Deck (para quem capta) e a Triagem de Ofertas (para quem investe). Serviços self-service vão de R$ 97 a R$ 997, pagos na própria conversa; os de maior profundidade são desenhados e fechados em call.
           </div>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            <span>A análise é feita por IA ou por humano?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-a">
-            Os dois. O framework metodológico foi desenvolvido pela Equity Rio Investimentos. A IA aplica esse framework no seu deck. A revisão final passa por humano antes do envio. Não é "mais um GPT" — é metodologia + execução em IA + curadoria humana.
-          </div>
-        </div>
-        <!--cms:faq:end-->
       </div>
     </div>
   </section>
@@ -3222,25 +3102,24 @@
       <div class="final-cta-inner">
         <span class="eyebrow eyebrow-accent section-tag">Comece agora</span>
         <h2 class="section-title">
-          Tudo começa com a <em>análise gratuita</em>.
+          Seu próximo passo cabe numa <em>mensagem</em>.
         </h2>
         <p class="section-sub">
-          Não precisa decidir tudo agora. Roda a análise grátis, vê o valor, e escolhe se quer mais profundidade depois. Sem compromisso.
+          Capta ou investe, o caminho começa igual: uma conversa com o agente. Ele entende seu momento e te leva ao serviço certo — começando pelo gratuito.
         </p>
 
         <div class="final-ctas">
-          <a href="https://wa.me/552131960982?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-final%5D" target="_blank" rel="noopener" class="btn btn-primary">
+          <a href="https://wa.me/552131960982?text=Oi!%20Vim%20pelo%20site%20e%20quero%20come%C3%A7ar.%20%5BREF%3A%20site-final%5D" target="_blank" rel="noopener" class="btn btn-primary">
             <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-            Mandar meu deck agora
+            Começar pelo WhatsApp
             <span aria-hidden="true">→</span>
           </a>
-          <a href="https://wa.me/552131960982?text=Oi!%20Quero%20a%20An%C3%A1lise%20Honesta%20(R%2497)%20do%20meu%20pitch%20deck.%20%5BREF%3A%20site-final-97%5D" target="_blank" rel="noopener" class="btn btn-secondary">
-            <svg class="pay-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-            Análise + Call — R$ 97
+          <a href="https://wa.me/552131960982?text=Oi!%20Quero%20falar%20com%20a%20equipe%20do%20PitchDeck.%20%5BREF%3A%20site-final-equipe%5D" target="_blank" rel="noopener" class="btn btn-secondary">
+            Falar com a equipe
           </a>
         </div>
         <p class="hero-microcopy" style="margin-top: 16px;">
-          <strong class="accent-text">Sem cartão. Sem cadastro complicado.</strong> Prévia gratuita em minutos; no upgrade, PIX gerado na própria conversa via Mercado Pago, com liberação automática.
+          <strong class="accent-text">Sem formulário, sem call de vendas.</strong> Análise gratuita para quem capta · Triagem gratuita para quem investe.
         </p>
       </div>
     </div>
