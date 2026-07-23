@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PitchDeck — A metodologia de quem decide cheque, para quem capta e para quem investe</title>
+  <title>PitchDeck — Um comitê de investimento no seu WhatsApp | by Equity Rio</title>
   <meta name="description" content="Serviços para captação e investimento — do pitch deck ao M&A, entregues por agente no WhatsApp com a metodologia da Equity Rio Investimentos. Análise de pitch deck e triagem de ofertas gratuitas." />
 
   <meta property="og:type" content="website" />
@@ -2395,6 +2395,28 @@
     @media (min-width: 768px) { .zentro-teasers { grid-template-columns: 1fr 1fr; } }
     .zentro-teasers img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 18px 36px -18px rgba(15,76,58,.22); }
     .zentro-teaser-cta { text-align: center; }
+
+    /* ===== fan da vitrine ===== */
+    .vitrine-fan { display: flex; align-items: center; justify-content: center; margin: 8px 0; }
+    .vf-card { width: 128px; aspect-ratio: 16/10; background: #F5F1EA; border-radius: 10px; padding: 12px; position: relative; box-shadow: 0 14px 30px rgba(0,0,0,.25); transform: rotate(-6deg) translateX(10px); }
+    .vf-card.mid { transform: rotate(0) translateY(-10px); z-index: 2; }
+    .vf-card:last-child { transform: rotate(6deg) translateX(-10px); }
+    .vf-score { position: absolute; top: 8px; right: 10px; font-family: var(--font-display); font-size: 15px; color: var(--accent); font-weight: 600; }
+    .vf-line { display: block; height: 5px; border-radius: 3px; background: var(--border); margin-bottom: 6px; }
+    .vf-line.w70 { width: 70%; } .vf-line.w60 { width: 60%; } .vf-line.w50 { width: 50%; } .vf-line.w40 { width: 40%; }
+    .vf-line:first-of-type { background: var(--accent); opacity: .55; }
+    @media (max-width: 899px) { .vitrine-fan { margin: 20px 0; } }
+    /* ===== base de investidores ===== */
+    .invbase-sub { font-size: 15px; line-height: 1.6; color: var(--text-muted); max-width: 640px; margin: 14px auto 0; }
+    .invbase-table { max-width: 860px; margin: 40px auto 28px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 22px 44px -22px rgba(15,76,58,.2); }
+    .ibt-row { display: grid; grid-template-columns: 1.2fr .8fr 1.2fr 1fr .8fr; gap: 10px; padding: 12px 18px; font-size: 12.5px; color: var(--text-muted); border-bottom: 1px solid var(--border); align-items: center; }
+    .ibt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); background: var(--bg-card); }
+    .ibt-hl { background: var(--accent-soft); }
+    .ibt-blur { color: var(--border-strong); letter-spacing: -1px; }
+    .ibt-live { font-family: var(--font-mono); font-size: 10px; color: var(--ok); }
+    .ibt-foot { padding: 12px 18px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; color: var(--text-faint); text-align: center; }
+    @media (max-width: 700px) { .ibt-row { grid-template-columns: 1.2fr 1fr 1fr; } .ibt-row span:nth-child(4), .ibt-c5 { display: none; } }
+    .invbase-cta { text-align: center; }
   </style>
 </head>
 <body>
@@ -2547,15 +2569,15 @@
         <div class="hero-text">
           <div class="hero-eyebrow">
             <span class="dot"></span>
-            <span class="eyebrow eyebrow-accent">Para quem capta · Para quem investe</span>
+            <span class="eyebrow eyebrow-accent">Para quem empreende · Para quem investe</span>
           </div>
 
           <h1 class="hero-headline">
-            A metodologia de quem <em>decide cheque</em>, em cada etapa da sua jornada.
+            Um <em>comitê de investimento</em> no seu WhatsApp.
           </h1>
 
           <p class="hero-sub">
-            Serviços para quem <strong>capta</strong> e para quem <strong>investe</strong> — do pitch deck ao M&amp;A, entregues por um agente no WhatsApp com a metodologia da <strong>Equity Rio</strong>.
+            Serviços para quem <strong>empreende</strong> e para quem <strong>investe</strong> — do pitch deck ao M&amp;A, entregues pelo nosso agente com a metodologia da <strong>Equity Rio</strong>.
           </p>
 
           <div class="hero-ctas">
@@ -2687,8 +2709,12 @@
       </div>
 
       <div class="journey-track">
-        <h3 class="journey-label">Para quem capta</h3>
+        <h3 class="journey-label">Para quem empreende</h3>
         <div class="journey-nodes">
+          <a class="journey-node" href="https://wa.me/552131960982?text=Oi!%20Quero%20saber%20mais%20sobre%20o%20Partnership%20Book.%20%5BREF%3A%20site-jornada-partnership-book%5D" target="_blank" rel="noopener">
+            <span class="jn-stage">Parcerias</span>
+            <strong class="jn-name">Partnership Book</strong>
+          </a>
           <a class="journey-node free" href="/servicos/analise-de-pitch-deck">
             <span class="jn-stage">Validar</span>
             <strong class="jn-name">Análise de Pitch Deck</strong>
@@ -2697,23 +2723,19 @@
           <a class="journey-node" href="/servicos/criacao-de-pitch-deck">
             <span class="jn-stage">Construir</span>
             <strong class="jn-name">Criação de Pitch Deck</strong>
-            <span class="jn-price neutral">Em call</span>
-          </a>
+            </a>
           <a class="journey-node" href="/servicos/analise-financeira">
             <span class="jn-stage">Provar</span>
             <strong class="jn-name">Análise Financeira</strong>
-            <span class="jn-price neutral">R$ 497+</span>
-          </a>
+            </a>
           <a class="journey-node" href="/servicos/raio-x-de-mercado">
             <span class="jn-stage">Defender</span>
             <strong class="jn-name">Raio-X de Mercado</strong>
-            <span class="jn-price neutral">R$ 697</span>
-          </a>
+            </a>
           <a class="journey-node" href="/servicos/assessoria-de-ma">
             <span class="jn-stage">Exit</span>
             <strong class="jn-name">Assessoria de M&amp;A</strong>
-            <span class="jn-price neutral">Em call</span>
-          </a>
+            </a>
         </div>
       </div>
 
@@ -2728,13 +2750,11 @@
           <a class="journey-node" href="/servicos/dossie-para-comite">
             <span class="jn-stage">Decidir</span>
             <strong class="jn-name">Dossiê para Comitê</strong>
-            <span class="jn-price neutral">R$ 1.497</span>
-          </a>
+            </a>
           <a class="journey-node" href="/servicos/assessoria-de-ma">
             <span class="jn-stage">Transacionar</span>
             <strong class="jn-name">M&amp;A Buy-Side</strong>
-            <span class="jn-price neutral">Em call</span>
-          </a>
+            </a>
         </div>
       </div>
 
@@ -2752,6 +2772,20 @@
         </div>
         <h2 class="ranking-strip-title">Os pitch decks que<br><em>inspiram</em> a comunidade</h2>
         <p class="ranking-strip-sub">Uma vitrine de decks reais analisados pela nossa equipe — para inspirar, divulgar e conectar founders early-stage. Aqui é sobre comunidade e cooperação, não competição.</p>
+      </div>
+      <div class="vitrine-fan" aria-hidden="true">
+        <div class="vf-card">
+          <span class="vf-score">8.1</span>
+          <span class="vf-line w70"></span><span class="vf-line w50"></span><span class="vf-line w60"></span>
+        </div>
+        <div class="vf-card mid">
+          <span class="vf-score">7.6</span>
+          <span class="vf-line w60"></span><span class="vf-line w70"></span><span class="vf-line w40"></span>
+        </div>
+        <div class="vf-card">
+          <span class="vf-score">7.9</span>
+          <span class="vf-line w50"></span><span class="vf-line w60"></span><span class="vf-line w70"></span>
+        </div>
       </div>
       <div class="ranking-strip-cta">
         <a href="https://pitchdeck.com.br/vitrine" class="ranking-strip-btn">
@@ -2937,6 +2971,9 @@
                 <span class="llm-chip">GPT</span>
                 <span class="llm-chip">Gemini</span>
                 <span class="llm-chip">Claude</span>
+                <span class="llm-chip">Grok</span>
+                <span class="llm-chip">DeepSeek</span>
+                <span class="llm-chip">Kimi</span>
                 <span class="llm-cap">Generalistas — opinam sobre qualquer assunto</span>
               </div>
               <span class="llm-vs">vs</span>
@@ -3037,52 +3074,24 @@
       <div class="partners-head">
         <span class="partners-eyebrow">A rede que recebe sua análise</span>
         <h2 class="partners-headline">
-          Ecossistema de <em>Equity e Funding Privado</em>
+          Uma base viva de <em>+600 investidores</em> curados.
         </h2>
+        <p class="invbase-sub">VCs, CVCs, redes de anjos, family offices e plataformas — verificados pela Equity Rio e atualizados mensalmente. É contra essa base que o agente roda o match analítico do seu deck.</p>
       </div>
 
-      <!--cms:rede:start-->
-      <div class="partners-category">
-        <div class="partners-category-label"><span>Venture Capital</span></div>
-        <div class="partners-grid">
-          <div class="partner-logo-placeholder">Astella</div>
-          <div class="partner-logo-placeholder">Bossa Invest</div>
-          <div class="partner-logo-placeholder">Domo Invest</div>
-          <div class="partner-logo-placeholder">Stamina</div>
-          <div class="partner-logo-placeholder">Investidores.VC</div>
-          <div class="partner-logo-placeholder">Airbone Ventures</div>
-        </div>
+      <div class="invbase-table" role="img" aria-label="Amostra ilustrativa da base de investidores">
+        <div class="ibt-row ibt-head"><span>Investidor</span><span>Categoria</span><span>Tese</span><span>Estágio</span><span class="ibt-c5">Status</span></div>
+        <div class="ibt-row"><span class="ibt-blur">████████</span><span>VC</span><span>SaaS B2B · IA</span><span>Pre-seed → Seed</span><span class="ibt-c5 ibt-live">● em deploy</span></div>
+        <div class="ibt-row ibt-hl"><span class="ibt-blur">██████</span><span>CVC</span><span>Fintech · Infra</span><span>Seed → Série A</span><span class="ibt-c5 ibt-live">● em deploy</span></div>
+        <div class="ibt-row"><span class="ibt-blur">█████████</span><span>Anjos</span><span>Agnóstico</span><span>Pre-seed</span><span class="ibt-c5 ibt-live">● ativo</span></div>
+        <div class="ibt-row"><span class="ibt-blur">███████</span><span>Family office</span><span>Real economy</span><span>Growth</span><span class="ibt-c5 ibt-live">● ativo</span></div>
+        <div class="ibt-foot">+600 registros · verificação e atualização mensais · fontes públicas + rede proprietária</div>
       </div>
 
-      <div class="partners-category">
-        <div class="partners-category-label"><span>Corporate Venture Capital</span></div>
-        <div class="partners-grid">
-          <div class="partner-logo-placeholder">MSW</div>
-          <div class="partner-logo-placeholder">UVC Investimentos</div>
-          <div class="partner-logo-placeholder">Vibra Ventures</div>
-        </div>
+      <div class="invbase-cta">
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20saber%20como%20acessar%20a%20base%20de%20investidores.%20%5BREF%3A%20site-base-investidores%5D" target="_blank" rel="noopener" class="btn btn-primary">Quero acessar essa base →</a>
+        <p class="hero-microcopy" style="margin-top:12px">O agente te explica como a base funciona — e já roda o match do seu deck na mesma conversa.</p>
       </div>
-
-      <div class="partners-category">
-        <div class="partners-category-label"><span>Redes de Anjos</span></div>
-        <div class="partners-grid">
-          <div class="partner-logo-placeholder">Gávea Angels</div>
-          <div class="partner-logo-placeholder">GV Angels</div>
-          <div class="partner-logo-placeholder">Urca Angels</div>
-          <div class="partner-logo-placeholder">Anjos do Brasil</div>
-        </div>
-      </div>
-
-      <div class="partners-category">
-        <div class="partners-category-label"><span>Plataformas e Crédito Privado</span></div>
-        <div class="partners-grid">
-          <div class="partner-logo-placeholder">EqSeed</div>
-          <div class="partner-logo-placeholder">Kria</div>
-          <div class="partner-logo-placeholder">KS FIDC</div>
-          <div class="partner-logo-placeholder">INCO</div>
-        </div>
-      </div>
-      <!--cms:rede:end-->
     </div>
   </section>
 
@@ -3151,7 +3160,7 @@
             <span class="faq-toggle">+</span>
           </button>
           <div class="faq-a">
-            Cada serviço tem sua página com preço e formato de entrega — veja a <a href="#jornada" style="text-decoration:underline">jornada completa</a>. As duas portas de entrada são <strong>gratuitas</strong>: a Análise de Pitch Deck (para quem capta) e a Triagem de Ofertas (para quem investe). Serviços self-service vão de R$ 97 a R$ 997, pagos na própria conversa; os de maior profundidade são desenhados e fechados em call.
+            Cada serviço tem sua página com formato de entrega — veja a <a href="#jornada" style="text-decoration:underline">jornada completa</a>. As duas portas de entrada são <strong>gratuitas</strong>: a Análise de Pitch Deck (para quem capta) e a Triagem de Ofertas (para quem investe). Os valores são apresentados pelo agente na própria conversa, de acordo com o serviço; os de maior profundidade são desenhados e fechados em call.
           </div>
         </div>
       </div>
