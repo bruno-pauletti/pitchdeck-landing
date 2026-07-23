@@ -126,7 +126,7 @@
   '<header class="pdc-header"><div class="pdc-container"><div class="pdc-inner">'
   + '<a href="/" class="pdc-brand"><span class="pdc-brand-name"><em>Pitch</em>Deck</span><span class="pdc-brand-by">by Equity Rio</span></a>'
   + '<nav class="pdc-nav" aria-label="Navegação principal">'
-    + '<div class="pdc-hubwrap"><a href="/servicos" class="pdc-link pdc-hub">Nossos Serviços <span class="pdc-chev" aria-hidden="true">▾</span></a>'
+    + '<div class="pdc-hubwrap"><a href="/servicos" class="pdc-link pdc-hub">Serviços <span class="pdc-chev" aria-hidden="true">▾</span></a>'
       + '<div class="pdc-megamenu" role="menu">'
         + '<div class="pdc-grid" data-pdc="ai-agents"></div>'
         + '<div class="pdc-mm-foot"><span>Serviços entregues por agentes de IA proprietários — envie o documento, receba o resultado.</span><a class="pdc-mm-cta" href="https://wa.me/552131960982?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20do%20PitchDeck.%20%5BREF%3A%20servicos-menu%5D" target="_blank" rel="noopener">Falar com a equipe →</a></div>'
@@ -144,7 +144,7 @@
   + '<button class="pdc-ham" id="pdcHam" aria-label="Abrir menu"><span></span><span></span><span></span></button>'
   + '</div></div></header>'
   + '<div class="pdc-mobile" id="pdcMobile">'
-    + '<button class="pdc-macc-t" id="pdcSvcT" aria-expanded="false" aria-controls="pdcSvcP">Nossos Serviços <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
+    + '<button class="pdc-macc-t" id="pdcSvcT" aria-expanded="false" aria-controls="pdcSvcP">Serviços <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
     + '<div class="pdc-macc" id="pdcSvcP" data-pdc="ai-agents-mobile"><a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a></div>'
     + '<button class="pdc-macc-t" id="pdcHubT" aria-expanded="false" aria-controls="pdcHubP">B2B <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
     + '<div class="pdc-macc" id="pdcHubP" data-pdc="hubs-mobile"><a class="pdc-macc-all" href="/b2b">Conhecer a Plataforma B2B →</a></div>'
@@ -200,7 +200,7 @@
     var agm=document.querySelector('.pdc-macc[data-pdc="ai-agents-mobile"]');
     if(ag||agm) load('AI Agents',function(rows){
       rows=rows.filter(function(f){return f.Status==='No ar'||f.Status==='Em breve';}); if(!rows.length) return;
-      function pill(a){return a.Status==='No ar'?' <span class="pdc-pill live">No ar</span>':' <span class="pdc-pill soon">Em breve</span>';}
+      function pill(a){return a.Status==='Em breve'?' <span class="pdc-pill soon">Em breve</span>':'';}
       function urlOf(a){return a['URL']||(a.Slug?'/servicos/'+a.Slug:'');}
       function rowE(a){
         var inner='<span class="pdc-svc-name">'+esc(a.Nome)+pill(a)+'</span>'+(a.Segmento?'<span class="pdc-svc-chip">'+esc(a.Segmento)+'</span>':'');
@@ -214,11 +214,11 @@
       }
       var emp=rows.filter(function(f){return f.Perfil!=='Investidores';});
       var inv=rows.filter(function(f){return f.Perfil==='Investidores';});
-      if(ag) ag.innerHTML='<div><span class="pdc-mm-group">Para empreendedores</span>'+emp.map(rowE).join('')+'</div>'
-        +'<div class="pdc-col-inv"><span class="pdc-mm-group">Para investidores</span>'+inv.map(itemI).join('')
+      if(ag) ag.innerHTML='<div><span class="pdc-mm-group">Para quem empreende</span>'+emp.map(rowE).join('')+'</div>'
+        +'<div class="pdc-col-inv"><span class="pdc-mm-group">Para quem investe</span>'+inv.map(itemI).join('')
         +'<span class="pdc-mm-note">Acesso para family offices, private banking e boutiques parceiras</span></div>';
-      if(agm) agm.innerHTML='<span class="pdc-mm-group">Para empreendedores</span>'+emp.map(rowE).join('')
-        +'<span class="pdc-mm-group">Para investidores</span>'+inv.map(rowE).join('')
+      if(agm) agm.innerHTML='<span class="pdc-mm-group">Para quem empreende</span>'+emp.map(rowE).join('')
+        +'<span class="pdc-mm-group">Para quem investe</span>'+inv.map(rowE).join('')
         +'<a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a>';
     });
     // Hubs — 2 colunas por Categoria
