@@ -116,6 +116,10 @@
     .btn-cream{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#F5F1EA;color:var(--accent);font-weight:700;font-size:16px;padding:18px 32px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s ease}
     .btn-cream:hover{background:#fff;transform:translateY(-2px)}
 
+    .ex-carousel{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;justify-content:center}
+    .ex-carousel img{height:340px;width:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 14px 30px -14px rgba(15,76,58,.2);scroll-snap-align:start;flex-shrink:0}
+    @media(max-width:767px){.ex-carousel{justify-content:flex-start}.ex-carousel img{height:300px}}
+    .ex-cta-row{text-align:center;margin-top:22px}
     footer{padding:48px 0 60px;border-top:1px solid var(--border)}
     .footer-inner{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
     @media(min-width:768px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
@@ -171,6 +175,26 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="standard" id="exemplo" style="padding-top:24px">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow eyebrow-accent section-tag">Exemplo real</span>
+        <h2 class="section-title">O dossiê do club deal <em>Solaria</em>: de 22% a 14% de TIR.</h2>
+        <p class="section-sub">A mesma oferta que passou pela triagem, agora em profundidade: mercado com fontes, waterfall de taxas e o stress test que recalcula a TIR prometida premissa por premissa.</p>
+      </div>
+      <div class="ex-carousel" role="region" aria-label="Páginas do exemplo de dossiê Solaria">
+        <img src="/servicos/dossie-para-comite/assets/solaria-01.webp" alt="Sumário executivo do dossiê Solaria" loading="lazy" />
+        <img src="/servicos/dossie-para-comite/assets/solaria-02.webp" alt="A oferta destrinchada: waterfall de taxas do dossiê Solaria" loading="lazy" />
+        <img src="/servicos/dossie-para-comite/assets/solaria-03.webp" alt="Stress test das premissas: ponte da TIR de 22% a 14%" loading="lazy" />
+        <img src="/servicos/dossie-para-comite/assets/solaria-04.webp" alt="Síntese para o comitê com condições objetivas" loading="lazy" />
+      </div>
+      <div class="ex-cta-row">
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20receber%20o%20exemplo%20completo%20do%20dossi%C3%AA%20Solaria.%20%5BREF%3A%20dossie-exemplo%5D" target="_blank" rel="noopener" class="btn btn-primary">Quero o PDF completo do exemplo →</a>
+        <p class="hero-microcopy" style="margin-top:12px">O agente te entrega o PDF na hora, no WhatsApp — e qualifica a oferta do seu comitê na mesma conversa.</p>
       </div>
     </div>
   </section>
