@@ -121,6 +121,10 @@
     .btn-cream{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#F5F1EA;color:var(--accent);font-weight:700;font-size:16px;padding:18px 32px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s ease}
     .btn-cream:hover{background:#fff;transform:translateY(-2px)}
 
+    .ex-carousel{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;justify-content:center}
+    .ex-carousel img{height:340px;width:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 14px 30px -14px rgba(15,76,58,.2);scroll-snap-align:start;flex-shrink:0}
+    @media(max-width:767px){.ex-carousel{justify-content:flex-start}.ex-carousel img{height:300px}}
+    .ex-cta-row{text-align:center;margin-top:22px}
     footer{padding:48px 0 60px;border-top:1px solid var(--border)}
     .footer-inner{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
     @media(min-width:768px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
@@ -176,6 +180,24 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="standard" id="exemplo" style="padding-top:24px">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow eyebrow-accent section-tag">Exemplo real</span>
+        <h2 class="section-title">A tese do <em>Projeto Vetra</em>, na prática.</h2>
+        <p class="section-sub">Empresa fictícia, padrão de verdade: um trecho de demonstração da tese de M&A — valuation por múltiplos, mapa de compradores e racional de saída no formato que circula com compradores reais.</p>
+      </div>
+      <div class="ex-carousel" role="region" aria-label="Páginas do exemplo Projeto Vetra">
+        <img src="/servicos/assessoria-de-ma/assets/vetra-01.webp" alt="Página da tese de M&A do Projeto Vetra com valuation e racional" loading="lazy" />
+        <img src="/servicos/assessoria-de-ma/assets/vetra-02.webp" alt="Página da tese de M&A do Projeto Vetra com mapa de compradores" loading="lazy" />
+      </div>
+      <div class="ex-cta-row">
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20receber%20o%20exemplo%20completo%20da%20tese%20de%20M%26A%20(Projeto%20Vetra).%20%5BREF%3A%20assessoria-ma-exemplo%5D" target="_blank" rel="noopener" class="btn btn-primary">Quero o PDF completo do exemplo →</a>
+        <p class="hero-microcopy" style="margin-top:12px">O agente te entrega o PDF na hora, no WhatsApp — e já qualifica o seu caso na mesma conversa.</p>
       </div>
     </div>
   </section>
