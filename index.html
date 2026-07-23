@@ -3381,21 +3381,7 @@
       }).join('');
     });
 
-    // ── Rede de Investidores — toggle: checkbox Publicado ──
-    var redeCont = document.querySelector('.partners .container');
-    if (redeCont) load('Rede de Investidores', function(rows){
-      rows = rows.filter(function(f){return f.Publicado;});
-      if(!rows.length) return;
-      var cats=['Venture Capital','Corporate Venture Capital','Redes de Anjos','Plataformas e Crédito Privado'];
-      var html = cats.map(function(c){
-        var items = rows.filter(function(r){return r.Categoria===c;});
-        if(!items.length) return '';
-        return '<div class="partners-category"><div class="partners-category-label"><span>'+esc(c)+'</span></div><div class="partners-grid">'+items.map(function(r){return '<div class="partner-logo-placeholder">'+esc(r.Nome)+'</div>';}).join('')+'</div></div>';
-      }).join('');
-      var old = redeCont.querySelectorAll('.partners-category');
-      for(var i=0;i<old.length;i++) old[i].remove();
-      redeCont.insertAdjacentHTML('beforeend', html);
-    });
+    // Rede de Investidores: seção substituída pela base de +600 investidores (23/07) — loader removido.
 
     // ── Logos — toggle: checkbox Publicado (Uso define onde aparece) ──
     load('Logos', function(rows){
