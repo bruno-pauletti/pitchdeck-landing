@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partnership Book — a tese que atrai o sócio certo | PitchDeck</title>
+  <meta name="description" content="Para quem quer trazer sócio operador, co-founder ou preparar sucessão: um book de 13 slides no padrão de quem decide — o negócio como ele é, o papel do sócio, o modelo de equity e a conta que a outra pessoa vai fazer. Desenho fechado em call." />
+  <meta name="theme-color" content="#0F4C3A" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/agent-phone.css" />
+  <style>
+    :root{
+      --bg:#f5f1ea;--bg-elevated:#fff;--bg-card:#faf7f1;--bg-deep:#ede4d4;
+      --border:#d9d2c4;--border-light:#c5bca8;--border-strong:#a89e88;
+      --text:#1a1a1a;--text-muted:#5a5550;--text-faint:#8a8580;
+      --accent:#0f4c3a;--accent-deep:#0a3528;--accent-soft:rgba(15,76,58,0.08);--accent-border:rgba(15,76,58,0.2);
+      --warn:#c08415;--danger:#b03a2e;--ok:#2d7d52;
+      --font-display:"Fraunces","Times New Roman",serif;--font-body:"DM Sans",system-ui,sans-serif;--font-mono:"IBM Plex Mono","Courier New",monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1280px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+    @media(min-width:768px){.container{padding:0 48px}}
+    .eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
+    .eyebrow-accent{color:var(--accent)}
+    .accent-text{color:var(--accent);font-weight:500}
+    .wa-icon{width:18px;height:18px}.wa-icon-sm{width:15px;height:15px}
+
+    .header{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);background:rgba(245,241,234,.85);border-bottom:1px solid var(--border)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-name{font-family:var(--font-display);font-size:26px;font-weight:400;letter-spacing:-.02em}
+    .brand-sub{font-family:var(--font-mono);font-size:11px;color:var(--text-faint);letter-spacing:.04em}
+    @media(max-width:560px){.brand-sub{display:none}}
+    .header-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:var(--accent);color:#fff;border-radius:999px;font-size:13px;font-weight:600;transition:all .25s ease}
+    .header-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
+
+    .hero{padding:64px 0 48px}
+    @media(min-width:768px){.hero{padding:92px 0 56px}}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+    @media(min-width:1024px){.hero-grid{grid-template-columns:1.35fr 1fr;gap:72px}}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:999px;margin-bottom:26px}
+    .soon-dot{width:6px;height:6px;border-radius:50%;background:var(--ok)}
+    .hero-headline{font-family:var(--font-display);font-weight:400;font-size:clamp(36px,5.6vw,72px);line-height:1.02;letter-spacing:-.025em;margin-bottom:24px}
+    .hero-headline em{font-style:italic;color:var(--accent)}
+    .hero-sub{font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:var(--text-muted);max-width:600px;margin-bottom:32px}
+    .hero-ctas{display:flex;flex-direction:column;gap:12px;max-width:560px;margin-bottom:20px}
+    @media(min-width:480px){.hero-ctas{flex-direction:row}}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:10px;font-family:var(--font-body);font-size:15px;font-weight:600;transition:all .2s ease;white-space:nowrap;border:1px solid transparent}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(15,76,58,.4)}
+    .btn-secondary{background:transparent;color:var(--text);border-color:var(--border-strong)}
+    .btn-secondary:hover{background:var(--bg-elevated);border-color:var(--text)}
+    .hero-microcopy{font-size:13px;color:var(--text-faint)}
+    .hero-microcopy strong{color:var(--accent);font-weight:600}
+
+    section.standard{padding:80px 0}
+    .section-head{max-width:760px;margin-bottom:44px}
+    .section-head.centered{margin-left:auto;margin-right:auto;text-align:center}
+    .section-tag{display:inline-block;margin-bottom:16px}
+    .section-title{font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:1.06;letter-spacing:-.02em;margin-bottom:16px}
+    .section-title em{font-style:italic;color:var(--accent)}
+    .section-sub{font-size:17px;line-height:1.55;color:var(--text-muted);max-width:620px}
+    .section-head.centered .section-sub{margin-left:auto;margin-right:auto}
+
+    .prompts{display:grid;grid-template-columns:1fr;gap:14px;max-width:920px;margin:0 auto}
+    @media(min-width:680px){.prompts{grid-template-columns:1fr 1fr}}
+    .prompt{display:flex;gap:16px;align-items:flex-start;background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;padding:22px 24px;transition:all .25s ease}
+    .prompt:hover{border-color:var(--border-light);transform:translateY(-2px)}
+    .prompt-num{font-family:var(--font-display);font-style:italic;font-size:30px;line-height:1;color:var(--accent);flex-shrink:0;min-width:34px}
+    .prompt h3{font-family:var(--font-display);font-size:19px;font-weight:400;letter-spacing:-.01em;margin-bottom:4px}
+    .prompt p{font-size:13.5px;line-height:1.5;color:var(--text-muted)}
+
+    .audience{display:grid;grid-template-columns:1fr;gap:18px;max-width:980px;margin:0 auto}
+    @media(min-width:768px){.audience{grid-template-columns:repeat(3,1fr)}}
+    .aud{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:24px}
+    .aud h4{font-family:var(--font-display);font-size:19px;font-weight:400;margin-bottom:6px}
+    .aud p{font-size:13.5px;color:var(--text-muted);line-height:1.5}
+
+    .lumina-carousel{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .lumina-carousel img{height:280px;width:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 14px 30px -14px rgba(15,76,58,.2);scroll-snap-align:start;flex-shrink:0}
+    @media(min-width:768px){.lumina-carousel img{height:340px}}
+    .lumina-cta-row{text-align:center;margin-top:22px}
+
+    .honest{max-width:860px;margin:0 auto;background:var(--bg-elevated);border:1px solid var(--accent-border);border-left:4px solid var(--accent);border-radius:14px;padding:30px 32px}
+    .honest h3{font-family:var(--font-display);font-size:24px;font-weight:400;margin-bottom:12px}
+    .honest h3 em{font-style:italic;color:var(--accent)}
+    .honest p{font-size:15px;line-height:1.65;color:var(--text-muted)}
+    .honest p+p{margin-top:12px}
+    .honest strong{color:var(--text)}
+
+    .final-cta{padding:84px 0;background:var(--accent);color:#F5F1EA;position:relative;overflow:hidden}
+    .final-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(245,241,234,.05) 0%,transparent 45%);pointer-events:none}
+    .final-cta-inner{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto}
+    .final-cta .eyebrow{color:rgba(245,241,234,.6)}
+    .final-cta-title{font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4.2vw,50px);line-height:1.06;letter-spacing:-.02em;color:#F5F1EA;margin:14px 0 16px}
+    .final-cta-title em{font-style:italic;color:rgba(245,241,234,.78)}
+    .final-cta-sub{font-size:16px;line-height:1.55;color:rgba(245,241,234,.7);max-width:520px;margin:0 auto 30px}
+    .scar{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,241,234,.85);background:rgba(245,241,234,.1);border:1px solid rgba(245,241,234,.2);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+    .btn-cream{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#F5F1EA;color:var(--accent);font-weight:700;font-size:16px;padding:18px 32px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s ease}
+    .btn-cream:hover{background:#fff;transform:translateY(-2px)}
+
+    footer{padding:48px 0 60px;border-top:1px solid var(--border)}
+    .footer-inner{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
+    @media(min-width:768px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
+    .footer-brand{font-family:var(--font-display);font-size:22px}
+    .footer-meta{font-size:13px;color:var(--text-muted)}
+    .footer-legal{text-align:center;margin-top:22px}
+    .footer-legal-line{font-family:var(--font-mono);font-size:11px;color:var(--text-faint);line-height:1.7}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand">
+          <span class="brand-name"><em style="font-style:italic;color:var(--accent)">Pitch</em>Deck</span>
+          <span class="brand-sub">Serviços</span>
+        </a>
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20saber%20mais%20sobre%20o%20Partnership%20Book.%20%5BREF%3A%20partnership-book-header%5D" target="_blank" rel="noopener" class="header-cta">
+          <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+          Falar sobre meu caso <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow"><span class="soon-dot"></span><span class="eyebrow eyebrow-accent">PitchDeck · Serviços · No ar</span></div>
+          <h1 class="hero-headline">O sócio certo entra por <em>tese</em>, não por anúncio.</h1>
+          <p class="hero-sub">Para quem quer trazer um <strong>sócio operador</strong>, um co-founder ou preparar a sucessão: um book de <strong>13 slides no padrão de quem decide</strong> — o negócio como ele é, o papel do sócio, o modelo de equity e a conta que a outra pessoa vai fazer. O agente entende seu caso no WhatsApp e o desenho é fechado <strong>em call com o Bruno</strong>.</p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/552131960982?text=Oi!%20Quero%20saber%20mais%20sobre%20o%20Partnership%20Book.%20%5BREF%3A%20partnership-book-hero%5D" target="_blank" rel="noopener" class="btn btn-primary">Falar sobre meu caso →</a>
+            <a href="/servicos" class="btn btn-secondary">← Ver todos os serviços</a>
+          </div>
+          <p class="hero-microcopy"><strong class="accent-text">13 slides · dados reais · equity com vesting.</strong> Veja o exemplo completo da Lúmina logo abaixo.</p>
+        </div>
+
+        <div class="hero-card-wrap">
+          <div class="aphone" aria-label="Conversa ilustrativa com o agente PitchDeck no WhatsApp">
+            <div class="aphone-screen">
+              <div class="aphone-header">
+                <span class="aphone-avatar">PD</span>
+                <span><span class="aphone-title">Agente PitchDeck</span><br /><span class="aphone-status">online · responde em minutos</span></span>
+              </div>
+              <div class="aphone-chat">
+                <div class="amsg out">Fundei a empresa há 9 anos. Quero sair da operação e trazer um sócio que toque o dia a dia. Por onde começo?<span class="tick">✓✓</span></div>
+                <div class="amsg in">Pelo material certo. O Partnership Book estrutura sua tese de sociedade: o papel do sócio, o modelo de equity e a história que atrai o perfil certo. Me conta: setor, faturamento aproximado e que sócio você imagina?</div>
+                <div class="amsg out">E-commerce de moda, ~R$4M/ano. Alguém de growth digital, com pele no jogo.<span class="tick">✓✓</span></div>
+                <div class="amsg in">Caso clássico de sócia operadora digital — igual ao exemplo Lúmina do site. O desenho do book é feito em call com o Bruno, 30 min. Uma honestidade antes: o book prepara a sua busca, ele não "entrega" o sócio. Posso agendar?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="standard" id="exemplo" style="padding-top:24px">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow eyebrow-accent section-tag">Exemplo real</span>
+        <h2 class="section-title">O book da <em>Lúmina</em>, slide a slide.</h2>
+        <p class="section-sub">Empresa fictícia, padrão de verdade: uma marca de moda de performance buscando sócia operadora digital — do gargalo honesto ao modelo de equity com vesting.</p>
+      </div>
+      <div class="lumina-carousel" role="region" aria-label="Slides do exemplo Lúmina">
+        <img src="/servicos/partnership-book/assets/slide-01.webp" alt="Capa do Partnership Book da Lúmina: sócia operadora digital" loading="lazy" />
+        <img src="/servicos/partnership-book/assets/slide-02.webp" alt="Slide O Gargalo Honesto do exemplo Lúmina" loading="lazy" />
+        <img src="/servicos/partnership-book/assets/slide-03.webp" alt="Slide O Papel da sócia operadora digital no exemplo Lúmina" loading="lazy" />
+        <img src="/servicos/partnership-book/assets/slide-04.webp" alt="Slide Modelo de Parceria com equity e vesting do exemplo Lúmina" loading="lazy" />
+        <img src="/servicos/partnership-book/assets/slide-05.webp" alt="Slide A Conta Que Você Vai Fazer do exemplo Lúmina" loading="lazy" />
+        <img src="/servicos/partnership-book/assets/slide-06.webp" alt="Slide Roadmap dos primeiros 24 meses do exemplo Lúmina" loading="lazy" />
+      </div>
+      <div class="lumina-cta-row">
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20receber%20o%20exemplo%20completo%20do%20Partnership%20Book%20L%C3%BAmina.%20%5BREF%3A%20partnership-book-exemplo%5D" target="_blank" rel="noopener" class="btn btn-primary">Quero o PDF completo do exemplo →</a>
+        <p class="hero-microcopy" style="margin-top:12px">O agente te entrega o PDF na hora, no WhatsApp — e já entende o seu caso na mesma conversa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="standard" style="background:var(--bg-deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow eyebrow-accent section-tag">O que vem no book</span>
+        <h2 class="section-title">A conversa mais difícil da sua empresa, <em>estruturada</em>.</h2>
+        <p class="section-sub">Sociedade se propõe com material de decisão. Cada slide responde a uma pergunta que o seu futuro sócio vai fazer.</p>
+      </div>
+      <div class="prompts">
+        <div class="prompt"><span class="prompt-num">1</span><div><h3>O negócio hoje</h3><p>Seus números tratados no padrão investidor — receita, margem e o que sustenta o crescimento.</p></div></div>
+        <div class="prompt"><span class="prompt-num">2</span><div><h3>O gargalo honesto</h3><p>Por que você precisa de um sócio — dito com franqueza. É o slide que gera confiança.</p></div></div>
+        <div class="prompt"><span class="prompt-num">3</span><div><h3>Mercado bottom-up</h3><p>O tamanho da oportunidade dimensionado com fontes, não com wishful thinking.</p></div></div>
+        <div class="prompt"><span class="prompt-num">4</span><div><h3>A tese de crescimento</h3><p>De onde vem o próximo múltiplo — e qual papel o sócio tem nessa construção.</p></div></div>
+        <div class="prompt"><span class="prompt-num">5</span><div><h3>O papel do sócio</h3><p>Escopo, autonomia e o que é "dele" desde o dia 1. Perfil certo se atrai com clareza.</p></div></div>
+        <div class="prompt"><span class="prompt-num">6</span><div><h3>Modelo de parceria</h3><p>Equity que se ganha: participação, vesting e as regras do jogo antes do aperto de mão.</p></div></div>
+        <div class="prompt"><span class="prompt-num">7</span><div><h3>A conta que ele vai fazer</h3><p>O cenário de valor para o sócio — porque ninguém entra numa sociedade sem fazer essa conta.</p></div></div>
+        <div class="prompt" style="background:var(--accent-soft);border-color:var(--accent-border)"><span class="prompt-num">✓</span><div><h3>Roadmap a dois</h3><p>Os primeiros 24 meses juntos, com marcos claros — a sociedade como plano, não como aposta.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="standard">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow eyebrow-accent section-tag">Como funciona</span>
+        <h2 class="section-title">Do primeiro contato ao book, <em>em quatro passos</em>.</h2>
+      </div>
+      <div class="prompts">
+        <div class="prompt"><span class="prompt-num">1</span><div><h3>Conte seu caso no WhatsApp</h3><p>Site da empresa + contexto: setor, momento e que tipo de sócio você busca. O agente qualifica em minutos.</p></div></div>
+        <div class="prompt"><span class="prompt-num">2</span><div><h3>Call com o Bruno</h3><p>30 minutos para desenhar a tese de sociedade, o formato do book e os valores. É onde o projeto é fechado.</p></div></div>
+        <div class="prompt"><span class="prompt-num">3</span><div><h3>Research + seus números</h3><p>Mercado dimensionado com fontes, seus dados tratados no padrão investidor e o modelo de equity estruturado.</p></div></div>
+        <div class="prompt" style="background:var(--accent-soft);border-color:var(--accent-border)"><span class="prompt-num">✓</span><div><h3>Book pronto para circular</h3><p>13 slides em PDF em alta + versão editável, com 1 rodada de ajustes — no prazo combinado na call.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="standard" style="padding-top:0">
+    <div class="container">
+      <div class="honest">
+        <h3>Uma honestidade antes de você <em>contratar</em>.</h3>
+        <p><strong>O Partnership Book prepara a sua busca — ele não entrega o sócio.</strong> Não é headhunting, não é promessa de matching. O que ele faz é mudar a qualidade da conversa: quem recebe um book desses entende que está diante de uma proposta séria, com números reais e regras claras.</p>
+        <p>A busca acontece no seu networking, na sua rede setorial e nos canais certos — e há um formato de acompanhamento em que também mapeamos candidatos com você. O agente explica os formatos na conversa; o desenho final é feito na call.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="standard" style="padding-top:0">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow eyebrow-accent section-tag">Pra quem é</span>
+        <h2 class="section-title">Três momentos em que a sociedade é <em>a resposta</em>.</h2>
+      </div>
+      <div class="audience">
+        <div class="aud"><h4>Fundadora em transição</h4><p>Você construiu a empresa e quer sair da operação sem vender o negócio — trazendo quem toque o dia a dia com pele no jogo.</p></div>
+        <div class="aud"><h4>Founder solo</h4><p>Investidor pergunta "quem opera com você?". O book estrutura a proposta de co-founder antes da captação.</p></div>
+        <div class="aud"><h4>Empresa familiar</h4><p>Sem sucessor óbvio na família? Só 24% das empresas familiares têm plano de sucessão (PwC). Um sócio operador é o plano B sério.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-cta-inner">
+        <span class="scar">✓ Serviço no ar</span>
+        <span class="eyebrow">PitchDeck · Serviços</span>
+        <h2 class="final-cta-title">A sociedade certa começa com a <em>proposta certa</em>.</h2>
+        <p class="final-cta-sub">Conte seu caso no WhatsApp. O agente qualifica e agenda a call com o Bruno — o book sai no prazo combinado.</p>
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20saber%20mais%20sobre%20o%20Partnership%20Book.%20%5BREF%3A%20partnership-book-final%5D" target="_blank" rel="noopener" class="btn-cream">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>Falar sobre meu caso</a>
+        <p class="final-cta-meta" style="margin-top:18px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:rgba(245,241,234,.55)">Ainda vai captar com investidor? <a href="/servicos/analise-de-pitch-deck" style="color:#F5F1EA;text-decoration:underline">Comece pela análise gratuita de pitch deck →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">PitchDeck <span style="color:var(--text-faint);font-family:var(--font-mono);font-size:11px;margin-left:8px">Serviços</span></div>
+        <div class="footer-meta"><a href="mailto:contato@pitchdeck.com.br">contato@pitchdeck.com.br</a> · <a href="https://wa.me/552131960982?text=Oi!%20Vim%20do%20site%20do%20PitchDeck.%20%5BREF%3A%20partnership-book-footer%5D" target="_blank" rel="noopener">+55 21 3196-0982</a></div>
+      </div>
+      <div class="footer-legal">
+        <p class="footer-legal-line">pitchdeck.com.br/servicos/partnership-book</p>
+        <p class="footer-legal-line">Serviço operado por NVESTOR TECNOLOGIA E INFORMACAO LTDA · CNPJ 34.821.742/0001-08</p>
+        <p class="footer-legal-line">© 2026 PitchDeck. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="/site-chrome.js" defer></script>
+</body>
+</html>
