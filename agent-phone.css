@@ -1,0 +1,26 @@
+/* agent-phone.css — mockup do agente WhatsApp (moldura genérica, sem trade dress)
+ * Componente compartilhado: cada página inclui este arquivo e cola o HTML do
+ * seu roteiro (bolhas .amsg). Cores herdam as CSS vars da página hospedeira. */
+.aphone{width:300px;max-width:88vw;margin:0 auto;border-radius:38px;padding:10px;
+  background:#161616;box-shadow:0 24px 60px rgba(0,0,0,.28),inset 0 0 0 2px #2a2a2a}
+.aphone-screen{border-radius:30px;overflow:hidden;background:#e8e0d3;display:flex;flex-direction:column;min-height:480px}
+.aphone-header{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--accent,#0f4c3a);color:#fff}
+.aphone-avatar{width:32px;height:32px;border-radius:50%;background:#fff;color:var(--accent,#0f4c3a);
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-mono,monospace);font-weight:600;font-size:13px;flex-shrink:0}
+.aphone-title{font-size:13px;font-weight:600;line-height:1.2}
+.aphone-status{font-size:10px;opacity:.85}
+.aphone-chat{flex:1;padding:14px 10px;display:flex;flex-direction:column;gap:8px;font-size:12.5px;line-height:1.45;color:#1a1a1a}
+.amsg{max-width:82%;padding:8px 11px;border-radius:12px;box-shadow:0 1px 1px rgba(0,0,0,.08);position:relative}
+.amsg.in{background:#fff;align-self:flex-start;border-top-left-radius:4px}
+.amsg.out{background:#d7f0dc;align-self:flex-end;border-top-right-radius:4px}
+.amsg .tick{font-size:9px;color:#5aa08a;float:right;margin:6px 0 0 8px}
+.amsg.doc{display:flex;gap:9px;align-items:center;background:#fff;align-self:flex-start;border:1px solid var(--border,#d9d2c4)}
+.amsg.doc .doc-ico{width:34px;height:40px;border-radius:6px;background:var(--accent,#0f4c3a);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-mono,monospace);font-size:10px;flex-shrink:0}
+.amsg.doc .doc-name{font-weight:600;font-size:12px}
+.amsg.doc .doc-meta{font-size:10px;color:var(--text-faint,#8a8580)}
+.amsg.score{background:#fff;align-self:flex-start;border:1px solid var(--border,#d9d2c4);width:82%}
+.amsg.score .sc-num{font-family:var(--font-display,serif);font-size:26px;color:var(--accent,#0f4c3a);font-weight:600}
+.amsg.score .sc-num small{font-size:14px;color:var(--text-muted,#5a5550)}
+.amsg.score .sc-cap{font-size:10px;color:var(--text-muted,#5a5550);text-transform:uppercase;letter-spacing:.08em}
+@media(max-width:767px){.aphone{width:270px}.aphone-screen{min-height:420px}}
