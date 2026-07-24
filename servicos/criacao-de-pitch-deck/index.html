@@ -116,6 +116,9 @@
     .btn-cream{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#F5F1EA;color:var(--accent);font-weight:700;font-size:16px;padding:18px 32px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s ease}
     .btn-cream:hover{background:#fff;transform:translateY(-2px)}
 
+    .ex-carousel{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;justify-content:center}
+    .ex-carousel img{height:300px;width:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 14px 30px -14px rgba(15,76,58,.2);scroll-snap-align:start;flex-shrink:0}
+    @media(max-width:767px){.ex-carousel{justify-content:flex-start}.ex-carousel img{height:240px}}
     .ex-cta-row{text-align:center;margin-top:22px}
     footer{padding:48px 0 60px;border-top:1px solid var(--border)}
     .footer-inner{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
@@ -153,7 +156,7 @@
             <a href="https://wa.me/552131960982?text=Oi!%20Quero%20criar%20o%20deck%20da%20minha%20rodada.%20%5BREF%3A%20criacao-deck-hero%5D" target="_blank" rel="noopener" class="btn btn-primary">Falar sobre meu deck →</a>
             <a href="/servicos" class="btn btn-secondary">← Ver todos os serviços</a>
           </div>
-          <p class="hero-microcopy"><strong class="accent-text">13 slides completos</strong> em PPTX editável + PDF em alta, com 1 rodada de ajustes. <a href="/servicos/criacao-de-pitch-deck/exemplo" style="color:var(--accent);text-decoration:underline">Veja um exemplo completo do padrão de entrega →</a></p>
+          <p class="hero-microcopy"><strong class="accent-text">13 slides completos</strong> em PPTX editável + PDF em alta, com 1 rodada de ajustes. <a href="#exemplo" style="color:var(--accent);text-decoration:underline">Veja o deck-exemplo logo abaixo →</a></p>
         </div>
 
         <div class="hero-card-wrap">
@@ -182,11 +185,17 @@
       <div class="section-head centered">
         <span class="eyebrow eyebrow-accent section-tag">Exemplo real</span>
         <h2 class="section-title">Os <em>13 slides completos</em> de um deck-exemplo.</h2>
-        <p class="section-sub">Empresa fictícia, padrão de verdade: navegue pelo exemplo inteiro do fundraising deck — narrativa, mercado bottom-up com fontes, tração e ask — exatamente no nível da entrega final.</p>
+        <p class="section-sub">Empresa fictícia, padrão de verdade: os 4 primeiros slides do fundraising deck da Lúmina (fictícia) — o deck completo de 13 slides chega pelo agente, exatamente no nível da entrega final.</p>
       </div>
-      <div class="ex-cta-row" style="margin-top:0">
-        <a href="/servicos/criacao-de-pitch-deck/exemplo" class="btn btn-primary">Ver o exemplo completo de 13 slides →</a>
-        <p class="hero-microcopy" style="margin-top:12px">Abre aqui no site, slide a slide — sem cadastro.</p>
+      <div class="ex-carousel" role="region" aria-label="Primeiros slides do deck-exemplo Lúmina">
+        <img src="/servicos/criacao-de-pitch-deck/assets/lumina-deck-01.webp" alt="Capa do deck-exemplo Lúmina: moda fitness premium" loading="lazy" />
+        <img src="/servicos/criacao-de-pitch-deck/assets/lumina-deck-02.webp" alt="Slide de problema do deck-exemplo Lúmina" loading="lazy" />
+        <img src="/servicos/criacao-de-pitch-deck/assets/lumina-deck-03.webp" alt="Slide do deck-exemplo Lúmina" loading="lazy" />
+        <img src="/servicos/criacao-de-pitch-deck/assets/lumina-deck-04.webp" alt="Slide de mercado do deck-exemplo Lúmina" loading="lazy" />
+      </div>
+      <div class="ex-cta-row">
+        <a href="https://wa.me/552131960982?text=Oi!%20Quero%20receber%20o%20deck-exemplo%20completo%20de%2013%20slides.%20%5BREF%3A%20criacao-exemplo%5D" target="_blank" rel="noopener" class="btn btn-primary">Quero o deck-exemplo completo →</a>
+        <p class="hero-microcopy" style="margin-top:12px">O agente te entrega os 13 slides na hora, no WhatsApp — e já entende o seu caso na mesma conversa.</p>
       </div>
     </div>
   </section>
@@ -196,7 +205,7 @@
       <div class="section-head centered">
         <span class="eyebrow eyebrow-accent section-tag">Como funciona</span>
         <h2 class="section-title">Do primeiro contato ao deck final, <em>em quatro passos</em>.</h2>
-        <p class="section-sub">Antes de decidir, você tem uma prova concreta na mão: o <a href="/servicos/criacao-de-pitch-deck/exemplo" style="color:var(--accent);text-decoration:underline">exemplo completo de 13 slides</a> mostrando o padrão da entrega final.</p>
+        <p class="section-sub">Antes de decidir, você tem uma prova concreta na mão: o <a href="#exemplo" style="color:var(--accent);text-decoration:underline">deck-exemplo de 13 slides</a> mostrando o padrão da entrega final.</p>
       </div>
       <div class="prompts">
         <div class="prompt"><span class="prompt-num">1</span><div><h3>Envie o básico</h3><p>Site da empresa + planilha financeira (DRE ou BP) no WhatsApp. O agente entende seu estágio, prazo da rodada e tese — em 5 minutos.</p></div></div>
@@ -214,7 +223,7 @@
         <h2 class="section-title">Um deck que fala a língua <em>do comitê</em>.</h2>
       </div>
       <div class="deliverables">
-        <div class="deliverable-item"><span class="deliverable-num">01</span><div><div class="deliverable-title">Padrão de entrega público</div><div class="deliverable-text">O <a href="/servicos/criacao-de-pitch-deck/exemplo" style="color:var(--accent);text-decoration:underline">exemplo completo de 13 slides</a> mostra exatamente o nível do que você recebe — narrativa, research e design.</div></div></div>
+        <div class="deliverable-item"><span class="deliverable-num">01</span><div><div class="deliverable-title">Padrão de entrega público</div><div class="deliverable-text">O <a href="#exemplo" style="color:var(--accent);text-decoration:underline">deck-exemplo de 13 slides</a> mostra exatamente o nível do que você recebe — narrativa, research e design (completo pelo agente, no WhatsApp).</div></div></div>
         <div class="deliverable-item"><span class="deliverable-num">02</span><div><div class="deliverable-title">Versão final completa</div><div class="deliverable-text">Os 13 slides completos em PPTX editável + PDF em alta resolução, com time e ask incluídos e 1 rodada de ajustes.</div></div></div>
         <div class="deliverable-item"><span class="deliverable-num">03</span><div><div class="deliverable-title">Dados reais, fontes citadas</div><div class="deliverable-text">Tração e projeções saem da SUA planilha; mercado dimensionado bottom-up com fontes primárias declaradas em cada slide.</div></div></div>
         <div class="deliverable-item"><span class="deliverable-num">04</span><div><div class="deliverable-title">Dealflow da Equity Rio</div><div class="deliverable-text">O deck final entra na nossa rede de VCs, anjos e plataformas de crédito — warm intro, sem taxa de sucesso.</div></div></div>
