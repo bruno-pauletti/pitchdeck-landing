@@ -71,5 +71,15 @@
       "destination": "/b2b",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/nota",
+      "destination": "https://pitchdeck-v2-free-production.up.railway.app/nota"
+    },
+    {
+      "source": "/nota/api/:path*",
+      "destination": "https://pitchdeck-v2-free-production.up.railway.app/api/:path*"
+    }
   ]
 }

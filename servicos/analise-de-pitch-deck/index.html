@@ -50,7 +50,7 @@
     .hero-headline em{font-style:italic;color:var(--accent)}
     .hero-sub{font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:var(--text-muted);max-width:600px;margin-bottom:32px}
     .hero-ctas{display:flex;flex-direction:column;gap:12px;max-width:560px;margin-bottom:20px}
-    @media(min-width:480px){.hero-ctas{flex-direction:row}}
+    @media(min-width:480px){.hero-ctas{flex-direction:row;flex-wrap:wrap;max-width:620px}}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:10px;font-family:var(--font-body);font-size:15px;font-weight:600;transition:all .2s ease;white-space:nowrap;border:1px solid transparent}
     .btn-primary{background:var(--accent);color:#fff}
     .btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(15,76,58,.4)}
@@ -188,9 +188,10 @@
           <p class="hero-sub">Slide a slide, com o <strong>framework VC</strong> da Equity Rio: score por dimensão, valuation de referência, benchmark de cap table e um plano de ação claro. O serviço que deu nome ao site — e a porta de entrada de todos os outros.</p>
           <div class="hero-ctas">
             <a href="https://wa.me/552131960982?text=Oi!%20Quero%20a%20an%C3%A1lise%20gratuita%20do%20meu%20pitch%20deck.%20%5BREF%3A%20analise-pitch-deck-hero%5D" target="_blank" rel="noopener" class="btn btn-primary">Rodar análise grátis →</a>
+            <a href="/nota?ref=analise-nota" class="btn btn-secondary">Ver minha nota no site</a>
             <a href="/servicos" class="btn btn-secondary">← Ver todos os serviços</a>
           </div>
-          <p class="hero-microcopy"><strong class="accent-text">Gratuito.</strong> Envie o deck no WhatsApp e receba a análise preview — sem cadastro, sem call.</p>
+          <p class="hero-microcopy"><strong class="accent-text">Gratuito.</strong> Envie o deck no WhatsApp ou pelo site e veja a nota na hora — sem cadastro, sem call.</p>
         </div>
 
         <div class="hero-card-wrap">
