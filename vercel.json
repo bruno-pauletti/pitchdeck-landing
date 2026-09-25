@@ -80,6 +80,14 @@
     {
       "source": "/nota/api/:path*",
       "destination": "https://pitchdeck-v2-free-production.up.railway.app/api/:path*"
+    },
+    {
+      "source": "/calculadora-de-valuation",
+      "destination": "https://pitchdeck-v2-free-production.up.railway.app/calculadora-de-valuation"
+    },
+    {
+      "source": "/calculadora-de-valuation/api/:path*",
+      "destination": "https://pitchdeck-v2-free-production.up.railway.app/api/:path*"
     }
   ]
 }
