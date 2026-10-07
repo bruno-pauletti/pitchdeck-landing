@@ -64,12 +64,17 @@
     {
       "source": "/hubs",
       "destination": "/b2b",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hubs/",
       "destination": "/b2b",
-      "permanent": true
+      "statusCode": 301
+    },
+    {
+      "source": "/hubs/:path*",
+      "destination": "/b2b",
+      "statusCode": 301
     }
   ],
   "rewrites": [
