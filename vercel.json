@@ -2,6 +2,11 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/termo-founder",
+      "destination": "/termos-founder",
+      "permanent": false
+    },
+    {
       "source": "/servicos/reestruturacao-de-deck",
       "destination": "/servicos/criacao-de-pitch-deck",
       "permanent": true

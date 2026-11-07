@@ -128,6 +128,40 @@
       .marquee-track{width:100%;justify-content:center}
     }
 
+
+    /* prints da plataforma (dados fictícios) */
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+    .hero-grid .hero-top,.hero-grid .hero-bottom{min-width:0}
+    .hero-media{margin:8px 0 30px;min-width:0}
+    @media(min-width:960px){
+      .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);grid-template-areas:"top media" "bottom media";column-gap:56px;align-content:center}
+      .hero-top{grid-area:top;align-self:end}.hero-bottom{grid-area:bottom;align-self:start}
+      .hero-media{grid-area:media;align-self:center;margin:0}
+      .hero h1{font-size:clamp(38px,4.3vw,56px)}
+      .hero .facts{margin-top:32px}
+    }
+    .frame{background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;box-shadow:0 30px 60px -32px rgba(26,26,26,.35);overflow:hidden;min-width:0}
+    .frame-bar{display:flex;align-items:center;gap:6px;padding:9px 14px;background:var(--bg-deep);border-bottom:1px solid var(--border)}
+    .frame-bar i{width:8px;height:8px;border-radius:50%;background:var(--border-strong);opacity:.55;flex-shrink:0}
+    .frame-bar span{margin-left:8px;font-family:var(--font-mono);font-size:10.5px;color:var(--text-muted);letter-spacing:.04em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .frame picture,.frame img{display:block;width:100%}
+    .frame img{height:auto}
+    .shot-cap{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:12px;font-size:13.5px;line-height:1.45;color:var(--text-muted)}
+    .hero-media .shot-cap{justify-content:center}
+    @media(max-width:767px){
+      .hero-media{max-width:290px;margin:6px auto 26px}
+      .hero-media .frame{border:7px solid #1a1a1a;border-radius:34px;box-shadow:0 24px 40px -24px rgba(26,26,26,.5)}
+      .hero-media .frame-bar{display:none}
+    }
+    @media(min-width:768px) and (max-width:959px){.hero-media{max-width:640px;margin:8px auto 34px}}
+    .tour{display:grid;grid-template-columns:minmax(0,1fr);gap:28px 28px;max-width:1084px;margin:0 auto}
+    .tour figure{min-width:0}
+    @media(min-width:860px){
+      .tour{grid-template-columns:minmax(0,1.556fr) minmax(0,1fr)}
+      .tour .t-pdf{grid-column:1 / -1;max-width:920px;margin:0 auto;width:100%}
+    }
+    .tour-note{text-align:center;margin-top:30px;font-size:13.5px;color:var(--text-faint)}
+
     /* sections */
     .section{padding:60px 0}
     @media(min-width:768px){.section{padding:88px 0}}
@@ -241,18 +275,38 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-pill"><span class="dot"></span><span class="eyebrow eyebrow-accent">Para casas de investimento · VCs, redes de anjos e plataformas</span></div>
-      <h1>Cada deck que chega à sua casa, <em>analisado em dois minutos</em></h1>
-      <p class="hero-sub">Sua equipe de investimento sobe os decks recebidos e recebe a análise completa: veredicto, recomendações slide a slide, valuation e investidores com fit.</p>
-      <div class="hero-ctas">
-        <a href="https://wa.me/5521936194950?text=Ol%C3%A1!%20Sou%20da%20%5Bcasa%5D%20e%20quero%20um%20piloto%20do%20PitchDeck%20para%20a%20minha%20equipe." target="_blank" rel="noopener" class="btn btn-primary">Pedir um piloto <span aria-hidden="true">→</span></a>
-        <a href="https://app.pitchdeck.com.br/login" class="textlink">Já tenho acesso → entrar</a>
-      </div>
-      <p class="hero-micro">Piloto de 30 dias · 20 análises + 1 Raio&#8209;X · Sem custo · Sem cartão</p>
-      <div class="facts">
-        <div><b>~2 min</b><span>por análise completa</span></div>
-        <div><b>20 + 1</b><span>análises e Raio&#8209;X no piloto</span></div>
-        <div><b>30 dias</b><span>para testar, sem custo</span></div>
+      <div class="hero-grid">
+        <div class="hero-top">
+          <div class="hero-pill"><span class="dot"></span><span class="eyebrow eyebrow-accent">Para casas de investimento · VCs, redes de anjos e plataformas</span></div>
+          <h1>Cada deck que chega à sua casa, <em>analisado em dois minutos</em></h1>
+          <p class="hero-sub">Sua equipe de investimento sobe os decks recebidos e recebe a análise completa: veredicto, recomendações slide a slide, valuation e investidores com fit.</p>
+        </div>
+
+        <figure class="hero-media">
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.pitchdeck.com.br · Home</span></div>
+            <picture>
+              <source media="(max-width:767px)" type="image/webp" srcset="/assets/b2b/app-home-mobile-390.webp 390w, /assets/b2b/app-home-mobile-780.webp 780w" sizes="276px" width="390" height="545">
+              <source media="(max-width:767px)" type="image/jpeg" srcset="/assets/b2b/app-home-mobile-390.jpg 390w, /assets/b2b/app-home-mobile-780.jpg 780w" sizes="276px" width="390" height="545">
+              <source type="image/webp" srcset="/assets/b2b/app-home-desktop-600.webp 600w, /assets/b2b/app-home-desktop-1040.webp 1040w, /assets/b2b/app-home-desktop-1560.webp 1560w" sizes="(min-width:960px) 545px, 640px">
+              <img src="/assets/b2b/app-home-desktop-1040.jpg" srcset="/assets/b2b/app-home-desktop-600.jpg 600w, /assets/b2b/app-home-desktop-1040.jpg 1040w, /assets/b2b/app-home-desktop-1560.jpg 1560w" sizes="(min-width:960px) 545px, 640px" width="1040" height="720" fetchpriority="high" decoding="async" alt="Tela inicial do PitchDeck: caixa Analisar um pitch deck com o botão Enviar deck, o contador de análises disponíveis do piloto e a lista de decks recentes da casa. Exemplo com dados fictícios da Casa Exemplo.">
+            </picture>
+          </div>
+          <figcaption class="shot-cap"><span class="tag-ex">Exemplo ilustrativo</span><span>Dados fictícios</span></figcaption>
+        </figure>
+
+        <div class="hero-bottom">
+          <div class="hero-ctas">
+            <a href="https://wa.me/5521936194950?text=Ol%C3%A1!%20Sou%20da%20%5Bcasa%5D%20e%20quero%20um%20piloto%20do%20PitchDeck%20para%20a%20minha%20equipe." target="_blank" rel="noopener" class="btn btn-primary">Pedir um piloto <span aria-hidden="true">→</span></a>
+            <a href="https://app.pitchdeck.com.br/login" class="textlink">Já tenho acesso → entrar</a>
+          </div>
+          <p class="hero-micro">Piloto de 30 dias · 20 análises + 1 Raio&#8209;X · Sem custo · Sem cartão</p>
+          <div class="facts">
+            <div><b>~2 min</b><span>por análise completa</span></div>
+            <div><b>20 + 1</b><span>análises e Raio&#8209;X no piloto</span></div>
+            <div><b>30 dias</b><span>para testar, sem custo</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -286,6 +340,50 @@
         <div class="step"><div class="n">2</div><h3>Sobe o deck recebido</h3><p>Basta o PDF do deck que chegou. Os dados do founder são opcionais.</p></div>
         <div class="step"><div class="n">3</div><h3>Recebe a análise e guarda no histórico</h3><p>Em cerca de 2 minutos a análise completa fica pronta, e o deck entra no deal flow da casa, com busca e filtros. Funciona no celular.</p></div>
       </div>
+    </div>
+  </section>
+
+  <!-- POR DENTRO DA PLATAFORMA -->
+  <section class="section" id="plataforma" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow eyebrow-accent">Por dentro da plataforma</span>
+        <h2>O que a sua equipe vai usar, <em>na prática</em></h2>
+        <p>Telas do app e da análise, com dados fictícios.</p>
+      </div>
+      <div class="tour">
+        <figure class="t-deal">
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.pitchdeck.com.br · Deal flow</span></div>
+            <picture>
+              <source type="image/webp" srcset="/assets/b2b/app-dealflow-640.webp 640w, /assets/b2b/app-dealflow-1040.webp 1040w, /assets/b2b/app-dealflow-1560.webp 1560w" sizes="(min-width:860px) 640px, 92vw">
+              <img src="/assets/b2b/app-dealflow-1040.jpg" srcset="/assets/b2b/app-dealflow-640.jpg 640w, /assets/b2b/app-dealflow-1040.jpg 1040w, /assets/b2b/app-dealflow-1560.jpg 1560w" sizes="(min-width:860px) 640px, 92vw" width="1040" height="620" loading="lazy" decoding="async" alt="Deal flow da Casa Exemplo: tabela com seis decks fictícios (Lúmina, Solaria, Verta, Orla, Tessera e Nimbo), com setor, nota, veredicto, origem e data, além de busca, filtro por veredicto e exportação em CSV.">
+            </picture>
+          </div>
+          <figcaption class="shot-cap">Deal flow: todos os decks da casa, com busca e filtros.</figcaption>
+        </figure>
+        <figure class="t-ficha">
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.pitchdeck.com.br · Ficha do deck</span></div>
+            <picture>
+              <source type="image/webp" srcset="/assets/b2b/app-ficha-420.webp 420w, /assets/b2b/app-ficha-720.webp 720w, /assets/b2b/app-ficha-1440.webp 1440w" sizes="(min-width:860px) 410px, 92vw">
+              <img src="/assets/b2b/app-ficha-720.jpg" srcset="/assets/b2b/app-ficha-420.jpg 420w, /assets/b2b/app-ficha-720.jpg 720w, /assets/b2b/app-ficha-1440.jpg 1440w" sizes="(min-width:860px) 410px, 92vw" width="720" height="668" loading="lazy" decoding="async" alt="Ficha do deck fictício Lúmina: veredicto, três problemas críticos com o número do slide, slides essenciais que faltam, pontos fortes e o botão para abrir a análise em PDF.">
+            </picture>
+          </div>
+          <figcaption class="shot-cap">Ficha do deck: veredicto, problemas e slides que faltam.</figcaption>
+        </figure>
+        <figure class="t-pdf">
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>Análise em PDF · trecho</span></div>
+            <picture>
+              <source type="image/webp" srcset="/assets/b2b/analise-pdf-exemplo-640.webp 640w, /assets/b2b/analise-pdf-exemplo-1040.webp 1040w, /assets/b2b/analise-pdf-exemplo-1600.webp 1600w" sizes="(min-width:860px) 920px, 92vw">
+              <img src="/assets/b2b/analise-pdf-exemplo-1040.jpg" srcset="/assets/b2b/analise-pdf-exemplo-640.jpg 640w, /assets/b2b/analise-pdf-exemplo-1040.jpg 1040w, /assets/b2b/analise-pdf-exemplo-1600.jpg 1600w" sizes="(min-width:860px) 920px, 92vw" width="1600" height="710" loading="lazy" decoding="async" alt="Trecho do PDF de análise da empresa fictícia Zentro: narrativa 4 de 10, prontidão Not Ready, pontos fortes, problemas críticos, slides faltando e recomendação do analista com faixa de valuation pré-money.">
+            </picture>
+          </div>
+          <figcaption class="shot-cap">Análise em PDF: pontos fortes, problemas críticos, recomendação e valuation.</figcaption>
+        </figure>
+      </div>
+      <p class="tour-note"><span class="tag-ex">Exemplo ilustrativo</span>&nbsp; Empresas e dados fictícios, em uma casa de exemplo.</p>
     </div>
   </section>
 
