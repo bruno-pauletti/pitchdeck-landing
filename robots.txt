@@ -33,3 +33,6 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://pitchdeck.com.br/sitemap.xml
+
+# Resumo para mecanismos generativos
+# https://pitchdeck.com.br/llms.txt
