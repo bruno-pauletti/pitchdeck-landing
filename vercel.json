@@ -84,6 +84,14 @@
   ],
   "rewrites": [
     {
+      "source": "/w/:ref",
+      "destination": "/api/w?ref=:ref"
+    },
+    {
+      "source": "/w",
+      "destination": "/api/w"
+    },
+    {
       "source": "/nota",
       "destination": "https://pitchdeck-v2-free-production.up.railway.app/nota"
     },
