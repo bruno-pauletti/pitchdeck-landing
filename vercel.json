@@ -99,5 +99,34 @@
       "source": "/calculadora-de-valuation/api/:path*",
       "destination": "https://pitchdeck-v2-free-production.up.railway.app/api/:path*"
     }
+  ],
+  "headers": [
+    {
+      "source": "/vitrine",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/para-quem-investe",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/b2b",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }

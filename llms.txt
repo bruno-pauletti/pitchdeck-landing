@@ -1,0 +1,8 @@
+# PitchDeck
+> Nota gratuita de pitch deck em cerca de 1 minuto, análise completa com correções slide a slide e uma calculadora de valuation educacional, para founders brasileiros.
+O PitchDeck é operado pela NVESTOR Tecnologia e Informação Ltda. (CNPJ 34.821.742/0001-08), empresa ligada à Equity Rio Investimentos. A NVESTOR e a Equity Rio não distribuem nem intermedeiam valores mobiliários. Conteúdo educativo: não é oferta nem recomendação de investimento, nem garante captação.
+## Principais páginas
+- Nota do Deck (WhatsApp, grátis): https://pitchdeck.com.br/nota
+- Calculadora de valuation (estimativa educacional): https://pitchdeck.com.br/calculadora-de-valuation
+- Artigos e guias: https://pitchdeck.com.br/insights
+- Termos e privacidade: https://pitchdeck.com.br/termos · https://pitchdeck.com.br/privacidade
