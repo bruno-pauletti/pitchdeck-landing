@@ -137,8 +137,6 @@
       + '</div></div>'
     + '<a href="/b2b" class="pdc-link">Para casas de investimento</a>'
     + '<a href="/insights" class="pdc-link">Insights</a>'
-    + '<div class="pdc-sep" aria-hidden="true"></div>'
-    + '<a href="/vitrine" class="pdc-link acc">↑ Vitrine</a>'
   + '</nav>'
   + '<a href="'+CTA_HREF+'" target="_blank" rel="noopener" class="pdc-cta">'+svgWA('pdc-wa-sm')+' '+esc(CTA_LABEL)+' <span aria-hidden="true">→</span></a>'
   + '<button class="pdc-ham" id="pdcHam" aria-label="Abrir menu"><span></span><span></span><span></span></button>'
@@ -147,7 +145,7 @@
     + '<button class="pdc-macc-t" id="pdcSvcT" aria-expanded="false" aria-controls="pdcSvcP">Serviços <span class="pdc-macc-chev" aria-hidden="true">▾</span></button>'
     + '<div class="pdc-macc" id="pdcSvcP" data-pdc="ai-agents-mobile"><a class="pdc-macc-all" href="/servicos">Ver todos os serviços →</a></div>'
     + '<a href="/b2b">Para casas de investimento</a>'
-    + '<a href="/insights">Insights</a><a href="/vitrine">↑ Vitrine</a>'
+    + '<a href="/insights">Insights</a>'
     + '<a href="'+CTA_HREF+'" target="_blank" rel="noopener" class="cta">'+esc(CTA_LABEL)+' →</a>'
   + '</div>';
 
@@ -158,7 +156,7 @@
     + '<div class="pdc-fbrand"><em>Pitch</em>Deck</div>'
     + '<div class="pdc-fmeta"><a href="mailto:contato@pitchdeck.com.br">contato@pitchdeck.com.br</a> &nbsp;·&nbsp; <a href="https://wa.me/552131960982" target="_blank" rel="noopener">+55 21 3196-0982</a> &nbsp;·&nbsp; Construído no Rio de Janeiro 🇧🇷</div>'
   + '</div>'
-  + '<nav class="pdc-fnav" aria-label="Links do rodapé"><a href="/insights">Insights</a><a href="/b2b">Para casas de investimento</a><a href="/vitrine" class="rank">↑ Vitrine</a><a href="/termos">Termos de Uso</a><a href="/privacidade">Privacidade</a></nav>'
+  + '<nav class="pdc-fnav" aria-label="Links do rodapé"><a href="/insights">Insights</a><a href="/b2b">Para casas de investimento</a><a href="/termos">Termos de Uso</a><a href="/privacidade">Privacidade</a></nav>'
   + '<div class="pdc-flegal">'
     + (CFG.footerNote ? '<p class="pdc-fline"><strong>'+esc(CFG.footerNote)+'</strong></p>' : '')
     + '<p class="pdc-fline">O PitchDeck é operado pela NVESTOR Tecnologia e Informação Ltda., CNPJ 34.821.742/0001-08, empresa ligada à Equity Rio Investimentos, que também usa a plataforma. Av. Armando Lombardi, 350, sala 325, Barra da Tijuca, Rio de Janeiro/RJ, CEP 22640-000.</p>'
